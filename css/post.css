@@ -1,0 +1,117 @@
+article .post__title {
+    margin-bottom: 36px;
+}
+article .post__date {
+    font-size: 16px;
+    color: #888888;
+    margin: 8px 0;
+}
+
+.post__content > * {
+    margin: 16px 0;
+}
+
+.post__content > p {
+    line-height: 26px;
+}
+
+.post__content > ul {
+    list-style-type: disc;
+}
+
+.post__content > ol {
+    list-style: decimal;
+}
+
+.post__content > blockquote {
+    padding: 8px;
+    border-left: 4px solid black;
+    background-color: #EEE;
+    border-radius: 4px;
+}
+
+.post__content > table {
+    width: 100%;
+    border: 1px solid #DDD;
+}
+
+
+
+table th {
+    background-color: #666;
+    color: white;
+}
+
+table td, th {
+    padding: 8px 0;
+}
+
+table tr:nth-child(even){
+    background-color: #EEE;
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 18px; }
+h3 { font-size: 16px; }
+h4 { font-size: 14px; }
+h5 { font-size: 13px; }
+h6 { font-size: 12px; }
+
+
+
+p a {
+    padding-bottom: 1px;
+    margin: 0 2px;
+    border-bottom: 2px solid black;
+}
+
+p code {
+    border-radius: 4px;
+    background-color: #EEEEEE;
+    padding: 2px 4px;
+    margin: 0 2px;
+}
+
+
+.highlight {
+    background: #272822;
+    border-radius: 4px;
+    position: relative;
+    overflow: scroll;
+}
+
+.highlight .gutter {
+    padding: 0 8px;
+    position: sticky;
+    left: 0;
+    background-color: #272822;
+}
+
+.highlight td.code {
+    padding: 0 8px;
+}
+
+.gutter .line {
+    display: inline-block;
+    width: 24px;
+    color: #888888;
+    text-align: right;
+}
+
+.highlight *::selection {
+    background-color: #AAA;
+    color: inherit;
+}
+
+
+/* body {counter-reset: h2}
+  h2 {counter-reset: h3}
+  h3 {counter-reset: h4}
+  h4 {counter-reset: h5}
+  h5 {counter-reset: h6}
+  h2:before {counter-increment: h2; content: counter(h2) ". "}
+  h3:before {counter-increment: h3; content: counter(h2) "." counter(h3) ". "}
+  h4:before {counter-increment: h4; content: counter(h2) "." counter(h3) "." counter(h4) ". "}
+  h5:before {counter-increment: h5; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "}
+  h6:before {counter-increment: h6; content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "}
+  h2.nocount:before, h3.nocount:before, h4.nocount:before, h5.nocount:before, h6.nocount:before { content: ""; counter-increment: none } */

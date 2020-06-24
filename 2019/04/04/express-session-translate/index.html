@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+    
+<link rel="stylesheet" href="/css/highlight-monokai.css">
+
+    
+<link rel="stylesheet" href="/css/post.css">
+
+    <title>Hui Li&#39;s Blog</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- content -->
+    <header class="header page__padding">
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
+            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+    <main class="page__padding">
+        <article>
+    <div class="post__title">
+        <h1>翻译 express-session 使用文档</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="24px"></object>
+            2019-04-04
+        </div>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api"><span class="toc-number">2.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sessions(options)"><span class="toc-number">2.1.</span> <span class="toc-text">sessions(options)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#options"><span class="toc-number">2.1.1.</span> <span class="toc-text">Options</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session"><span class="toc-number">2.2.</span> <span class="toc-text">req.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session.regenerate(callback)"><span class="toc-number">2.2.1.</span> <span class="toc-text">Session.regenerate(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.destroy(callback)"><span class="toc-number">2.2.2.</span> <span class="toc-text">Session.destroy(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.reload(callback)"><span class="toc-number">2.2.3.</span> <span class="toc-text">Session.reload(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.save(callback)"><span class="toc-number">2.2.4.</span> <span class="toc-text">Session.save(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.touch(callback)"><span class="toc-number">2.2.5.</span> <span class="toc-text">Session.touch(callback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.id"><span class="toc-number">2.3.</span> <span class="toc-text">req.session.id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.cookie"><span class="toc-number">2.4.</span> <span class="toc-text">req.session.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie.maxage-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">Cookie.maxAge</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.sessionid"><span class="toc-number">2.5.</span> <span class="toc-text">req.sessionID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-store-implementation"><span class="toc-number">3.</span> <span class="toc-text">Session Store Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#store.all(callback)"><span class="toc-number">3.1.</span> <span class="toc-text">store.all(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.destroy(sid%2C-callback)"><span class="toc-number">3.2.</span> <span class="toc-text">store.destroy(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.clear(callback)"><span class="toc-number">3.3.</span> <span class="toc-text">store.clear(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.length(callback)"><span class="toc-number">3.4.</span> <span class="toc-text">store.length(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.get(sid%2C-callback)"><span class="toc-number">3.5.</span> <span class="toc-text">store.get(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.set(sid%2C-session%2C-callback)"><span class="toc-number">3.6.</span> <span class="toc-text">store.set(sid, session, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.touch(sid%2C-session%2C-callback)"><span class="toc-number">3.7.</span> <span class="toc-text">store.touch(sid, session, callback)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compatible-session-stores"><span class="toc-number">4.</span> <span class="toc-text">Compatible Session Stores</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">5.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-number">6.</span> <span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords"><span class="toc-number">7.</span> <span class="toc-text">Keywords</span></a></li></ol>
+    <div class="post__content">
+        <blockquote>
+<p><a href="https://www.npmjs.com/package/express-session" target="_blank" rel="noopener">文档原网址</a></p>
+</blockquote>
+<p>以下翻译正文</p>
+<h2 id="installation" id="Installation">Installation</h2>
+<p>这是一个通过 <a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm registry</a> 可用的 <a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a> 模块。使用以下 <code>npm install</code> 命令来完成安装。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ npm install express-session<br></code></pre></td></tr></table></figure>
+<h2 id="api" id="API">API</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-session'</span>);<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="sessions(options)" id="sessions-options">sessions(options)</h3>
+<p>使用给定选项创建一个 session 中间件。<br>
+<strong>注意</strong>：只有 session ID 是保存在 cookie 中，Session 数据本身并不是。Session 数据是存在服务端。<br>
+<strong>注意</strong>：从版本 1.5.0 起，本模块不再需要 <a href="https://www.npmjs.com/package/cookie-parser" target="_blank" rel="noopener">cookie-parser</a> 中间件来运行。本模块现在直接在 req/res 上读写 cookies。当本模块和 cookie-parser 的 <code>secret</code> 不一致时，使用 cookie-parser 可能会导致问题。<br>
+<strong>警告</strong>：默认的服务端 session 存储，MemoryStore，<strong>特意</strong>没有为生产环境而设计。在大多数情况下，它可能会导致内存泄漏，不会扩展过单个进程，而且是用于调试和开发。<br>
+对于存储列表，请查看<a href="#compatible-session-stores">兼容的 session 存储</a></p>
+<h4 id="options" id="Options">Options</h4>
+<p>express-session 在 options 对象中接收以下参数：</p>
+<h5 id="cookie" id="cookie">cookie</h5>
+<p>session ID cookie 的设置对象。默认值为 <code>{ path: '/', httpOnly: true, secure: false, maxAge: null }</code>.</p>
+<p>下列参数可选设置放入 cookie 对象。</p>
+<h6 id="cookie.domain" id="cookie-domain">cookie.domain</h6>
+<p>为 Set-Cookie 属性指定 domain。默认情况下，没有设置 domain，并且大多数客户端会将 cookie 视为仅应用于当前 domain。</p>
+<h6 id="cookie.expires" id="cookie-expires">cookie.expires</h6>
+<p>为 Set-Cookie 属性中的 Expires 指定 Date 对象。默认情况下，没有设置 expires，大多数客户端会将视这个为 “非持久化 cookie” 并且在像退出浏览器应用的场景下删除该 cookie。<br>
+<strong>注意</strong>：如果 options 对象中同时设置了 expires 和 maxAge，那么将被用到的是在对象中最后一个被定义的属性。<br>
+<strong>注意</strong>：expires 选项不应该被直接设置；而应该只使用 maxAge 选项。</p>
+<h6 id="cookie.httponly" id="cookie-httpOnly">cookie.httpOnly</h6>
+<p>为 Set-Cookie 属性中的 HttpOnly 指定 boolean 值。当为真值，HttpOnly 属性被设置，否则不被设置。默认情况下，HttpOnly 属性是被设置的。<br>
+<strong>注意</strong>：设置该值为 true 的时候要小心，因为服从协议的客户端不会允许 JavaScript 在 document.cookie 中查看 cookie。</p>
+<h6 id="cookie.maxage" id="cookie-maxAge">cookie.maxAge</h6>
+<p>指定当计算 Set-Cookie 属性中的 Expires 时使用的 number （毫秒）值。这是通过获取当前服务器时间并将 maxAge 毫秒数加入其中计算 Expires 日期时间来完成的。默认情况下没有设置 maxAge。<br>
+<strong>注意</strong>：如果 options 对象中同时设置了 expires 和 maxAge，那么将被用到的是在对象中最后一个被定义的属性。</p>
+<h6 id="cookie.path" id="cookie-path">cookie.path</h6>
+<p>为 Set-Cookie 属性指定 Path 值。默认情况下该值被设为 <code>'/'</code>，也就是 domain 下的根路径。</p>
+<h6 id="cookie.samesite" id="cookie-sameSite">cookie.sameSite</h6>
+<p>为 Set-Cookie 属性中的 SameSite 指定 boolean 或者 string 值。其中，</p>
+<ul>
+<li><code>true</code> 会将 SameSite 属性设为 Strict 以实现严格的相同站点强制。</li>
+<li><code>false</code> 不会 SameSite 属性。</li>
+<li><code>'lax'</code> 会将 SameSite 属性设置为 Lax 以实现宽松的相同站点强制。</li>
+<li><code>'strict'</code> 会将 SameSite 属性设置为 Strict 以实现严格的相同站点强制。</li>
+</ul>
+<p>关于不同的强制级别的更多信息可以在细则中找到<a href="https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1.1" target="_blank" rel="noopener">https://tools.ietf.org/html/draft-west-first-party-cookies-07#section-4.1.1</a><br>
+<strong>注意</strong>：这是一个还未被完全标准化的属性并且将来可能发生变化。这意味着许多客户端可能忽略这条属性直到它们完全理解它为止。</p>
+<h6 id="cookie.secure" id="cookie-secure">cookie.secure</h6>
+<p>为 Set-Cookie 属性中的 Secure 指定 boolean 值。当为真时，Secure 属性被设置否则没有设置。默认情况下 Secure 属性没有被设置。<br>
+<strong>注意</strong>：当设置该值为 true 的时候请小心，因为如果浏览器没有建立 HTTPS 连接服从协议的客户端将不会发送 cookie 返回给服务端。<br>
+请注意 secure: true 是推荐选项。然而，它需要启用 HTTPS 的网站， 也就是 HTTPS  是 secure cookies 所必须的。如果 secure 被设置而你通过 HTTP 访问你的站点，cookie 将不会被设置。如果你在代理后使用 node.js 并且设置 secure: true，你需要在 express 中设置 “trust proxy”：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = express()<br>app.set(<span class="hljs-string">'trust proxy'</span>, <span class="hljs-number">1</span>) <span class="hljs-comment">// trust first proxy</span><br>app.use(session(&#123;<br>  secret: <span class="hljs-string">'keyboard cat'</span>,<br>  resave: <span class="hljs-literal">false</span>,<br>  saveUninitialized: <span class="hljs-literal">true</span>,<br>  cookie: &#123; <span class="hljs-attr">secure</span>: <span class="hljs-literal">true</span> &#125;<br>&#125;))<br></code></pre></td></tr></table></figure>
+<p>为了在生产环境中使用 secure cookies，同时允许在开发环境中测试，下列是在 express 中基于 <code>NODE_ENV</code> 启用此设置的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> app = express()<br><span class="hljs-keyword">var</span> sess = &#123;<br>  secret: <span class="hljs-string">'keyboard cat'</span>,<br>  cookie: &#123;&#125;<br>&#125;<br> <br><span class="hljs-keyword">if</span> (app.get(<span class="hljs-string">'env'</span>) === <span class="hljs-string">'production'</span>) &#123;<br>  app.set(<span class="hljs-string">'trust proxy'</span>, <span class="hljs-number">1</span>) <span class="hljs-comment">// trust first proxy</span><br>  sess.cookie.secure = <span class="hljs-literal">true</span> <span class="hljs-comment">// serve secure cookies</span><br>&#125;<br> <br>app.use(session(sess))<br></code></pre></td></tr></table></figure>
+<p>cookie.secure 选项也可以被设置成特殊值 “auto” 来让这个设置自动和确定的连接的安全性相匹配。如果站点可以同时用做 HTTP 和 HTTPS 请小心使用这个设置，因为一旦 cookie 的 HTTPS 属性被设置，cookie 不会再对 HTTP 可见。当 Express 的 “trust proxy” 被正确设置来简化开发和生产配置的时候，这非常有用。</p>
+<h5 id="genid" id="genid">genid</h5>
+<p>调用来生成一个新的 session ID 的函数。提供一个返回 string 类型并将被用来作为 session ID 的函数。当生成 ID 的时候如果你想用一些附加到 req 的值，该函数已给定 req 作为第一个参数。<br>
+默认值是一个使用 <code>uid-safe</code> 库来生成 ID 的函数。<br>
+<strong>注意</strong>：请小心生成唯一的 ID 以便你的 sessions 不会产生冲突。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">app.use(session(&#123;<br>  genid: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req</span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> genuuid() <span class="hljs-comment">// use UUIDs for session IDs</span><br>  &#125;,<br>  secret: <span class="hljs-string">'keyboard cat'</span><br>&#125;))<br></code></pre></td></tr></table></figure>
+<h5 id="name" id="name">name</h5>
+<p>设置在 response 中（和从 request 中读取）的 session ID 的 cookie 的 name。<br>
+默认值为 <code>&quot;connect.sid&quot;</code>。<br>
+<strong>注意</strong>：如果你有多个运行在相同 hostname（只是名字，也就是 localhost 或者 127.0.0.1；不同的协议(scheme) 和 端口(port) 不命名不同的主机名）上的应用，那么你需要将 session cookie 彼此分开。最简单的方法是每个应用设置不同的 name。</p>
+<h5 id="proxy" id="proxy">proxy</h5>
+<p>当设置 secure cookies 的时候相信反向代理（通过 <code>&quot;X-Forwarded-Proto&quot;</code> 头）。<br>
+默认值为 <code>undefined</code>。</p>
+<ul>
+<li><code>true</code> 表示 <code>&quot;X-Forwarded-Proto&quot;</code> 头将会被使用。</li>
+<li><code>false</code> 表示只有存在直接的 TLS/SSL 连接时才会忽略所有头并认为连接是安全的。</li>
+<li><code>undefined</code> 表示从 express 中使用 “trust proxy”。</li>
+</ul>
+<h5 id="resave" id="resave">resave</h5>
+<p>及时回话在请求期间从未被修改过也强制 session 保存回 session 存储。根据你的存储这可能是必须的，但是这也可能创造竞争条件当客户端发送两个并行请求到你的服务端并且其中一个请求A 对 session 作出的更改可能会在另一个请求 B 结束时被覆盖即使请求 B 没有做任何更改（这个行为取决于你用的 session 存储）。<br>
+默认值为 true，但是不推荐使用默认值，因为默认值将来会被更改。请研究此项设置并选择适合你的用例的选项。一般来讲，你会想选择 false。<br>
+我怎么知道该设置对我的 session 存储来讲是不是必须的呢？最好的方法是检查你的存储看它是否实现了 touch 方法。如果它实现了，那你可以安全地设置 resave 为 false。如果它没有实现 touch 方法而且你的 store 在存储的 sessions 中设定的 expiration 日期，那么你可能需要设置 resave: false。</p>
+<h5 id="rolling" id="rolling">rolling</h5>
+<p>强制在每次响应的时候设置一个 session 标志符 cookie。expiration 重新被设置为初始的 maxAge，重置 expiration 倒计时。<br>
+默认值为 false。<br>
+<strong>注意</strong>：当该选项被设置为 true 但是 saveUninitialized 选项被设置为 false，则不会在具有未初始化的 session 响应中设置 cookie。</p>
+<h5 id="saveuninitialized" id="saveUninitialized">saveUninitialized</h5>
+<p>强制将未初始化的 session 保存回 store。当一个 session 是新的但是还未被修改时我们说他是未初始化的。选择 false 值对实现登录 session 是有用的，因为它减少了服务器存储的用量，遵守了设置 cookie 前需要许可的规则。选择 false 值也有助于客户端在没有回话的情况下发出过个并行请求的竞争条件。<br>
+默认值为 true，但是不推荐使用默认值，因为默认值将来会被更改。请研究此项设置并选择适合你的用例的选项。<br>
+<strong>注意</strong>：如果你正在结合 PassportJS 使用 Session，用户通过身份验证后PassportJS 将为该用户在 session 中添加一个空的 Passport 对象，这将会视为对 session 的修改，导致 session 被保存。<em>这已经在 PassportJS 0.3.0 中被修复。</em></p>
+<h5 id="secret" id="secret">secret</h5>
+<p><strong>必设选项</strong><br>
+这是用来给 session ID cookie 签名的 secret。这可以是单个 secret 的字符串也可以是多个 secret 组成的数组。如果提供了一组 secrets，只有第一个元素会被用来给 session ID cookie 签名，在验证请求签名的时候才会考虑到所有元素。</p>
+<h5 id="store" id="store">store</h5>
+<p>session 存储实例，默认为一个新的 MemoryStore 实例。</p>
+<h5 id="unset" id="unset">unset</h5>
+<p>控制取消设置 req.session 的结果（通过删除，设为 null，等等）。<br>
+默认值为 <strong>'keep’</strong></p>
+<ul>
+<li><code>'destroy'</code> 表示当响应结束的时候 session 将会被销毁（删除）。</li>
+<li><code>'keep'</code> 表示在 store 中的 session 会被保留，但是在请求期间做的修改将会被忽略不会被保存。</li>
+</ul>
+<h3 id="req.session" id="req-session">req.session</h3>
+<p>存储或者访问 session 数据，只需要使用请求属性 req.session，该属性（通常）由 store 序列化为 session，所以一般来说嵌套对象也可以接受。下面的示例是一个基于特定用户的视图计数器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Use the session middleware</span><br>app.use(session(&#123; <span class="hljs-attr">secret</span>: <span class="hljs-string">'keyboard cat'</span>, <span class="hljs-attr">cookie</span>: &#123; <span class="hljs-attr">maxAge</span>: <span class="hljs-number">60000</span> &#125;&#125;))<br> <br><span class="hljs-comment">// Access the session as req.session</span><br>app.get(<span class="hljs-string">'/'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (req.session.views) &#123;<br>    req.session.views++<br>    res.setHeader(<span class="hljs-string">'Content-Type'</span>, <span class="hljs-string">'text/html'</span>)<br>    res.write(<span class="hljs-string">'&lt;p&gt;views: '</span> + req.session.views + <span class="hljs-string">'&lt;/p&gt;'</span>)<br>    res.write(<span class="hljs-string">'&lt;p&gt;expires in: '</span> + (req.session.cookie.maxAge / <span class="hljs-number">1000</span>) + <span class="hljs-string">'s&lt;/p&gt;'</span>)<br>    res.end()<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    req.session.views = <span class="hljs-number">1</span><br>    res.end(<span class="hljs-string">'welcome to the session demo. refresh!'</span>)<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="session.regenerate(callback)" id="Session-regenerate-callback">Session.regenerate(callback)</h4>
+<p>要重新生成 session 只需要调用这个方法。完成后一个新的 SID 和 Session 实例将会被初始化在 req.session 并且 callback 会被调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.regenerate(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// will have a new session here</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="session.destroy(callback)" id="Session-destroy-callback">Session.destroy(callback)</h4>
+<p>销毁 Session 并取消设置 req.session 属性。完成后将调用 callback。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.destroy(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// cannot access session here</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="session.reload(callback)" id="Session-reload-callback">Session.reload(callback)</h4>
+<p>从 store 重新载入 session 数据并重新填充 req.session 对象。完成后将调用 callback。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.reload(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// session updated</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="session.save(callback)" id="Session-save-callback">Session.save(callback)</h4>
+<p>将 session 保存回 store，用内存中的内容替换 store 中的内容（尽管 store 可能还会做其他的事情—参阅 store 的文档以了解其确切的行为）。<br>
+如果 session 数据被改变了这个方法会在 HTTP 响应的末尾自动被调用（尽管这个行为可以被中间件构造器中的多种选项所改变）。因此，一般来讲这个方法不需要被手动调用。<br>
+存在一些调用这个方法会很有用的情况，比如重定向，长期请求（long-lived requests）或着 WebSockets。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// session saved</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+<h4 id="session.touch(callback)" id="Session-touch-callback">Session.touch(callback)</h4>
+<p>更新 .maxAge 属性。一般来讲这个方法不需要被调用因为 session 中间件为你执行了这个操作。</p>
+<h3 id="req.session.id" id="req-session-id"><a href="http://req.session.id" target="_blank" rel="noopener">req.session.id</a></h3>
+<p>每一个 session 都有一个与之关联的唯一 ID。该属性是 req.sessionID 的别名而且无法修改。该属性已被添加以使 session ID 可以从 session 对象中访问。</p>
+<h3 id="req.session.cookie" id="req-session-cookie">req.session.cookie</h3>
+<p>每一个 session 都有一个唯一的 cookie 与之伴随。这允许你更改每个访问者的 session cookie。例如我们可以设置 req.session.cookie.expires 为 false 来使 cookie 仅在用户-代理的持续时间中保留。</p>
+<h4 id="cookie.maxage-2" id="Cookie-maxAge">Cookie.maxAge</h4>
+<p>req.session.cookie.maxAge 将以毫秒数返回剩余的时间，我们也可以重新分配一个新值来适当地调整 .expires 属性。以下代码是等效的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> hour = <span class="hljs-number">3600000</span><br>req.session.cookie.expires = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-built_in">Date</span>.now() + hour)<br>req.session.cookie.maxAge = hour<br></code></pre></td></tr></table></figure>
+<p>例如当 maxAge 被设置为 60000（一分钟）时，三十秒后它将返回 30000 知道当前的请求已完成，此时调用 req.session.touch() 将会重设 req.session.maxAge 为它的初始值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.cookie.maxAge <span class="hljs-comment">// =&gt; 30000</span><br></code></pre></td></tr></table></figure>
+<h3 id="req.sessionid" id="req-sessionID">req.sessionID</h3>
+<p>要拿到载入的 session 的 ID，访问请求的属性 req.sessionID。当 session 被载入或被创建的时候这仅是一个只读的值。</p>
+<h2 id="session-store-implementation" id="Session-Store-Implementation">Session Store Implementation</h2>
+<p>每一个 session store 必须是一个 EventEmitter 并且实现特定的方法。下列的方法是必需，推荐和可选的列表。</p>
+<ul>
+<li>必需的方法是此模块将会始终在 store 中调用的方法。</li>
+<li>推荐的方法是如果可用此模块将会在 store 中调用的方法。</li>
+<li>可选的方法是此模块根本不会调用的方法</li>
+</ul>
+<p>有关示例实现请查看 <a href="http://github.com/visionmedia/connect-redis" target="_blank" rel="noopener">connect-redis</a> 仓库。</p>
+<h3 id="store.all(callback)" id="store-all-callback">store.all(callback)</h3>
+<p><strong>可选</strong><br>
+该可选方法用于以数组形式获取 store 中的所有 session。回调方法应该使用为 <code>callback(error, sessions)</code>。</p>
+<h3 id="store.destroy(sid%2C-callback)" id="store-destroy-sid-callback">store.destroy(sid, callback)</h3>
+<p><strong>必需</strong><br>
+该必需方法根据给定的 session ID 来销毁（删除）store 中的 session。session被删除后回调函数应该使用为 <code>callback(error)</code>。</p>
+<h3 id="store.clear(callback)" id="store-clear-callback">store.clear(callback)</h3>
+<p><strong>可选</strong><br>
+该可选方法用于删除 store 中的所有 session。store 清空后回调函数应该使用为 <code>callback(error)</code>。</p>
+<h3 id="store.length(callback)" id="store-length-callback">store.length(callback)</h3>
+<p><strong>可选</strong><br>
+该可选方法用于获取 store 中所有 session 的个数。回调函数应该使用为 <code>callback(error, len)</code>。</p>
+<h3 id="store.get(sid%2C-callback)" id="store-get-sid-callback">store.get(sid, callback)</h3>
+<p><strong>必需</strong><br>
+该必需方法根据给定的 session ID 从 store 中获取 session。回调函数应该使用为 <code>callback(error, session)</code>。<br>
+如果找到 session 回调函数中的 session 参数应该为一个 session 对象，否则如果没有找到 session（并且也没有错误）应该为 null 或 undefined。当 <code>error.code === 'ENOENT'</code> 表现为 <code>callback(null, null)</code> ，这是一种特殊情况。</p>
+<h3 id="store.set(sid%2C-session%2C-callback)" id="store-set-sid-session-callback">store.set(sid, session, callback)</h3>
+<p><strong>必需</strong><br>
+该必需方法根据给定的 session ID 和 session 对象将 session 存入 store。session 存入 store 后回调函数应该使用为 <code>callback(error)</code>。</p>
+<h3 id="store.touch(sid%2C-session%2C-callback)" id="store-touch-sid-session-callback">store.touch(sid, session, callback)</h3>
+<p><strong>推荐</strong><br>
+该推荐方法根据给定的 session ID 和 session 对象 “触碰” 给定的 session 对象。session 被 “触碰” 后回调函数应该使用为 <code>callback(error)</code>。<br>
+该方法主要用于 store 自动删除空闲 session，并将此方法用于向 store 发送给定 session 处于活动状态的信号，可能回重置空闲计时器。</p>
+<h2 id="compatible-session-stores" id="Compatible-Session-Stores">Compatible Session Stores</h2>
+<p>下列的模块是实现了一个和本模块兼容的 session store。请提出 PULL REQUEST 来添加其他的模块 😃<br>
+本处仅列出两处 store 实现，更多请查看<a href="https://www.npmjs.com/package/express-session#compatible-session-stores" target="_blank" rel="noopener">原文档</a><br>
+<a href="https://www.npmjs.com/package/connect-db2" target="_blank" rel="noopener"><code>connect-db2</code></a>: 一个使用 ibm_db 模块建成的基于 IBM DB2 的 session store。<br>
+<a href="https://www.npmjs.com/package/connect-mongo" target="_blank" rel="noopener"><code>connect-mongo</code></a>: 一个基于 SQL Server 的 session store。</p>
+<h2 id="example" id="Example">Example</h2>
+<p>一个简单使用 express-session 来为用户存储页面访问的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)<br><span class="hljs-keyword">var</span> parseurl = <span class="hljs-built_in">require</span>(<span class="hljs-string">'parseurl'</span>)<br><span class="hljs-keyword">var</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-session'</span>)<br> <br><span class="hljs-keyword">var</span> app = express()<br> <br>app.use(session(&#123;<br>  secret: <span class="hljs-string">'keyboard cat'</span>,<br>  resave: <span class="hljs-literal">false</span>,<br>  saveUninitialized: <span class="hljs-literal">true</span><br>&#125;))<br> <br>app.use(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (!req.session.views) &#123;<br>    req.session.views = &#123;&#125;<br>  &#125;<br> <br>  <span class="hljs-comment">// get the url pathname</span><br>  <span class="hljs-keyword">var</span> pathname = parseurl(req).pathname<br> <br>  <span class="hljs-comment">// count the views</span><br>  req.session.views[pathname] = (req.session.views[pathname] || <span class="hljs-number">0</span>) + <span class="hljs-number">1</span><br> <br>  next()<br>&#125;)<br> <br>app.get(<span class="hljs-string">'/foo'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  res.send(<span class="hljs-string">'you viewed this page '</span> + req.session.views[<span class="hljs-string">'/foo'</span>] + <span class="hljs-string">' times'</span>)<br>&#125;)<br> <br>app.get(<span class="hljs-string">'/bar'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">req, res, next</span>) </span>&#123;<br>  res.send(<span class="hljs-string">'you viewed this page '</span> + req.session.views[<span class="hljs-string">'/bar'</span>] + <span class="hljs-string">' times'</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+<h2 id="license" id="License">License</h2>
+<p><a href="https://github.com/expressjs/session/blob/HEAD/LICENSE" target="_blank" rel="noopener">MIT</a></p>
+<h2 id="keywords" id="Keywords">Keywords</h2>
+<p>none</p>
+
+    </div>
+</article>
+    </main>
+    <footer class="page__padding">
+    Copyright © 2020 Hui Li.
+</footer>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+    
+<link rel="stylesheet" href="/css/highlight-monokai.css">
+
+    
+<link rel="stylesheet" href="/css/post.css">
+
+    <title>Hui Li&#39;s Blog</title>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- content -->
+    <header class="header page__padding">
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
+            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+    <main class="page__padding">
+        <article>
+    <div class="post__title">
+        <h1>初学 JavaScript</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="24px"></object>
+            2017-06-08
+        </div>
+    </div>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sample-answer-of-javascript-assignment"><span class="toc-number">1.</span> <span class="toc-text">Sample Answer of JavaScript Assignment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#risk"><span class="toc-number">1.1.</span> <span class="toc-text">Risk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hail-caesar"><span class="toc-number">1.2.</span> <span class="toc-text">Hail Caesar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#follow-the-leader"><span class="toc-number">1.3.</span> <span class="toc-text">Follow the Leader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props-to-javascript"><span class="toc-number">1.4.</span> <span class="toc-text">Props to JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript-to-html"><span class="toc-number">1.5.</span> <span class="toc-text">JavaScript to HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#one-step-after-the-other"><span class="toc-number">1.6.</span> <span class="toc-text">One Step After The Other</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again"><span class="toc-number">1.7.</span> <span class="toc-text">Over and Over Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again-and-again"><span class="toc-number">1.8.</span> <span class="toc-text">Over and Over Again and Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-matchmaker"><span class="toc-number">1.9.</span> <span class="toc-text">The Matchmaker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-up-is-hard-to-do"><span class="toc-number">1.10.</span> <span class="toc-text">Breaking Up is Hard To Do</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#all-for-one-and-one-for-all"><span class="toc-number">1.11.</span> <span class="toc-text">All For One and One For All</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nosql-query"><span class="toc-number">1.12.</span> <span class="toc-text">NoSql Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#once-and-only-once"><span class="toc-number">1.13.</span> <span class="toc-text">Once and Only Once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%89%93%E5%88%86"><span class="toc-number">1.14.</span> <span class="toc-text">我的打分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">1.15.</span> <span class="toc-text">文件</span></a></li></ol></li></ol>
+    <div class="post__content">
+        <h1 id="sample-answer-of-javascript-assignment" id="Sample-Answer-of-JavaScript-Assignment">Sample Answer of JavaScript Assignment</h1>
+<p>这两周来自 <a href="https://www.uwlax.edu/" target="_blank" rel="noopener">UWLAX</a> 的外教 <a href="http://charity.cs.uwlax.edu/#/" target="_blank" rel="noopener">Kenny Hunt</a> 对我们进行两周的 <a href="http://charity.cs.uwlax.edu/scun/web/" target="_blank" rel="noopener">Web Programming</a> 课程教学,介绍基本语法用法后，布置了一篇作业，下面附上 Sample Answer。</p>
+<p>这是作业的原链接 =&gt; <a href="http://charity.cs.uwlax.edu/scun/web/assignments/hw1/" target="_blank" rel="noopener">JavaScript Assignment</a></p>
+<p>为防止外教回国后，页面被删除无法访问，我这里把作业存在 <a href="https://greenlihui.github.io/2017/06/08/javascript-assignment/" target="_blank" rel="noopener">这个博客</a> 里了</p>
+<h2 id="risk" id="Risk">Risk</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">risk</span>(<span class="hljs-params">height, weight, sex</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> meterOfHeight = height * <span class="hljs-number">0.0254</span>;<br>  <span class="hljs-keyword">var</span> kiloOfWeight = weight * <span class="hljs-number">0.4536</span>;<br>  <span class="hljs-keyword">var</span> bmi = kiloOfWeight / <span class="hljs-built_in">Math</span>.pow(meterOfHeight, <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">return</span> ( sex == <span class="hljs-string">'M'</span> &amp;&amp; (bmi &lt; <span class="hljs-number">20.4</span> || bmi &gt; <span class="hljs-number">31.9</span>) ) ||<br>  ( sex == <span class="hljs-string">'F'</span> &amp;&amp; (bmi &lt; <span class="hljs-number">19.4</span> || bmi &gt; <span class="hljs-number">27.6</span>) );<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="hail-caesar" id="Hail-Caesar">Hail Caesar</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">roman</span>(<span class="hljs-params">number</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> numberToRoman = &#123;<br>    <span class="hljs-number">1</span> : <span class="hljs-string">"I"</span>,<br>    <span class="hljs-number">2</span> : <span class="hljs-string">"II"</span>,<br>    <span class="hljs-number">3</span> : <span class="hljs-string">"III"</span>,<br>    <span class="hljs-number">4</span> : <span class="hljs-string">"IV"</span>,<br>    <span class="hljs-number">5</span> : <span class="hljs-string">"V"</span>,<br>    <span class="hljs-number">6</span> : <span class="hljs-string">"VI"</span>,<br>    <span class="hljs-number">7</span> : <span class="hljs-string">"VII"</span>,<br>    <span class="hljs-number">8</span> : <span class="hljs-string">"VIII"</span>,<br>    <span class="hljs-number">9</span> : <span class="hljs-string">"IX"</span>,<br>    <span class="hljs-number">10</span> : <span class="hljs-string">"X"</span><br>  &#125;;<br>  <span class="hljs-keyword">var</span> romanToNumber = &#123;<br>    <span class="hljs-string">"I"</span> : <span class="hljs-number">1</span>,<br>    <span class="hljs-string">"II"</span> : <span class="hljs-number">2</span>,<br>    <span class="hljs-string">"III"</span> : <span class="hljs-number">3</span>,<br>    <span class="hljs-string">"IV"</span> : <span class="hljs-number">4</span>,<br>    <span class="hljs-string">"V"</span> : <span class="hljs-number">5</span>,<br>    <span class="hljs-string">"VI"</span>: <span class="hljs-number">6</span>,<br>    <span class="hljs-string">"VII"</span> : <span class="hljs-number">7</span>,<br>    <span class="hljs-string">"VIII"</span> : <span class="hljs-number">8</span>,<br>    <span class="hljs-string">"IX"</span> : <span class="hljs-number">9</span>,<br>    <span class="hljs-string">"X"</span> : <span class="hljs-number">10</span><br>  &#125;;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> number == <span class="hljs-string">'number'</span>) &#123;<br>    <span class="hljs-keyword">return</span> numberToRoman[number];<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> number == <span class="hljs-string">'string'</span>) &#123;<br>    <span class="hljs-keyword">return</span> romanToNumber[number.toUpperCase()];<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="follow-the-leader" id="Follow-the-Leader">Follow the Leader</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">lettersThatFollow</span>(<span class="hljs-params">text, ch</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> result = <span class="hljs-string">""</span>;<br>  <span class="hljs-keyword">var</span> phrases = text.split(ch).slice(<span class="hljs-number">1</span>);<br><br>  phrases.map(<span class="hljs-function"><span class="hljs-params">ph</span> =&gt;</span> ph[<span class="hljs-number">0</span>]).forEach(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">if</span> ( c &amp;&amp; result.indexOf(c) &lt; <span class="hljs-number">0</span> ) &#123;<br>      result += c;<br>    &#125;<br>  &#125;);<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="props-to-javascript" id="Props-to-JavaScript">Props to JavaScript</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">props</span>(<span class="hljs-params">list, propertyName</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> list.map(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> val[propertyName]);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="javascript-to-html" id="JavaScript-to-HTML">JavaScript to HTML</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">toHTML</span>(<span class="hljs-params">list</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> list != <span class="hljs-string">'object'</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;li&gt;"</span> + list + <span class="hljs-string">"&lt;/li&gt;"</span>;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">"&lt;ol&gt;"</span> + list.map(toHTML).join(<span class="hljs-string">''</span>) + <span class="hljs-string">"&lt;/ol&gt;"</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="one-step-after-the-other" id="One-Step-After-The-Other">One Step After The Other</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sequence</span>(<span class="hljs-params">start, step</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> count = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">return</span> start + step * count++;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="over-and-over-again" id="Over-and-Over-Again">Over and Over Again</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">repeat</span>(<span class="hljs-params">text, n</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> repeatf(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> text, n).join(<span class="hljs-string">''</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="over-and-over-again-and-again" id="Over-and-Over-Again-and-Again">Over and Over Again and Again</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">repeatf</span>(<span class="hljs-params">f, n</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> result =[];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    result.push(f());<br>  &#125;<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="the-matchmaker" id="The-Matchmaker">The Matchmaker</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">matchmaker</span>(<span class="hljs-params">obj</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">object</span>) </span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> obj) &#123;<br>      <span class="hljs-keyword">if</span> (obj[key] != object[Key]) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="breaking-up-is-hard-to-do" id="Breaking-Up-is-Hard-To-Do">Breaking Up is Hard To Do</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">breakup</span>(<span class="hljs-params">list, partitioner</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> result = &#123;&#125;;<br>  list.forEach(<span class="hljs-function"><span class="hljs-params">val</span> =&gt;</span> &#123;<br>    <span class="hljs-keyword">var</span> key = partitioner(val);<br>    <span class="hljs-keyword">if</span> (! result.hasOwnProperty[key]) &#123;<br>      result[key] = [];<br>    &#125;<br>    result[key].push(val);<br>  &#125;);<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="all-for-one-and-one-for-all" id="All-For-One-and-One-For-All">All For One and One For All</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">eachOne</span>(<span class="hljs-params">list</span>) </span>&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; liset.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (!list[i]) &#123;<br>      <span class="hljs-keyword">return</span> list[i];<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="nosql-query" id="NoSql-Query">NoSql Query</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">noSql</span>(<span class="hljs-params">list, query</span>) </span>&#123;<br>  <span class="hljs-keyword">return</span> list.filter(matchmaker(query));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="once-and-only-once" id="Once-and-Only-Once">Once and Only Once</h2>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">justOnce</span>(<span class="hljs-params">f</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> hasBeenCalled = <span class="hljs-literal">false</span>;<br>  <span class="hljs-keyword">var</span> value;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">if</span>(hasBeenCalled) &#123;<br>      <span class="hljs-keyword">return</span> value;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      value = f();<br>      hasBeenCalled = <span class="hljs-literal">true</span>;<br>      <span class="hljs-keyword">return</span> value;<br>    &#125;<br>  &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="%E6%88%91%E7%9A%84%E6%89%93%E5%88%86" id="我的打分">我的打分</h2>
+<p>上面是老师评讲题目后给出的参考答案，我原本提交的答案只拿了一个 AB<br>
+这是老师给我的打分<br>
+<img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200624181444.png" alt="老师的评分"></p>
+<h2 id="%E6%96%87%E4%BB%B6" id="文件">文件</h2>
+<p><a href="https://github.com/greenlihui/greenlihui.github.io/blob/master/2017/06/08/javascript-beginning/my-homework" target="_blank" rel="noopener">我提交的作业</a> 和 <a href="https://github.com/greenlihui/greenlihui.github.io/blob/master/2017/06/08/javascript-beginning/sample%20answer" target="_blank" rel="noopener">老师的答案</a></p>
+
+    </div>
+</article>
+    </main>
+    <footer class="page__padding">
+    Copyright © 2020 Hui Li.
+</footer>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+</body>
+</html>
