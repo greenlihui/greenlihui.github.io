@@ -32,8 +32,11 @@
     <meta name="theme-color" content="#ffffff">
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
-    <!-- content -->
-    <header class="header page__padding">
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
@@ -82,19 +85,30 @@
         </menu>
     </nav>
 </header>
-    <main class="page__padding">
-        <article>
-    <div class="post__title">
-        <h1>主题预览</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="24px"></object>
-            2019-05-04
         </div>
     </div>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%87%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h1"><span class="toc-number">2.</span> <span class="toc-text">这里是 h1</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h2"><span class="toc-number">2.1.</span> <span class="toc-text">这里是 h2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h3"><span class="toc-number">2.1.1.</span> <span class="toc-text">这里是 h3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h4"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">这里是 h4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-number">2.2.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-number">2.3.</span> <span class="toc-text">超链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">2.4.</span> <span class="toc-text">引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">常见字体样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">2.6.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">2.6.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">2.6.2.</span> <span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">2.7.</span> <span class="toc-text">分割线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">2.8.</span> <span class="toc-text">图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A1%8C"><span class="toc-number">2.9.</span> <span class="toc-text">代码行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">2.10.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%B5%8B%E8%AF%95"><span class="toc-number">2.11.</span> <span class="toc-text">表格测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#task-list"><span class="toc-number">2.12.</span> <span class="toc-text">Task List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#emoji"><span class="toc-number">2.13.</span> <span class="toc-text">Emoji</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#define-list"><span class="toc-number">2.14.</span> <span class="toc-text">Define List</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mark"><span class="toc-number">2.15.</span> <span class="toc-text">Mark</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#container"><span class="toc-number">2.16.</span> <span class="toc-text">Container</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">2.17.</span> <span class="toc-text">数学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-html"><span class="toc-number">2.18.</span> <span class="toc-text">插入 html</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-iframe"><span class="toc-number">2.19.</span> <span class="toc-text">插入 iframe</span></a></li></ol></li></ol>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="主题预览">主题预览</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2019-05-04</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/hexo/" class="tag tag--small hover--underline">#hexo</a>
+                
+            </div>
+        
+    </div>
     <div class="post__content">
-        <h1 id="%E6%A0%87%E9%A2%98" id="标题">标题</h1>
-<h1 id="%E8%BF%99%E9%87%8C%E6%98%AF-h1" id="这里是-h1">这里是 h1</h1>
+        <h1 id="%E6%A0%87%E9%A2%98">标题</h1>
+<h1 id="%E8%BF%99%E9%87%8C%E6%98%AF-h1">这里是 h1</h1>
 <h2 id="%E8%BF%99%E9%87%8C%E6%98%AF-h2" id="这里是-h2">这里是 h2</h2>
 <h3 id="%E8%BF%99%E9%87%8C%E6%98%AF-h3" id="这里是-h3">这里是 h3</h3>
 <h4 id="%E8%BF%99%E9%87%8C%E6%98%AF-h4" id="这里是-h4">这里是 h4</h4>
@@ -108,33 +122,54 @@
 <p><a href="https://www.baidu.com/" target="_blank" rel="noopener">baidu</a></p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown">[<span class="hljs-string">baidu</span>](<span class="hljs-link">https://www.baidu.com/</span>)<br></code></pre></td></tr></table></figure>
 <h2 id="%E5%BC%95%E7%94%A8" id="引用">引用</h2>
+<h3 id="%E5%8D%95%E8%A1%8C" id="单行">单行</h3>
 <blockquote>
 <p>这里是引用</p>
 </blockquote>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-quote">&gt; 这里是引用</span><br></code></pre></td></tr></table></figure>
-<h2 id="%E5%B8%B8%E8%A7%81%E5%AD%97%E4%BD%93%E6%A0%B7%E5%BC%8F" id="常见字体样式">常见字体样式</h2>
-<p><em>斜体</em></p>
-<p><strong>粗体</strong></p>
-<p><s>删除线</s></p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs haxe"><span class="hljs-literal">_</span>斜体<span class="hljs-literal">_</span><br>**粗体**<br>~~删除线~~<br></code></pre></td></tr></table></figure>
+<h3 id="%E5%B5%8C%E5%A5%97" id="嵌套">嵌套</h3>
+<blockquote>
+<p>Blockquotes can also be nested…</p>
+<blockquote>
+<p>…by using additional greater-than signs right next to each other…</p>
+<blockquote>
+<p>…or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-quote">&gt; Blockquotes can also be nested...</span><br>&gt;&gt; ...by using additional greater-than signs right next to each other...<br><span class="hljs-quote">&gt; &gt; &gt; ...or with spaces between arrows.</span><br></code></pre></td></tr></table></figure>
+<h2 id="emphasis" id="Emphasis">Emphasis</h2>
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p><s>Strikethrough</s></p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xquery">**This <span class="hljs-literal">is</span> bold <span class="hljs-type">text</span>**<br><br>__This <span class="hljs-literal">is</span> bold text_<span class="hljs-number">_</span><br><br>*This <span class="hljs-literal">is</span> italic <span class="hljs-type">text</span>*<br><br>_This <span class="hljs-literal">is</span> italic <span class="hljs-type">text</span><span class="hljs-number">_</span><br><br>~~Strikethrough~~<br></code></pre></td></tr></table></figure>
 <h2 id="%E5%88%97%E8%A1%A8" id="列表">列表</h2>
 <h3 id="%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8" id="无序列表">无序列表</h3>
 <ul>
 <li>aaa</li>
+</ul>
+<ul>
 <li>bbb</li>
 <li>ccc
 <ul>
 <li>ddd</li>
+</ul>
+<ul>
 <li>eee
 <ul>
 <li>fff</li>
 </ul>
 </li>
+</ul>
+<ul>
 <li>ggg</li>
 </ul>
 </li>
 <li>aaa</li>
 </ul>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">+ </span>aaa<br><span class="hljs-bullet">- </span>bbb<br><span class="hljs-bullet">- </span>ccc<br><span class="hljs-bullet">  * </span>ddd<br><span class="hljs-bullet">  - </span>eee<br><span class="hljs-bullet">    - </span>fff<br><span class="hljs-bullet">  * </span>ggg<br><span class="hljs-bullet">- </span>aaa<br></code></pre></td></tr></table></figure>
 <h3 id="%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8" id="有序列表">有序列表</h3>
 <ol>
 <li>aaa</li>
@@ -152,128 +187,210 @@
 </li>
 <li>ddd</li>
 </ol>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-comment">### 无序列表</span><br><br>- aaa<br>- bbb<br>- ccc<br>  - ddd<br>  - eee<br>    - fff<br>  - ggg<br>- aaa<br><br><span class="hljs-comment">### 有序列表</span><br><br>1. aaa<br>2. bbb<br>3. ccc<br>   1. aaa<br>   2. bbb<br>      1. ccc<br>   3. ccc<br>4. ddd<br></code></pre></td></tr></table></figure>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">1. </span>aaa<br><span class="hljs-bullet">2. </span>bbb<br><span class="hljs-bullet">3. </span>ccc<br><span class="hljs-bullet">   1. </span>aaa<br><span class="hljs-bullet">   2. </span>bbb<br><span class="hljs-bullet">      1. </span>ccc<br><span class="hljs-bullet">   3. </span>ccc<br><span class="hljs-bullet">4. </span>ddd<br></code></pre></td></tr></table></figure>
 <h2 id="%E5%88%86%E5%89%B2%E7%BA%BF" id="分割线">分割线</h2>
 <hr>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br></code></pre></td></tr></table></figure>
+<hr>
+<hr>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs md">---<br><br><span class="hljs-emphasis">***</span><br><br><span class="hljs-emphasis">___</span><br></code></pre></td></tr></table></figure>
 <h2 id="%E5%9B%BE%E7%89%87" id="图片">图片</h2>
-<p>破事水<img src="emoji_01.png" alt="line"><br>
-滑稽<img src="emoji_02.png" alt="line"></p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">![<span class="hljs-string">line</span>](<span class="hljs-link">http://xx.com/xx.jpg</span>)<br></code></pre></td></tr></table></figure>
-<p>块级别图片</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">![<span class="hljs-string">测试图片</span>](<span class="hljs-link">001.jpg</span>)<br></code></pre></td></tr></table></figure>
-<p><img src="001.jpg" alt="测试图片"></p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200624191541.png" alt="icon"></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">![<span class="hljs-string">icon</span>](<span class="hljs-link">https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200624191541.png</span>)<br></code></pre></td></tr></table></figure>
 <h2 id="%E4%BB%A3%E7%A0%81%E8%A1%8C" id="代码行">代码行</h2>
 <p>这是一段文字<code>rm -rf /*</code>这是一段文字</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">这是一段文字<span class="hljs-string">`rm -rf /*`</span>这是一段文字<br></code></pre></td></tr></table></figure>
 <h2 id="%E4%BB%A3%E7%A0%81%E5%9D%97" id="代码块">代码块</h2>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs javascript">describe(<span class="hljs-string">'GroupService'</span>, () =&gt; &#123;<br>  <span class="hljs-keyword">let</span> service: GroupService;<br>  beforeEach(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123; service = <span class="hljs-keyword">new</span> GroupService(); &#125;);<br><br>  it(<span class="hljs-string">'#getAllGroups should return all group of current user'</span>, () =&gt; &#123;<br>    expect(service.getAllGroups()).toBe([&#123;<span class="hljs-attr">_id</span>: ...&#125;,,,]]);<br>  &#125;);<br>  <br>  it(<span class="hljs-string">'#getAGroup should return a group with specified id'</span>, () =&gt; &#123;<br>    expect(service.getAGroups(<span class="hljs-string">'5e9eb7d621fd5d243a0ddaf2'</span>))<br>    .toBe(&#123;<br>        <span class="hljs-string">"color"</span>: <span class="hljs-string">"#eab636"</span>,<br>        <span class="hljs-string">"_id"</span>: <span class="hljs-string">"5e9eb7d621fd5d243a0ddaf2"</span>,<br>        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Friends"</span>,<br>        <span class="hljs-string">"owner"</span>: <span class="hljs-string">"5e8a98d6fee628a27cf8402e"</span>,<br>        <span class="hljs-string">"numContacts"</span>: <span class="hljs-number">1</span><br>    &#125;);<br>  &#125;);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> addLoadEvent = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">func</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> oldonload = <span class="hljs-built_in">window</span>.onload<br>  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.onload != <span class="hljs-string">'function'</span>) &#123;<br>    <span class="hljs-built_in">window</span>.onload = func<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>      oldonload()<br>      func()<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="%E8%A1%A8%E6%A0%BC%E6%B5%8B%E8%AF%95" id="表格测试">表格测试</h2>
 <table>
 <thead>
 <tr>
-<th>Tables</th>
-<th style="text-align:center">Are</th>
-<th style="text-align:right">Cool</th>
+<th>Header</th>
+<th>Header</th>
+<th>Header</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>col 3 is</td>
-<td style="text-align:center">right-aligned</td>
-<td style="text-align:right">$1600</td>
+<td>aaa</td>
+<td>bb</td>
+<td>ccc</td>
 </tr>
 <tr>
-<td>col 2 is</td>
-<td style="text-align:center">centered</td>
-<td style="text-align:right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td style="text-align:center">are neat</td>
-<td style="text-align:right">$1</td>
+<td>test</td>
+<td>hello</td>
+<td>hi</td>
 </tr>
 </tbody>
 </table>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs md">| Tables        |      Are      |   Cool |<br>| ------------- | :-----------: | -----: |<br>| col 3 is      | right-aligned | \$1600 |<br>| col 2 is      |   centered    |   \$12 |<br>| zebra stripes |   are neat    |    \$1 |<br></code></pre></td></tr></table></figure>
-<h2 id="task-list" id="Task-List">Task List</h2>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs md">| Header | Header | Header |<br>| ------ | ------ | ------ |<br>| aaa    | bb     | ccc    |<br>| test   | hello  | hi     |<br></code></pre></td></tr></table></figure>
+<h2 id="markdown-it-plugins" id="Markdown-it-Plugins">Markdown-it Plugins</h2>
+<h3 id="task-list" id="Task-List">Task List</h3>
 <ul class="contains-task-list">
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Mercury</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Venus</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Earth (Orbit/Moon)</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox"> Mars</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Jupiter</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Saturn</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Uranus</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Neptune</label></li>
-<li class="task-list-item"><label><input class="task-list-item-checkbox" disabled="" type="checkbox"> Comet Haley</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3199146"><label class="task-list-item-label" for="task-item-3199146"> Mercury</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6367191"><label class="task-list-item-label" for="task-item-6367191"> Venus</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4026760"><label class="task-list-item-label" for="task-item-4026760"> Comet Haley</label></li>
 </ul>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">- </span>[ ] Mercury<br><span class="hljs-bullet">- </span>[x] Venus<br><span class="hljs-bullet">- </span>[x] Earth (Orbit/Moon)<br><span class="hljs-bullet">- </span>[x] Mars<br><span class="hljs-bullet">- </span>[ ] Jupiter<br><span class="hljs-bullet">- </span>[ ] Saturn<br><span class="hljs-bullet">- </span>[ ] Uranus<br><span class="hljs-bullet">- </span>[ ] Neptune<br><span class="hljs-bullet">- </span>[ ] Comet Haley<br></code></pre></td></tr></table></figure>
-<h2 id="emoji" id="Emoji">Emoji</h2>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">- </span>[ ] Mercury<br><span class="hljs-bullet">- </span>[x] Venus<br><span class="hljs-bullet">- </span>[ ] Comet Haley<br></code></pre></td></tr></table></figure>
+<h3 id="emoji" id="Emoji">Emoji</h3>
 <p>😦 😊 😕</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">:frowning: :blush: :confused:<br></code></pre></td></tr></table></figure>
-<h2 id="define-list" id="Define-List">Define List</h2>
-<dl>
-<dt>Term 1</dt>
-<dd>
-<p>Definition 1</p>
-</dd>
-<dt>Term 2 with <em>inline markup</em></dt>
-<dd>
-<p>Definition 2</p>
-<pre><code>  { some code, part of Definition 2 }
-</code></pre>
-<p>Third paragraph of definition 2.</p>
-</dd>
-</dl>
-<h2 id="mark" id="Mark">Mark</h2>
+<p>使用方法</p>
+<ol>
+<li>在 <a href="https://www.emojicopy.com/" target="_blank" rel="noopener">EmojiCopy</a> 中复制粘贴</li>
+<li><a href="https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json" target="_blank" rel="noopener">Emoji Cheetsheet</a></li>
+<li><a href="https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/shortcuts.js" target="_blank" rel="noopener">Emoji Shortcut</a></li>
+</ol>
+<h3 id="%E4%B8%8A%E6%A0%87%E5%92%8C%E4%B8%8B%E6%A0%87" id="上标和下标">上标和下标</h3>
+<p>19<sup>th</sup></p>
+<p>H<sub>2</sub>O</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs md">19^th^<br>H~2~O<br></code></pre></td></tr></table></figure>
+<h3 id="image-size" id="Image-Size">Image Size</h3>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200624191541.png" alt="icon" width="100" height="100"></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">![<span class="hljs-string">icon</span>](<span class="hljs-link">https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200624191541.png =100x100</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="attributes" id="Attributes">Attributes</h3>
+<p class="red">给这个段落添加一个 class</p>
+<style>.red{color: red;}</style>
+<p style="color:green">这个段落添加一个属性</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs md">给这个段落添加一个 class &#123;.red&#125;<br><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>.red&#123;color: red;&#125;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><br>这个段落添加一个属性 &#123;style="color:green"&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="footnotes" id="Footnotes">Footnotes</h3>
+<p>Footnote 1 link<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<p>Footnote 2 link<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p>
+<p>Inline footnote<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> definition.</p>
+<p>Duplicated footnote reference<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs md">Footnote 1 link[^first].<br><br>Footnote 2 link[^second].<br><br>Inline footnote^[Text of inline footnote] definition.<br><br>Duplicated footnote reference[^second].<br><br>[<span class="hljs-symbol">^first</span>]: <span class="hljs-link">Footnote **can have markup**</span><br><br><span class="hljs-code">    and multiple paragraphs.</span><br><br>[<span class="hljs-symbol">^second</span>]: <span class="hljs-link">Footnote text.</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E7%BC%A9%E5%86%99" id="缩写">缩写</h3>
+<p>This is <abbr title="Hyper Text Markup Language">HTML</abbr> abbreviation example.</p>
+<p>It converts “<abbr title="Hyper Text Markup Language">HTML</abbr>”, but keep intact partial entries like “xxxHTMLyyy” and so on.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs md">This is HTML abbreviation example.<br><br>It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.<br><br>*[HTML]: Hyper Text Markup Language<br></code></pre></td></tr></table></figure>
+<h3 id="mark" id="Mark">Mark</h3>
 <p><mark>mark</mark></p>
-<h2 id="container" id="Container">Container</h2>
-<p>::: warning<br>
-<em>here be dragons</em><br>
-:::</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs md">==mark==<br></code></pre></td></tr></table></figure>
+<h3 id="container" id="Container">Container</h3>
+<div class="info">
+<p><strong>INFO</strong><br>
+here be info</p>
+</div>
+<div class="success">
+<p><strong>SUCCESS</strong><br>
+here be success</p>
+</div>
+<div class="warning">
+<p><strong>WARNING</strong><br>
+here be warning</p>
+</div>
+<div class="danger">
+<p><strong>DANGER</strong><br>
+here be danger</p>
+</div>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs md">::: info<br><span class="hljs-strong">**INFO**</span><br>here be info<br>:::<br><br>::: success<br><span class="hljs-strong">**SUCCESS**</span><br>here be success<br>:::<br><br>::: warning<br><span class="hljs-strong">**WARNING**</span><br>here be warning<br>:::<br><br>::: danger<br><span class="hljs-strong">**DANGER**</span><br>here be danger<br>:::<br></code></pre></td></tr></table></figure>
 <h2 id="%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F" id="数学公式">数学公式</h2>
-<p>需要在配置中开启</p>
-<p>这是一行话<code>\( \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15} \)</code>这是一行话</p>
-<p><code>\[ \int_0^\infty \frac{x^3}{e^x-1}\,dx = \frac{\pi^4}{15} \]</code></p>
+<h3 id="%E8%A1%8C%E5%86%85%E5%85%AC%E5%BC%8F" id="行内公式">行内公式</h3>
+<p>$\frac{\partial u}{\partial t}<br>
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} +<br>
+\frac{\partial^2 u}{\partial y^2} +<br>
+\frac{\partial^2 u}{\partial z^2}\right)$</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs md">$\frac&#123;\partial u&#125;&#123;\partial t&#125;<br>= h^2 \left( \frac&#123;\partial^2 u&#125;&#123;\partial x^2&#125; +<br>\frac&#123;\partial^2 u&#125;&#123;\partial y^2&#125; +<br>\frac&#123;\partial^2 u&#125;&#123;\partial z^2&#125;\right)$<br></code></pre></td></tr></table></figure>
+<h3 id="%E8%A1%8C%E9%97%B4%E5%85%AC%E5%BC%8F" id="行间公式">行间公式</h3>
+<p>$$<br>
+\begin{aligned}<br>
+x_{f} = &amp; x_0+k(x-x_0) \\<br>
+y_{f} = &amp; y_0+k(y-y_0) \\<br>
+s_{f} = &amp; k<br>
+\end{aligned}<br>
+$$</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs md">\\begin&#123;aligned&#125;<br>x\<span class="hljs-emphasis">_&#123;f&#125; = &amp; x\_</span>0+k(x-x\_0) \\\\<br>y\<span class="hljs-emphasis">_&#123;f&#125; = &amp; y\_</span>0+k(y-y\_0) \\\\<br>s\_&#123;f&#125; = &amp; k<br>\\end&#123;aligned&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="%E6%8F%92%E5%85%A5-iframe" id="插入-iframe">插入 iframe</h2>
+<iframe src="//player.bilibili.com/player.html?aid=285774045&bvid=BV1uf4y127Ab&cid=196316963&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 <h2 id="%E6%8F%92%E5%85%A5-html" id="插入-html">插入 html</h2>
-<div id="htmldemo"></div>
+<div id="html"></div>
 <style>
-#htmldemo{
+#html{
     height: 30px;
-    width: 30px;
-    background-color: #00aa9a;
-    animation-name: moveX;
-    animation-duration: 1s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-fill-mode : both;
-}
-@keyframes moveX {
-    0%{
-        transform: translateX(0px);
-    }
-    100%{
-        transform: translateX(100px);
-    }
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,255,0,1) 50%, rgba(0,0,255,1) 100%);
+    border-radius: 4px;
 }
 </style>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"htmldemo"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css">  <span class="hljs-selector-id">#htmldemo</span> &#123;</span><br>    height: 30px;<br>    width: 30px;<br><span class="css">    <span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-id">#00aa9a</span>;</span><br>    animation-name: moveX;<br>    animation-duration: 1s;<br>    animation-timing-function: linear;<br>    animation-iteration-count: infinite;<br>    animation-direction: alternate;<br>    animation-fill-mode: both;<br>  &#125;<br><span class="css">  <span class="hljs-keyword">@keyframes</span> moveX &#123;</span><br>    0% &#123;<br>      transform: translateX(0px);<br>    &#125;<br>    100% &#123;<br>      transform: translateX(100px);<br>    &#125;<br>  &#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="%E6%8F%92%E5%85%A5-iframe" id="插入-iframe">插入 iframe</h2>
-<iframe src="//music.163.com/outchain/player?type=2&id=28445796&auto=0&height=66" frameborder="0" width="100%" height="86px" ></iframe>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 属性什么的不要错了，最好用双引号括住 --&gt;</span><br><span class="hljs-comment">&lt;!-- 网易云的iframe需要做些调整，调整如下 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">iframe</span></span><br><span class="hljs-tag">  <span class="hljs-attr">src</span>=<span class="hljs-string">"//music.163.com/outchain/player?type=2&amp;id=28445796&amp;auto=0&amp;height=66"</span></span><br><span class="hljs-tag">  <span class="hljs-attr">frameborder</span>=<span class="hljs-string">"0"</span></span><br><span class="hljs-tag">  <span class="hljs-attr">width</span>=<span class="hljs-string">"100%"</span></span><br><span class="hljs-tag">  <span class="hljs-attr">height</span>=<span class="hljs-string">"86px"</span></span><br><span class="hljs-tag">&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">iframe</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"html"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css"><span class="hljs-selector-id">#html</span>&#123;</span><br>    height: 30px;<br>    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(0,255,0,1) 50%, rgba(0,0,255,1) 100%);<br>    border-radius: 4px;<br>&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Footnote text. <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Text of inline footnote <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
     </div>
 </article>
-    </main>
-    <footer class="page__padding">
+
+
+
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#主题预览'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+            tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+            TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+            messageStyle: "none"
+        }); 
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+            <!-- FOOTER -->
+            <footer>
     Copyright © 2020 Hui Li.
 </footer>
+        </div>
+    </div>
+
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h2"><span class="toc-number">1.</span> <span class="toc-text">这里是 h2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h3"><span class="toc-number">1.1.</span> <span class="toc-text">这里是 h3</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E6%98%AF-h4"><span class="toc-number">1.1.1.</span> <span class="toc-text">这里是 h4</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AE%B5%E8%90%BD"><span class="toc-number">2.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">超链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C"><span class="toc-number">4.1.</span> <span class="toc-text">单行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97"><span class="toc-number">4.2.</span> <span class="toc-text">嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#emphasis"><span class="toc-number">5.</span> <span class="toc-text">Emphasis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E8%A1%A8"><span class="toc-number">6.</span> <span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">6.1.</span> <span class="toc-text">无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-number">6.2.</span> <span class="toc-text">有序列表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">7.</span> <span class="toc-text">分割线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87"><span class="toc-number">8.</span> <span class="toc-text">图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A1%8C"><span class="toc-number">9.</span> <span class="toc-text">代码行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">10.</span> <span class="toc-text">代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%A0%BC%E6%B5%8B%E8%AF%95"><span class="toc-number">11.</span> <span class="toc-text">表格测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-it-plugins"><span class="toc-number">12.</span> <span class="toc-text">Markdown-it Plugins</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#task-list"><span class="toc-number">12.1.</span> <span class="toc-text">Task List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#emoji"><span class="toc-number">12.2.</span> <span class="toc-text">Emoji</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E6%A0%87%E5%92%8C%E4%B8%8B%E6%A0%87"><span class="toc-number">12.3.</span> <span class="toc-text">上标和下标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#image-size"><span class="toc-number">12.4.</span> <span class="toc-text">Image Size</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attributes"><span class="toc-number">12.5.</span> <span class="toc-text">Attributes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#footnotes"><span class="toc-number">12.6.</span> <span class="toc-text">Footnotes</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%A9%E5%86%99"><span class="toc-number">12.7.</span> <span class="toc-text">缩写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mark"><span class="toc-number">12.8.</span> <span class="toc-text">Mark</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#container"><span class="toc-number">12.9.</span> <span class="toc-text">Container</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">13.</span> <span class="toc-text">数学公式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E5%86%85%E5%85%AC%E5%BC%8F"><span class="toc-number">13.1.</span> <span class="toc-text">行内公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%8C%E9%97%B4%E5%85%AC%E5%BC%8F"><span class="toc-number">13.2.</span> <span class="toc-text">行间公式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-iframe"><span class="toc-number">14.</span> <span class="toc-text">插入 iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-html"><span class="toc-number">15.</span> <span class="toc-text">插入 html</span></a></li></ol>
+                </div>
+            </div>
+            <!-- <div class="page-bounding">
+                
+            </div> -->
+        </div>
+    
+    
+    
 
     <!-- javascript -->
     
 <script src="/js/blog.js"></script>
 
+    
+        
+<script src="/js/post.js"></script>
+
+    
 </body>
 </html>

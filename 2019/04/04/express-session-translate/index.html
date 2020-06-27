@@ -32,8 +32,11 @@
     <meta name="theme-color" content="#ffffff">
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
-    <!-- content -->
-    <header class="header page__padding">
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
@@ -82,16 +85,27 @@
         </menu>
     </nav>
 </header>
-    <main class="page__padding">
-        <article>
-    <div class="post__title">
-        <h1>翻译 express-session 使用文档</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="24px"></object>
-            2019-04-04
         </div>
     </div>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api"><span class="toc-number">2.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sessions(options)"><span class="toc-number">2.1.</span> <span class="toc-text">sessions(options)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#options"><span class="toc-number">2.1.1.</span> <span class="toc-text">Options</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session"><span class="toc-number">2.2.</span> <span class="toc-text">req.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session.regenerate(callback)"><span class="toc-number">2.2.1.</span> <span class="toc-text">Session.regenerate(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.destroy(callback)"><span class="toc-number">2.2.2.</span> <span class="toc-text">Session.destroy(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.reload(callback)"><span class="toc-number">2.2.3.</span> <span class="toc-text">Session.reload(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.save(callback)"><span class="toc-number">2.2.4.</span> <span class="toc-text">Session.save(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.touch(callback)"><span class="toc-number">2.2.5.</span> <span class="toc-text">Session.touch(callback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.id"><span class="toc-number">2.3.</span> <span class="toc-text">req.session.id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.cookie"><span class="toc-number">2.4.</span> <span class="toc-text">req.session.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie.maxage-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">Cookie.maxAge</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.sessionid"><span class="toc-number">2.5.</span> <span class="toc-text">req.sessionID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-store-implementation"><span class="toc-number">3.</span> <span class="toc-text">Session Store Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#store.all(callback)"><span class="toc-number">3.1.</span> <span class="toc-text">store.all(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.destroy(sid%2C-callback)"><span class="toc-number">3.2.</span> <span class="toc-text">store.destroy(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.clear(callback)"><span class="toc-number">3.3.</span> <span class="toc-text">store.clear(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.length(callback)"><span class="toc-number">3.4.</span> <span class="toc-text">store.length(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.get(sid%2C-callback)"><span class="toc-number">3.5.</span> <span class="toc-text">store.get(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.set(sid%2C-session%2C-callback)"><span class="toc-number">3.6.</span> <span class="toc-text">store.set(sid, session, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.touch(sid%2C-session%2C-callback)"><span class="toc-number">3.7.</span> <span class="toc-text">store.touch(sid, session, callback)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compatible-session-stores"><span class="toc-number">4.</span> <span class="toc-text">Compatible Session Stores</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">5.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-number">6.</span> <span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords"><span class="toc-number">7.</span> <span class="toc-text">Keywords</span></a></li></ol>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="翻译 express-session 使用文档">翻译 express-session 使用文档</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2019-04-04</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/express-session/" class="tag tag--small hover--underline">#express-session</a>
+                
+            </div>
+        
+    </div>
     <div class="post__content">
         <blockquote>
 <p><a href="https://www.npmjs.com/package/express-session" target="_blank" rel="noopener">文档原网址</a></p>
@@ -102,7 +116,6 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">$ npm install express-session<br></code></pre></td></tr></table></figure>
 <h2 id="api" id="API">API</h2>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> session = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express-session'</span>);<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
 <h3 id="sessions(options)" id="sessions-options">sessions(options)</h3>
 <p>使用给定选项创建一个 session 中间件。<br>
 <strong>注意</strong>：只有 session ID 是保存在 cookie 中，Session 数据本身并不是。Session 数据是存在服务端。<br>
@@ -206,7 +219,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">req.session.save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>  <span class="hljs-comment">// session saved</span><br>&#125;)<br></code></pre></td></tr></table></figure>
 <h4 id="session.touch(callback)" id="Session-touch-callback">Session.touch(callback)</h4>
 <p>更新 .maxAge 属性。一般来讲这个方法不需要被调用因为 session 中间件为你执行了这个操作。</p>
-<h3 id="req.session.id" id="req-session-id"><a href="http://req.session.id" target="_blank" rel="noopener">req.session.id</a></h3>
+<h3 id="req.session.id" id="req-session-id">req.session.id</h3>
 <p>每一个 session 都有一个与之关联的唯一 ID。该属性是 req.sessionID 的别名而且无法修改。该属性已被添加以使 session ID 可以从 session 对象中访问。</p>
 <h3 id="req.session.cookie" id="req-session-cookie">req.session.cookie</h3>
 <p>每一个 session 都有一个唯一的 cookie 与之伴随。这允许你更改每个访问者的 session cookie。例如我们可以设置 req.session.cookie.expires 为 false 来使 cookie 仅在用户-代理的持续时间中保留。</p>
@@ -263,14 +276,53 @@
 
     </div>
 </article>
-    </main>
-    <footer class="page__padding">
+
+
+
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#翻译 express-session 使用文档'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+
+            <!-- FOOTER -->
+            <footer>
     Copyright © 2020 Hui Li.
 </footer>
+        </div>
+    </div>
+
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api"><span class="toc-number">2.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sessions(options)"><span class="toc-number">2.1.</span> <span class="toc-text">sessions(options)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#options"><span class="toc-number">2.1.1.</span> <span class="toc-text">Options</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session"><span class="toc-number">2.2.</span> <span class="toc-text">req.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session.regenerate(callback)"><span class="toc-number">2.2.1.</span> <span class="toc-text">Session.regenerate(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.destroy(callback)"><span class="toc-number">2.2.2.</span> <span class="toc-text">Session.destroy(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.reload(callback)"><span class="toc-number">2.2.3.</span> <span class="toc-text">Session.reload(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.save(callback)"><span class="toc-number">2.2.4.</span> <span class="toc-text">Session.save(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.touch(callback)"><span class="toc-number">2.2.5.</span> <span class="toc-text">Session.touch(callback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.id"><span class="toc-number">2.3.</span> <span class="toc-text">req.session.id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.cookie"><span class="toc-number">2.4.</span> <span class="toc-text">req.session.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie.maxage-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">Cookie.maxAge</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.sessionid"><span class="toc-number">2.5.</span> <span class="toc-text">req.sessionID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-store-implementation"><span class="toc-number">3.</span> <span class="toc-text">Session Store Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#store.all(callback)"><span class="toc-number">3.1.</span> <span class="toc-text">store.all(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.destroy(sid%2C-callback)"><span class="toc-number">3.2.</span> <span class="toc-text">store.destroy(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.clear(callback)"><span class="toc-number">3.3.</span> <span class="toc-text">store.clear(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.length(callback)"><span class="toc-number">3.4.</span> <span class="toc-text">store.length(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.get(sid%2C-callback)"><span class="toc-number">3.5.</span> <span class="toc-text">store.get(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.set(sid%2C-session%2C-callback)"><span class="toc-number">3.6.</span> <span class="toc-text">store.set(sid, session, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.touch(sid%2C-session%2C-callback)"><span class="toc-number">3.7.</span> <span class="toc-text">store.touch(sid, session, callback)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compatible-session-stores"><span class="toc-number">4.</span> <span class="toc-text">Compatible Session Stores</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">5.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-number">6.</span> <span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords"><span class="toc-number">7.</span> <span class="toc-text">Keywords</span></a></li></ol>
+                </div>
+            </div>
+            <!-- <div class="page-bounding">
+                
+            </div> -->
+        </div>
+    
+    
+    
 
     <!-- javascript -->
     
 <script src="/js/blog.js"></script>
 
+    
+        
+<script src="/js/post.js"></script>
+
+    
 </body>
 </html>

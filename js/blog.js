@@ -12,6 +12,21 @@ blog.addLoadEvent = function (f) {
   }
 };
 
+blog.eventDelegate = function delegate(element, eventType, selector, fn) {
+  element.addEventListener(eventType, e => {
+    let el = e.target;
+    while (!el.matches(selector)) {
+      if (element === el) {
+        el = null;
+        break;
+      }
+      el = el.parentNode
+    }
+    el && fn.call(el, e, el)
+  })
+  return element
+}
+
 blog.ajax = function (params) {
   params = params || {};
   params.method = (params.method || "GET").toUpperCase();
@@ -57,6 +72,8 @@ blog.ajax = function (params) {
   xhr.send(null);
 };
 
+
+
 blog.addLoadEvent(function () {
   document
     .querySelector("a.nav__toggle")
@@ -64,3 +81,4 @@ blog.addLoadEvent(function () {
       document.querySelector("body").classList.toggle("menu--expanded");
     });
 });
+

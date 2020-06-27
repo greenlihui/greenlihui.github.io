@@ -32,8 +32,11 @@
     <meta name="theme-color" content="#ffffff">
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
-    <!-- content -->
-    <header class="header page__padding">
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
@@ -82,8 +85,12 @@
         </menu>
     </nav>
 </header>
-    <main class="page__padding">
-        
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            
  
     
     
@@ -108,14 +115,21 @@
          
     
 
-    </main>
-    <footer class="page__padding">
+            <!-- FOOTER -->
+            <footer>
     Copyright © 2020 Hui Li.
 </footer>
+        </div>
+    </div>
+
+    
+    
+    
 
     <!-- javascript -->
     
 <script src="/js/blog.js"></script>
 
+    
 </body>
 </html>

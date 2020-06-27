@@ -1,8 +1,11 @@
 body.menu--expanded {
     overflow: auto;
 }
-.page__padding {
-    padding: 32px;
+.wrapper--header {
+    padding: 32px 0;
+}
+.page-bounding {
+    padding: 0 32px;
 }
 .site__logo {
     width: 64px;
@@ -44,13 +47,6 @@ body.menu--expanded {
 }
 .post__description {
     margin-left: 16px;
-}
-h2.sticky--top {
-    top: 128px;
-}
-:target:before {
-    height: 128px;
-    margin-top: -128px;
 }
 
 #search-input {

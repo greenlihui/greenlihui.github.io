@@ -32,8 +32,11 @@
     <meta name="theme-color" content="#ffffff">
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
-    <!-- content -->
-    <header class="header page__padding">
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
@@ -82,20 +85,33 @@
         </menu>
     </nav>
 </header>
-    <main class="page__padding">
-        <article>
-    <div class="post__title">
-        <h1>Assignment Sample Answer</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="24px"></object>
-            2017-06-08
         </div>
     </div>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#risk"><span class="toc-number">1.</span> <span class="toc-text">Risk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hail-caesar"><span class="toc-number">2.</span> <span class="toc-text">Hail Caesar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#follow-the-leader"><span class="toc-number">3.</span> <span class="toc-text">Follow the Leader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props-to-javascript"><span class="toc-number">4.</span> <span class="toc-text">Props to JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript-to-html"><span class="toc-number">5.</span> <span class="toc-text">JavaScript to HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#one-step-after-the-other"><span class="toc-number">6.</span> <span class="toc-text">One Step After The Other</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again"><span class="toc-number">7.</span> <span class="toc-text">Over and Over Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again-and-again"><span class="toc-number">8.</span> <span class="toc-text">Over and Over Again and Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-matchmaker"><span class="toc-number">9.</span> <span class="toc-text">The Matchmaker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-up-is-hard-to-do"><span class="toc-number">10.</span> <span class="toc-text">Breaking Up is Hard To Do</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#all-for-one-and-one-for-all"><span class="toc-number">11.</span> <span class="toc-text">All For One and One For All</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nosql-query"><span class="toc-number">12.</span> <span class="toc-text">NoSql Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#once-and-only-once"><span class="toc-number">13.</span> <span class="toc-text">Once and Only Once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%89%93%E5%88%86"><span class="toc-number">14.</span> <span class="toc-text">我的打分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">15.</span> <span class="toc-text">文件</span></a></li></ol>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="Assignment Sample Answer">Assignment Sample Answer</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2017-06-08</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/UWLAX/" class="tag tag--small hover--underline">#UWLAX</a>
+                
+                    <a href="/tags/JavaScript/" class="tag tag--small hover--underline">#JavaScript</a>
+                
+            </div>
+        
+    </div>
     <div class="post__content">
         <p>这两周来自 <a href="https://www.uwlax.edu/" target="_blank" rel="noopener">UWLAX</a> 的外教 <a href="http://charity.cs.uwlax.edu/#/" target="_blank" rel="noopener">Kenny Hunt</a> 对我们进行两周的 <a href="http://charity.cs.uwlax.edu/scun/web/" target="_blank" rel="noopener">Web Programming</a> 课程教学,介绍基本语法用法后，布置了一篇作业，下面附上 Sample Answer。</p>
 <p>这是作业的原链接 =&gt; <a href="http://charity.cs.uwlax.edu/scun/web/assignments/hw1/" target="_blank" rel="noopener">JavaScript Assignment</a></p>
-<p>为防止外教回国后，页面被删除无法访问，我这里把作业存在 <a href="https://greenlihui.github.io/2017/06/08/javascript-assignment/" target="_blank" rel="noopener">这个博客</a> 里了</p>
+<p>为防止外教回国后，页面被删除无法访问，我这里把作业存在 <a href="https://greenlihui.github.io/2017/06/08/javascript-assignment/" target="_blank" rel="noopener">这篇文章</a> 里了</p>
 <h2 id="risk" id="Risk">Risk</h2>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">risk</span>(<span class="hljs-params">height, weight, sex</span>) </span>&#123;<br>  <span class="hljs-keyword">var</span> meterOfHeight = height * <span class="hljs-number">0.0254</span>;<br>  <span class="hljs-keyword">var</span> kiloOfWeight = weight * <span class="hljs-number">0.4536</span>;<br>  <span class="hljs-keyword">var</span> bmi = kiloOfWeight / <span class="hljs-built_in">Math</span>.pow(meterOfHeight, <span class="hljs-number">2</span>);<br>  <span class="hljs-keyword">return</span> ( sex == <span class="hljs-string">'M'</span> &amp;&amp; (bmi &lt; <span class="hljs-number">20.4</span> || bmi &gt; <span class="hljs-number">31.9</span>) ) ||<br>  ( sex == <span class="hljs-string">'F'</span> &amp;&amp; (bmi &lt; <span class="hljs-number">19.4</span> || bmi &gt; <span class="hljs-number">27.6</span>) );<br>&#125;<br></code></pre></td></tr></table></figure>
 <h2 id="hail-caesar" id="Hail-Caesar">Hail Caesar</h2>
@@ -139,14 +155,53 @@ Score: 90% (the justOnce function is not given) This is an “AB”.</p>
 
     </div>
 </article>
-    </main>
-    <footer class="page__padding">
+
+
+
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#Assignment Sample Answer'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+
+            <!-- FOOTER -->
+            <footer>
     Copyright © 2020 Hui Li.
 </footer>
+        </div>
+    </div>
+
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#risk"><span class="toc-number">1.</span> <span class="toc-text">Risk</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hail-caesar"><span class="toc-number">2.</span> <span class="toc-text">Hail Caesar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#follow-the-leader"><span class="toc-number">3.</span> <span class="toc-text">Follow the Leader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#props-to-javascript"><span class="toc-number">4.</span> <span class="toc-text">Props to JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#javascript-to-html"><span class="toc-number">5.</span> <span class="toc-text">JavaScript to HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#one-step-after-the-other"><span class="toc-number">6.</span> <span class="toc-text">One Step After The Other</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again"><span class="toc-number">7.</span> <span class="toc-text">Over and Over Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#over-and-over-again-and-again"><span class="toc-number">8.</span> <span class="toc-text">Over and Over Again and Again</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#the-matchmaker"><span class="toc-number">9.</span> <span class="toc-text">The Matchmaker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#breaking-up-is-hard-to-do"><span class="toc-number">10.</span> <span class="toc-text">Breaking Up is Hard To Do</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#all-for-one-and-one-for-all"><span class="toc-number">11.</span> <span class="toc-text">All For One and One For All</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nosql-query"><span class="toc-number">12.</span> <span class="toc-text">NoSql Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#once-and-only-once"><span class="toc-number">13.</span> <span class="toc-text">Once and Only Once</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%89%93%E5%88%86"><span class="toc-number">14.</span> <span class="toc-text">我的打分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6"><span class="toc-number">15.</span> <span class="toc-text">文件</span></a></li></ol>
+                </div>
+            </div>
+            <!-- <div class="page-bounding">
+                
+            </div> -->
+        </div>
+    
+    
+    
 
     <!-- javascript -->
     
 <script src="/js/blog.js"></script>
 
+    
+        
+<script src="/js/post.js"></script>
+
+    
 </body>
 </html>

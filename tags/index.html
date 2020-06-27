@@ -32,8 +32,11 @@
     <meta name="theme-color" content="#ffffff">
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
-    <!-- content -->
-    <header class="header page__padding">
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
@@ -82,16 +85,22 @@
         </menu>
     </nav>
 </header>
-    <main class="page__padding">
-        <section>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <section>
     <h2>All</h2>
     <div class="post-list">
         
-            <a href="#express-session" class="tag tag--normal">#express-session</a>
+            <a href="#hexo" class="tag tag--normal">#hexo</a>
         
             <a href="#UWLAX" class="tag tag--normal">#UWLAX</a>
         
             <a href="#JavaScript" class="tag tag--normal">#JavaScript</a>
+        
+            <a href="#express-session" class="tag tag--normal">#express-session</a>
         
             <a href="#Python" class="tag tag--normal">#Python</a>
         
@@ -101,7 +110,7 @@
     
         
 <section class="tag-section">
-    <h2 id="express-session">express-session</h2>
+    <h2 id="hexo">hexo</h2>
     <ul class="post-list">
         
             <li class="post">
@@ -109,15 +118,6 @@
     <span class="post__date data--small">19/05/04</span>
     <span class="post__description">
         <a href="/2019/05/04/2015-01-01-%E4%B8%BB%E9%A2%98%E9%A2%84%E8%A7%88/" class="post__title hover--underline">主题预览</a>
-        
-    </span>
-</li> 
-        
-            <li class="post">
-     
-    <span class="post__date data--small">19/04/04</span>
-    <span class="post__description">
-        <a href="/2019/04/04/express-session-translate/" class="post__title hover--underline">翻译 express-session 使用文档</a>
         
     </span>
 </li> 
@@ -179,6 +179,23 @@
     
         
 <section class="tag-section">
+    <h2 id="express-session">express-session</h2>
+    <ul class="post-list">
+        
+            <li class="post">
+     
+    <span class="post__date data--small">19/04/04</span>
+    <span class="post__description">
+        <a href="/2019/04/04/express-session-translate/" class="post__title hover--underline">翻译 express-session 使用文档</a>
+        
+    </span>
+</li> 
+        
+    </ul>
+</section> 
+    
+        
+<section class="tag-section">
     <h2 id="Python">Python</h2>
     <ul class="post-list">
         
@@ -195,14 +212,21 @@
 </section> 
     
 
-    </main>
-    <footer class="page__padding">
+            <!-- FOOTER -->
+            <footer>
     Copyright © 2020 Hui Li.
 </footer>
+        </div>
+    </div>
+
+    
+    
+    
 
     <!-- javascript -->
     
 <script src="/js/blog.js"></script>
 
+    
 </body>
 </html>
