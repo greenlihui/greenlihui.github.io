@@ -484,25 +484,81 @@ Python 不支持一元加减操作（<code>++</code> 或 <code>--</code>）。</
 <p>示例</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> re<br>s = <span class="hljs-string">"my number is 123"</span><br>match = re.search(<span class="hljs-string">r'\d\d\d'</span>, s)<br><br>print(match) <span class="hljs-comment"># 输出该 &lt;match&gt; 对象</span><br>print(match.group()) <span class="hljs-comment"># 输出123</span><br></code></pre></td></tr></table></figure>
 <p>正则表达式的基本模式：</p>
-<p>符号 | 匹配</p>
-<p>| :-: | :-: |<br>
-| . | 除开空白字符外的任意字符 |<br>
-| \w | 任意词汇字符，如字母数字和下划线 |<br>
-| \W | 非词汇字符 |<br>
-| \d | 单个数字 |<br>
-| \D | 非单个数字 |<br>
-| \s | 空白字符，如 \n,\t, space 等 |<br>
-| \S | 非空白字符 |<br>
-| [abc] | 集合中的字符 |<br>
-| [^abc] | 集合外的字符 |<br>
-| [a-z] | 范围在 a-z 的字符 |<br>
-| [a-zA-Z] | 范围在 a-z 或 A-Z 的字符 |<br>
-| [0-9] | 范围在 0-9 之间的字符 |<br>
-| ^ | 匹配字符串开头 |<br>
-| $ | 匹配字符串结尾 |<br>
-| + | 匹配前一个字符一次或多次 |<br>
-| * | 匹配前一个字符零次或多次 |<br>
-<a href="https://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="noopener">这是一个关于 Python 正则表达式详细说明的博文</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">匹配</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:center">除开空白字符外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\w</td>
+<td style="text-align:center">任意词汇字符，如字母数字和下划线</td>
+</tr>
+<tr>
+<td style="text-align:center">\W</td>
+<td style="text-align:center">非词汇字符</td>
+</tr>
+<tr>
+<td style="text-align:center">\d</td>
+<td style="text-align:center">单个数字</td>
+</tr>
+<tr>
+<td style="text-align:center">\D</td>
+<td style="text-align:center">非单个数字</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:center">空白字符，如 \n,\t, space 等</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:center">非空白字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[abc]</td>
+<td style="text-align:center">集合中的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[^abc]</td>
+<td style="text-align:center">集合外的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[a-z]</td>
+<td style="text-align:center">范围在 a-z 的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[a-zA-Z]</td>
+<td style="text-align:center">范围在 a-z 或 A-Z 的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">[0-9]</td>
+<td style="text-align:center">范围在 0-9 之间的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">匹配字符串开头</td>
+</tr>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:center">匹配字符串结尾</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">匹配前一个字符一次或多次</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">匹配前一个字符零次或多次</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.cnblogs.com/huxi/archive/2010/07/04/1771073.html" target="_blank" rel="noopener">这是一个关于 Python 正则表达式详细说明的博文</a></p>
 <h4 id="%E6%8D%95%E8%8E%B7%E7%BB%84(group-capturing)" id="捕获组-group-capturing">捕获组(group capturing)</h4>
 <p>捕获组可以进一步从匹配字符串中提取出符合条件的特定部分，建立组的方法是括号 <code>( )</code>，假设我们想从电子邮件中提取出“姓名”和“域名”，则需要用<code>( )</code>把相应部分括起来。<br>
 <a href="http://blog.csdn.net/make164492212/article/details/51656638" target="_blank" rel="noopener">邮箱正则表达式推导过程</a></p>
