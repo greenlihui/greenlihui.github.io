@@ -1,3 +1,9 @@
+/* z-index:
+500   .highlight
+600   h2.sticky--top
+800   header, .nav-items
+1000  floating-section, .overlay-container */
+
 /********** FLOATING BUTTONS **********/
 .floating-section {
     position: fixed;
