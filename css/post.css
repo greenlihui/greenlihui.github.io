@@ -4,6 +4,7 @@
     right: 0;
     bottom: 0;
     padding: 16px;
+    z-index: 800;
 }
 .floating-section > .floating-button {
     height: 40px;
