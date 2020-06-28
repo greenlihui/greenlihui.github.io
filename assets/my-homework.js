@@ -1,4 +1,4 @@
-Risk
+// Risk
 function risk(height, weight, sex) {
   var meterOfHeight = height * 0.0254;
   var kiloOfWeight = weight * 0.4536;
@@ -10,7 +10,7 @@ function risk(height, weight, sex) {
   }
 }
 
-Hail Caesar
+// Hail Caesar
 function roman(number) {
   var object = {'I' : 1, 'II' : 2, 'III' : 3, 'IV' : 4, 'V' : 5, 'VI' : 6, 'VII' : 7, "VIII" : 8, 'IX' : 9, 'X' : 10};
   var arrString = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', "VIII", 'IX', 'X']
@@ -21,7 +21,7 @@ function roman(number) {
   }
 }
 
-Follow the Leader
+// Follow the Leader
 function lettersThatFollow(text, ch) {
   var result = "";
   text = text.split('');
@@ -33,7 +33,7 @@ function lettersThatFollow(text, ch) {
   return result;
 }
 
-Props to JavaScript
+// Props to JavaScript
 function props(list, propertyName) {
   var result = [];
   for (var i = 0; i < list.length; i++) {
@@ -42,7 +42,7 @@ function props(list, propertyName) {
   return result;
 }
 
-JavaScript to HTML
+// JavaScript to HTML
 function toHTML(list) {
   var result = "<ol>";
   for (var i = 0; i < list.length; i++) {
@@ -56,7 +56,7 @@ function toHTML(list) {
   return result;
 }
 
-One Step After The Other
+// One Step After The Other
 function sequence(start, step) {
   var counter = 0;
   return function() {
@@ -66,7 +66,7 @@ function sequence(start, step) {
   };
 }
 
-Over and Over Again
+// Over and Over Again
 function repeat(text, n) {
   var result = "";
   for (var i = 0; i < n; i++) {
@@ -75,7 +75,7 @@ function repeat(text, n) {
   return result;
 }
 
-Over and Over Again and Again
+// Over and Over Again and Again
 function repeatf(f, n) {
   var result = [];
   for (var i = 0; i < n; i++) {
@@ -84,7 +84,7 @@ function repeatf(f, n) {
   return result;
 }
 
-The Matchmaker
+// The Matchmaker
 function matchmaker(obj) {
   return function (object) {
     for (var Key in obj) {
@@ -96,7 +96,7 @@ function matchmaker(obj) {
   }
 }
 
-Breaking Up is Hard TO Do
+//Breaking Up is Hard TO Do
 function breakup(list, partitioner) {
   var result = {};
   for (var i = 0; i < list.length; i++) {
@@ -106,7 +106,7 @@ function breakup(list, partitioner) {
   return result;
 }
 
-All For One and One For All
+// All For One and One For All
 function eachOne(list) {
   for (var i = 0; i < list.length; i++) {
     if(!list[i]) {
@@ -116,7 +116,7 @@ function eachOne(list) {
   return true;
 }
 
-NoSql Query
+// NoSql Query
 function noSql(list, query) {
   var result = [];
   for (var Key in query) {
@@ -132,5 +132,5 @@ function noSql(list, query) {
   return result;
 }
 
-Once and Only Once
+// Once and Only Once
 

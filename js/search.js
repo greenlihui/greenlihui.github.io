@@ -8,11 +8,11 @@ function initSearch(path, search_id, content_id, enter_to_search) {
       var $input = document.getElementById(search_id);
       var $resultContent = document.getElementById(content_id);
 
-
       if (enter_to_search) {
         $input.addEventListener('keydown', function (event) {
             if (event.keyCode === 13) {
                 event.preventDefault();
+                this.blur();
                 loadSearchResult(this.value);
             }
           });
@@ -39,7 +39,7 @@ function initSearch(path, search_id, content_id, enter_to_search) {
           var data_title = data.title.trim().toLowerCase();
           var data_content = data.content
             .trim()
-            .replace(/<[^>]+>/g, "")
+            // .replace(/<[^>]+>/g, "")
             .toLowerCase();
           var data_url = data.url;
           var index_title = -1;
@@ -71,25 +71,26 @@ function initSearch(path, search_id, content_id, enter_to_search) {
               "' class='search-result-title hover--underline'>" +
               data_title +
               "</a>";
-            var content = data.content.trim().replace(/<[^>]+>/g, "");
+            var content = data.content.trim()
+            // .replace(/<[^>]+>/g, "");
             if (first_occur >= 0) {
               // cut out 100 characters
-              var start = first_occur - 6;
-              var end = first_occur + 6;
+              var start = first_occur - 20;
+              var end = first_occur + 80;
 
-              if (start < 0) {
-                start = 0;
+              if(start < 0){
+                  start = 0;
               }
 
-              if (start == 0) {
-                end = 10;
+              if(start == 0){
+                  end = 100;
               }
 
               if (end > content.length) {
                 end = content.length;
               }
 
-              var match_content = content.substr(start, end);
+              var match_content = content.substring(start, end);
 
               // highlight all keywords
               keywords.forEach(function (keyword) {
@@ -99,7 +100,7 @@ function initSearch(path, search_id, content_id, enter_to_search) {
                   '<em class="search-keyword">' + keyword + "</em>"
                 );
               });
-
+              
               str += '<p class="search-result">' + match_content + "...</p>";
             }
             str += "</li>";
@@ -111,16 +112,3 @@ function initSearch(path, search_id, content_id, enter_to_search) {
     },
   });
 };
-
-
-var searchString = new URLSearchParams(window.location.search).get('search');
-console.log('search', searchString);
-
-if (searchString) {
-    $input = document.getElementById('search-input');
-    $input.value = searchString;
-    $input.dispatchEvent(new Event('input', {
-        bubbles: true,
-        cancelable: true,
-    }));
-}

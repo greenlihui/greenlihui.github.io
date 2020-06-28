@@ -20,9 +20,9 @@ blog.eventDelegate = function delegate(element, eventType, selector, fn) {
         el = null;
         break;
       }
-      el = el.parentNode
+      el = el.parentNode;
     }
-    el && fn.call(el, e, el)
+    el && fn.call(el, e, el);
   })
   return element
 }

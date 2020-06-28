@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
     
 <link rel="stylesheet" href="/css/base.css">
 
@@ -12,13 +13,14 @@
     
 <link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
 
-    
-    
-    
-<link rel="stylesheet" href="/css/post.css">
 
-    <title>Hui Li&#39;s Blog</title>
-
+    
+    
+        <title>Search - Hui Li&#39;s Blog</title>
+    
+    
+    
+    
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -91,28 +93,10 @@
             <!-- CONTENT -->
             <form class="search-section" action="" method="GET">
     <input type="text" id="search-input" name="search" placeholder="Input Here">
-    <input type="submit" hidden>
+    <!-- <input type="submit" hidden> -->
 </form>
 <div class="search-result" id="result-container">
 </div>
-
-<script src="/js/search.js"></script>
-
-<script type="text/javascript">
-    var search_path = "search.json";
-    if (search_path.length == 0) {
-        search_path = "search.json";
-    }
-    var path = "/" + search_path;
-    var enter_to_search = 'false' == 'true';
-    if (enter_to_search) {
-        document.getElementById('search-input').onfocus = function() {
-            initSearch(path, 'search-input', 'result-container', enter_to_search);
-        }
-    } else {
-        initSearch(path, 'search-input', 'result-container', enter_to_search);
-    }
-</script>
             <!-- FOOTER -->
             <footer>
     Copyright © 2020 Hui Li.
@@ -120,6 +104,7 @@
         </div>
     </div>
 
+    <!-- TABLE OF CONTENT OVERLAY -->
     
     
     
@@ -128,6 +113,43 @@
     
 <script src="/js/blog.js"></script>
 
+    
+
+    
+        
+<script src="/js/search.js"></script>
+
+        <script type="text/javascript">
+            var search_path = "search.json";
+            if (search_path.length == 0) {
+                search_path = "search.json";
+            }
+            var path = "/" + search_path;
+            var enter_to_search = 'true' == 'true';
+            var $input = document.getElementById('search-input');
+            if (enter_to_search) {
+                $input.onfocus = function() {
+                    initSearch(path, 'search-input', 'result-container', enter_to_search);
+                }
+            } else {
+                initSearch(path, 'search-input', 'result-container', enter_to_search);
+            }
+            
+            var searchString = new URLSearchParams(window.location.search).get('search');
+            if (searchString !== null && searchString.trim !== "") {
+                $input.value = searchString;
+                initSearch(path, 'search-input', 'result-container', enter_to_search);
+                if (enter_to_search) {
+                    setTimeout(function () {
+                        $input.dispatchEvent(new KeyboardEvent('keydown', {keyCode: 13}));
+                    }, 200);
+                } else {
+                    setTimeout(function () {
+                        $input.dispatchEvent(new Event('input'));
+                    }, 200);
+                }
+            }
+        </script>
     
 </body>
 </html>

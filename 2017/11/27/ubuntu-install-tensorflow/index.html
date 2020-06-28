@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>Ubuntu16.04 使用 Anaconda 安装 Tensorflow - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
+            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="Ubuntu16.04 使用 Anaconda 安装 Tensorflow">Ubuntu16.04 使用 Anaconda 安装 Tensorflow</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2017-11-27</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/ubuntu/" class="tag tag--small hover--underline">#ubuntu</a>
+                
+                    <a href="/tags/tensorflow/" class="tag tag--small hover--underline">#tensorflow</a>
+                
+            </div>
+        
+    </div>
+    <div class="post__content">
+        <h2 id="%E5%AE%89%E8%A3%85-anaconda" id="安装-Anaconda">安装 Anaconda</h2>
+<p>去 <a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">官网</a> 下载 <a href="https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh" target="_blank" rel="noopener">Anaconda3-5.1.0-Linux-x86_64.sh</a>，这里我下载的版本是 <code>Python3.6</code> 的。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627175555.png" alt="下载 Anaconda"></p>
+<p>使用 <code>sh</code> 命令，<code>sh Anaconda3-5.1.0-Linux-x86_64.sh</code>，根据提示完成安装。</p>
+<h3 id="%E6%B7%BB%E5%8A%A0%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80" id="添加镜像地址">添加镜像地址</h3>
+<p>为防止安装包过程中速度过慢，添加国内镜像地址。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 添加清华依赖访问地址</span><br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br><span class="hljs-comment"># 设置搜索时显示通道地址</span><br>conda config --<span class="hljs-built_in">set</span> show_channel_urls yes<br></code></pre></td></tr></table></figure>
+<p>也可以在 <code>~/.condarc</code> 文件中直接添加和修改。</p>
+<h3 id="%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83" id="添加环境">添加环境</h3>
+<p>Anaconda 可以为不同的项目建立不同的运行环境，使用 <code>conda create -n env_name</code> 命令来创建环境（env_name 即环境名称）。<br>
+如果想重命名某一个环境，Anaconda 没有相关命令可以直接修改环境名称，这里只能先克隆环境再将原环境删除。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create --name new_name --<span class="hljs-built_in">clone</span> old_name<br>conda remove --name old_name --all<br></code></pre></td></tr></table></figure>
+<h3 id="%E5%AE%89%E8%A3%85%E6%97%B6%E5%80%99%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91" id="安装时候遇到的坑">安装时候遇到的坑</h3>
+<p>因为我终端使用的是 zsh，而安装 Anaconda 添加命令路径到的是 bash，导致我在 zsh 里面运行 conda 命令提示 command not found。<br>
+解决办法，在 <code>~/.zshrc</code> 或者 <code>/etc/profile</code> 后面添加上 Anacodna 安装目录下的 bin 目录即可。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=/home/lihui/anaconda3/bin:<span class="hljs-variable">$PATH</span><br></code></pre></td></tr></table></figure>
+<h2 id="%E5%AE%89%E8%A3%85-tensorflow-cpu-%E7%89%88" id="安装-Tensorflow-CPU-版">安装 Tensorflow CPU 版</h2>
+<p>CPU 版本的 Tensorflow 安装很简单，几条命令即可<br>
+建立环境 <code>conda create -n tensorflow_cpu python=3.6</code><br>
+激活环境 <code>source activate tensorflow_cpu</code><br>
+在环境中安装 <code>pip install tensorflow</code><br>
+进入 python 测试</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> tensorflow <span class="hljs-keyword">as</span> tf<br>hello = tf.contant(<span class="hljs-string">'hello'</span>)<br>sess = tf.Session()<br>sess.run(hello)<br></code></pre></td></tr></table></figure>
+<p>如果输出 b’hello’，则说明安装没有问题。</p>
+<h2 id="%E5%AE%89%E8%A3%85-tensorflow-gpu-%E7%89%88" id="安装-Tensorflow-GPU-版">安装 Tensorflow GPU 版</h2>
+<p>当前最顶级的CPU只有4核或者6核,模拟出8个或者12个处理线程来进行运算,但是普通级别的GPU就包含了成百上千个处理单元,高端的甚至更多,这对于多媒体计算中大量的重复处理过程有着天生的优势，而CNN中的卷积操作则正是这种大量的、重复的计算。<br>
+安装 GPU 版本 Tensorflow 要求显卡的计算能力大于 3.5，我的显卡满足要求所以想尝尝鲜。<br>
+安装 Tensorflow 之前先要安装 <code>CUDA</code> 和 <code>CUDNN</code>，下面的安装步骤是我综合众多安装教程得出的，如果英语好有耐心而且可以翻墙，最好去看官方的 <code>installation guide</code> 或者 <code>quickstart tutorial</code>，不管安装使用什么软件，官方说明永远是最清楚明白的。</p>
+<h3 id="%E5%AE%89%E8%A3%85-nvidia-%E9%A9%B1%E5%8A%A8" id="安装-NVIDIA-驱动">安装 NVIDIA 驱动</h3>
+<p>使用 <code>ubuntu-drivers devices</code> 命令查看你的显卡支持而且推荐的驱动（后面有个 recommended），我的推荐安装 nvidia-384，来开始安装吧。<br>
+关闭 Ubuntu 的图形界面（<code>sudo service lightdm stop</code>)，黑屏不要慌，按住 <code>ctrl+alt+f1</code> 进入 <code>tty</code> 模式，输入用户名密码进入终端，执行命令安装相对应驱动（<code>sudo apt install nvidia-384</code>)，重启（<code>reboot</code>）。重启后进入系统，打开 <code>NVIDIA X Server Settings</code> 查看 <code>PRIME Profiles</code> 是不是 <code>NVIDIA</code>，如果不是修改成 <code>NVIDIA</code> 重新重启。</p>
+<h3 id="%E5%AE%89%E8%A3%85-cuda-%E9%A9%B1%E5%8A%A8" id="安装-CUDA-驱动">安装 CUDA 驱动</h3>
+<ol>
+<li>目前 Tensorflow 最新只支持 CUDA 9.0，所以最高只能下载 CUDA 9.0，亲身经历告诉你，如果下载 9.1 即以上版本会报错（具体什么错忘记截图了）。</li>
+<li>进入下载页面后，下载 runfile 文件！！！（我下成 deb 文件，安装没问题，后面使用出问题了。。）</li>
+<li>CUDA 不支持新版本的 gcc，所以先进行 <a href="https://www.cnblogs.com/in4ight/p/6626708.html" target="_blank" rel="noopener">gcc 降级</a>，然后再来安装 CUDA。</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sh"><span class="hljs-comment"># 安装低版本 gcc</span><br>sudo apt install gcc-4.8<br><span class="hljs-comment"># 查看已有的 gcc</span><br>ls /usr/bin/gcc*<br><span class="hljs-comment"># 设置优先级，最后一个数字为优先级</span><br>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100<br><span class="hljs-comment"># 查看优先级</span><br>sudo update-alternatives --config gcc<br></code></pre></td></tr></table></figure>
+<ol start="4">
+<li>Tensorflow 官方说明 CUDA 9.0 还要安装 libcupti-dev（<code>sudo apt install libcupti-dev</code>）。</li>
+<li>现在开始安装CUDA，同样关闭 Ubuntu 图形界面（<code>sudo service lightdm stop</code>)</li>
+<li>接下来还要禁用 Ubuntu 自带的显卡驱动，创建新文件 <code>/etc/modprobe.d/blacklist-nouveau.conf</code>，并填入下面两行</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">blacklist nouveau<br>options nouveau modeset=0<br></code></pre></td></tr></table></figure>
+<p>然后重新生成内核参数（<code>sudo update-initramfs -u</code>）</p>
+<ol start="7">
+<li>然后进入下载目录，开始安装（<code>sudo sh cuda_9.0.176_384.81_linux.run</code>)</li>
+<li><code>ctrl+c</code> 跳过许可证之类的东西，输入 accept 开始安装，在安装过程中，选择不安装 NVIDIA 驱动和 openGL 库，安装完成后开始配置环境变量。在 <code>~/.bashrc</code> 或者 <code>~/.zshrc</code> 或者 <code>/etc/profile</code> 后添加</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">export</span> PATH=/usr/<span class="hljs-built_in">local</span>/cuda/bin:<span class="hljs-variable">$PATH</span><br><span class="hljs-built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="hljs-built_in">local</span>/cuda/lib64:/usr/<span class="hljs-built_in">local</span>/cuda-8.0/extras/CUPTI/lib64:<span class="hljs-variable">$LD_LIBRARY_PATH</span><br><span class="hljs-built_in">export</span> CUDA_HOME=/usr/<span class="hljs-built_in">local</span>/cuda<br></code></pre></td></tr></table></figure>
+<ol start="9">
+<li>使用 <code>nvcc -V</code> 命令可以查看 CUDA 版本。</li>
+</ol>
+<h3 id="%E6%B5%8B%E8%AF%95-cuda" id="测试-CUDA">测试 CUDA</h3>
+<p>进入安装时安装的 <code>~/NVIDIA_CUDA-9.0_Samples</code> 目录，编译 CUDA 的示例文件（<code>make</code>）等待 10 分钟左右无报错即可。<br>
+进入生成的 bin 目录下找到编译好的文件并随意运行一个，这里选择 deviceQuery（<code>./deviceQuery</code>)，得到最后结果 <code>Result = PASS</code> 则说明安装成功。</p>
+<h3 id="%E5%AE%89%E8%A3%85-cudnn" id="安装-CUDNN">安装 CUDNN</h3>
+<ol>
+<li>去 NVIDIA 下载 CUDA 版本相对应的 CUDNN <code>.tgz</code> 包</li>
+<li>解压（<code>tar xvf cudnn-9.0-linux-x64-v7.tgz</code>)</li>
+<li>将解压后 <code>cuda/include</code> 目录中的 <code>cudnn.h</code> 文件拷贝到 <code>/usr/local/cuda/include/</code> 目录下（<code>sudo cp cuda/include/cudnn.h /usr/local/cuda/include</code>）</li>
+<li>将 <code>cuda/lib64</code> 目录中的库拷贝到 <code>/usr/local/cuda/lib64/</code> 目录下（<code>sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64</code>）</li>
+<li>再赋予相关权限（<code>sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*</code>），这样，CUDNN 就安装好了。</li>
+<li>如果要卸载 CUDA，在 <code>/usr/local/cuda/bin</code> 目录下,有 cuda 自带的卸载工具可以使用（<code>sudo ./uninstall_cuda_9.0.pl</code>）。</li>
+<li>如果要卸载 NVIDIA 驱动，<code>sudo apt purge nvidia-*</code> 或者 <code>sudo apt purge nvidia-\*</code>。</li>
+</ol>
+<h3 id="%E5%AE%89%E8%A3%85-tensorflow" id="安装-Tensorflow">安装 Tensorflow</h3>
+<p>建立环境 <code>conda create -n tensorflow_g</code><br>
+激活环境 <code>source activate tensorflow_g</code><br>
+在环境中安装 <code>pip install tensorflow-gpu</code><br>
+测试后退出 <code>source deactivate</code></p>
+<h2 id="%E5%85%B6%E4%BB%96" id="其他">其他</h2>
+<h3 id="%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B" id="参考教程">参考教程</h3>
+<p><a href="https://segmentfault.com/a/1190000008234390" target="_blank" rel="noopener">教程1</a><br>
+<a href="https://www.linuxidc.com/Linux/2016-11/137561.htm" target="_blank" rel="noopener">教程2</a><br>
+<a href="https://www.jianshu.com/p/34236a9c4a2f" target="_blank" rel="noopener">出现循环登录的问题</a></p>
+<h3 id="%E6%9F%A5%E7%9C%8B-tensorflow-%E8%B7%91%E7%9A%84%E6%98%AF-cpu-%E8%BF%98%E6%98%AF-cpu%E7%89%88%E6%9C%AC" id="查看-Tensorflow-跑的是-CPU-还是-CPU版本">查看 Tensorflow 跑的是 CPU 还是 CPU版本</h3>
+<p>直接 <code>session.run</code> 运行个 <code>a+b</code> 的运算，会有设备初始化的提示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Creates a graph.</span><br>a = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], name=<span class="hljs-string">'a'</span>)<br>b = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>], name=<span class="hljs-string">'b'</span>)<br>c = tf.matmul(a, b)<br><span class="hljs-comment"># Creates a session with log_device_placement set to True.</span><br>sess = tf.Session(config=tf.ConfigProto(log_device_placement=<span class="hljs-literal">True</span>))<br><span class="hljs-comment"># Runs the op.</span><br>print(sess.run(c))<br></code></pre></td></tr></table></figure>
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#Ubuntu16.04 使用 Anaconda 安装 Tensorflow'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    Copyright © 2020 Hui Li.
+</footer>
+        </div>
+    </div>
+
+    <!-- TABLE OF CONTENT OVERLAY -->
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-anaconda"><span class="toc-number">1.</span> <span class="toc-text">安装 Anaconda</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%95%9C%E5%83%8F%E5%9C%B0%E5%9D%80"><span class="toc-number">1.1.</span> <span class="toc-text">添加镜像地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">添加环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%97%B6%E5%80%99%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="toc-number">1.3.</span> <span class="toc-text">安装时候遇到的坑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-tensorflow-cpu-%E7%89%88"><span class="toc-number">2.</span> <span class="toc-text">安装 Tensorflow CPU 版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-tensorflow-gpu-%E7%89%88"><span class="toc-number">3.</span> <span class="toc-text">安装 Tensorflow GPU 版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-nvidia-%E9%A9%B1%E5%8A%A8"><span class="toc-number">3.1.</span> <span class="toc-text">安装 NVIDIA 驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-cuda-%E9%A9%B1%E5%8A%A8"><span class="toc-number">3.2.</span> <span class="toc-text">安装 CUDA 驱动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-cuda"><span class="toc-number">3.3.</span> <span class="toc-text">测试 CUDA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-cudnn"><span class="toc-number">3.4.</span> <span class="toc-text">安装 CUDNN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-tensorflow"><span class="toc-number">3.5.</span> <span class="toc-text">安装 Tensorflow</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">4.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">参考教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-tensorflow-%E8%B7%91%E7%9A%84%E6%98%AF-cpu-%E8%BF%98%E6%98%AF-cpu%E7%89%88%E6%9C%AC"><span class="toc-number">4.2.</span> <span class="toc-text">查看 Tensorflow 跑的是 CPU 还是 CPU版本</span></a></li></ol></li></ol>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+</body>
+</html>

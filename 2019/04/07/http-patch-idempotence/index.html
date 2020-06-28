@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>为什么 HTTP PATCH 方法不是幂等的及其延伸 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
+            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="为什么 HTTP PATCH 方法不是幂等的及其延伸">为什么 HTTP PATCH 方法不是幂等的及其延伸</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2019-04-07</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/HTTP/" class="tag tag--small hover--underline">#HTTP</a>
+                
+            </div>
+        
+    </div>
+    <div class="post__content">
+        <h2 id="%E5%B9%82%E7%AD%89%E6%80%A7" id="幂等性">幂等性</h2>
+<p>首先来看什么是幂等性，根据 <a href="https://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="noopener">rfc2616(Hypertext Transfer Protocol – HTTP/1.1)</a> 文档第 50 页底部对 Idempotent Methods 的定义：</p>
+<blockquote>
+<p>Methods can also have the property of “idempotence” in that (aside from error or expiration issues) the side-effects of N &gt; 0 identical requests is the same as for a single request.</p>
+</blockquote>
+<p>翻译过来也就是：<strong>相同的请求执行多次和执行一次的副作用是一样的</strong>。</p>
+<p>段落接下来就给出了具有幂等性的方法：</p>
+<blockquote>
+<p>The methods GET, HEAD, PUT and DELETE share this property. Also, the methods OPTIONS and TRACE SHOULD NOT have side effects, and so are inherently idempotent.</p>
+</blockquote>
+<p>可以看出，<code>GET</code>，<code>HEAD</code>，<code>PUT</code>，<code>DELETE</code>，<code>OPTIONS</code> 和 <code>TRACE</code> 方法都是幂等的。</p>
+<h2 id="put-%E5%92%8C-patch" id="PUT-和-PATCH">PUT 和 PATCH</h2>
+<p>根据约定( Convention )，PUT 方法用于更新数据，PATCH 方法也用于更新数据，为什么 PUT 方法是幂等的而 PATCH 方法不是幂等的呢？我们继续研究文档（第54页）：</p>
+<blockquote>
+<p>The PUT method requests that the enclosed entity be stored under the supplied Request-URI. If the Request-URI refers to an already existing resource, the enclosed entity SHOULD be considered as a modified version of the one residing on the origin server. If the Request-URI does not point to an existing resource, and that URI is capable of being defined as a new resource by the requesting user agent, the origin server can create the resource with that URI.</p>
+<p>PUT 方法将请求所包含的实体存储在所提供的 Request-URI 下。如果该 URI 指代一个已经存在的资源，那么请求中的实体应该被视为保存在原服务器上的实体的修改版本。如果 Request-URI 没有指向一个现有资源，并且该 URI 可以被发送请求的用户代理定义为新资源，则原服务器可以使用该 URI 来创建资源。</p>
+</blockquote>
+<p>这里说的很明白了，PUT 用做更新操作的时候是提交一整个更新后的实体，而不是需要修改的实体中的部分属性。<strong>当 URI 指向一个存在的资源，服务器要做的事就是查找并替换。</strong></p>
+<p>接下来看 <a href="https://tools.ietf.org/html/rfc5789" target="_blank" rel="noopener">PATCH</a>（PATCH 方法在原文档中没有找到相关描述，后来发现在另一个 RFC 里面 - <code>RFC5789</code>）:</p>
+<blockquote>
+<p>The PATCH method requests that a set of changes described in the request entity be applied to the resource identified by the Request-URI.  The set of changes is represented in a format called a “patch document” identified by a media type.  If the Request-URI does not point to an existing resource, the server MAY create a new resource, depending on the patch document type (whether it can logically modify a null resource) and permissions, etc.</p>
+<p>PATCH 方法请求将一组描述在请求实体里的更改应用到 Request-URI 标志的资源。这组更改以称为 “补丁文档” 的格式（该格式由媒体类型标志）表示，如果 Request-URI 未指向现有资源，服务器可能根据补丁文档的类型（是否可以在逻辑上修改空资源）和权限等来创建一个新资源。</p>
+</blockquote>
+<p>所以可以知道 <strong>PATCH 请求中的实体是一组将要应用到实体的更改，而不是像 PUT 请求那样是要替换旧资源的实体</strong>，但是这并没有解决 PATCH 方法为什么不是幂等的问题。不着急，继续读，接下来就给出了 PUT 和 PATCH 的区别：</p>
+<blockquote>
+<p>The difference between the PUT and PATCH requests is reflected in the way the server processes the enclosed entity to modify the resource identified by the Request-URI.  In a PUT request, the enclosed entity is considered to be a modified version of the resource stored on the origin server, and the client is requesting that the stored version be replaced.  With PATCH, however, the enclosed entity contains a set of instructions describing how a resource currently residing on the origin server should be modified to produce a new version.  The PATCH method affects the resource identified by the Request-URI, and it also MAY have side effects on other resources; i.e., new resources may be created, or existing ones modified, by the application of a PATCH.</p>
+<p>PUT 和 PATCH 请求的区别体现在服务器处理封闭实体以修改 Request-URI 标志的资源的方式。在一个 PUT 请求中，封闭实体被认为是存储在源服务器上的资源的修改版本，并且客户端正在请求替换存储的版本。而对于 PATCH 请求，封闭实体中包含了一组描述当前保留在源服务器上的资源应该如何被修改来产生一个新版本的指令。PATCH 方法影响由 Request-URI 标志的资源，而且它也可能对其他资源有副作用；也就是，通过使用 PATCH，新资源可能被创造，或者现有资源被修改。</p>
+</blockquote>
+<p>以上就是答案。可以理解为，<strong>PATCH 请求中的实体保存的是修改资源的指令，该指令指导服务器来对资源做出修改</strong>，所以不是幂等的。<br>
+可能有点抽象，打个比方：对于存在服务器中的 A 对象有个属性 B 为 1，如果要修改 B 属性为 3，则 PUT 请求是直接将修改过 B 属性的整个新对象发送给服务器查找并替换。而 PATCH 请求是在实体中包含指令 — 将 A 对象中 B 属性的值加 2，那么如果该请求被执行多次的话，B 属性就可能不为 3 了，而 PUT 请求不论执行多少次，B 属性永远都是 3，所以说 PUT 方法是幂等的，而 PATCH 方法不是幂等的。</p>
+<h2 id="put-%E5%92%8C-post" id="PUT-和-POST">PUT 和 POST</h2>
+<p>在看请求相关的帖子的时候，偶尔也会看见争论说使用 PUT 来新增资源，使用 POST 来修改资源，或者说这两个方法差别不大，没必要这么明确分工。上文也提到了 PUT 方法的 URI 指向的资源不存在的时候也可以创建新资源。那到底怎么用，都写到这里了继续是用文档来说话，有关 POST 方法的说明：</p>
+<blockquote>
+<p><strong>The POST method is used to request that the origin server accept the entity enclosed in the request as a new subordinate of the resource identified by the Request-URI in the Request-Line.</strong> POST is designed to allow a uniform method to cover the following functions:</p>
+<ul>
+<li>Annotation of existing resources;</li>
+<li>Posting a message to a bulletin board, newsgroup, mailing list or similar group of articles;</li>
+<li>Providing a block of data, such as the result of submitting a form, to a data-handling process;</li>
+<li>Extending a database through an append operation.</li>
+</ul>
+<p>The actual function performed by the POST method is determined by the server and is usually dependent on the Request-URI. The posted entity is subordinate to that URI in the same way that a file is subordinate to a directory containing it, a news article is subordinate to a newsgroup to which it is posted, or a record is subordinate to a database.</p>
+<p><strong>POST 方法用于请求源服务器接受请求中的实体作为 Request-URI 所标志的资源的新下级。</strong> POST 方法旨在允许一个统一的方法来涵盖以下功能：</p>
+<ul>
+<li>现有资源的注释；</li>
+<li>在公告栏，新闻组，邮件列表或类似文章组中发布消息;</li>
+<li>提供数据块，例如提交表单的结果，数据处理过程;</li>
+<li>通过追加操作扩展数据库。</li>
+</ul>
+<p>POST方法执行的实际功能由服务器确定，通常依赖于 Request-URI。 发布的实体从属于该 URI，其方式与文件从属于包含它的目录相同，新闻文章从属于发布它的新闻组，或者记录从属于数据库。</p>
+</blockquote>
+<p>加黑的第一句话是不是很熟悉，用 RESTful API 实现前后端交互接口的朋友看到这里应该就清楚了。这也是为什么 <code>POST /api/articles</code> 在 RESTful 中被建议用来创建文章而不是更新文章的原因。此外，POST 请求不是幂等的，以为着如果把它用来当作资源更新操作，会创造多个相同的资源，这是更新操作不希望产生的副作用，所以还是用 POST 新增资源，PUT 更新资源吧。</p>
+<p>当然，这些都是约定( convertion )  而不是规定( standard )，如果你就是喜欢用 PUT 新建资源，POST 来修改资源，那我只能说对不起让你花这么长时间看篇文章了，毕竟仅仅使用 GET 和 POST 完成所有操作还大有人在😄😄。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#为什么 HTTP PATCH 方法不是幂等的及其延伸'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    Copyright © 2020 Hui Li.
+</footer>
+        </div>
+    </div>
+
+    <!-- TABLE OF CONTENT OVERLAY -->
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%82%E7%AD%89%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">幂等性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#put-%E5%92%8C-patch"><span class="toc-number">2.</span> <span class="toc-text">PUT 和 PATCH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#put-%E5%92%8C-post"><span class="toc-number">3.</span> <span class="toc-text">PUT 和 POST</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+</body>
+</html>

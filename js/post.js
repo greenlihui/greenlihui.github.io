@@ -27,6 +27,7 @@ blog.addLoadEvent(function () {
   });
 });
 
+// hide toc on anchor clicked
 var toc = document.querySelector("ol.toc");
 blog.eventDelegate(toc, "click", "a.toc-link", function () {
   document.querySelector("div.overlay-container").classList.remove("show");

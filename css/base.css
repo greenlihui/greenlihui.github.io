@@ -40,12 +40,17 @@ table {
 }
 
 /******************** Word Break ********************/
+/* table of content */
 ol.toc {
     padding: 0;
 }
 ol.toc * {
     word-break: break-all;
 }
+ul.search-result-list * {
+    word-break: break-all;
+}
+
 
 
 /******************** GENERAL STYLE ********************/

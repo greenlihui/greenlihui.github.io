@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
     
 <link rel="stylesheet" href="/css/base.css">
 
@@ -12,17 +13,20 @@
     
 <link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
 
-    
-    
-        
-<link rel="stylesheet" href="/css/highlight-monokai.css">
 
     
     
+    
+    
+        <title>翻译 express-session 使用文档 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
 <link rel="stylesheet" href="/css/post.css">
 
-    <title>Hui Li&#39;s Blog</title>
-
+    
+    
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -291,6 +295,7 @@
     </div>
 </div>
 
+<!-- MathJax Support -->
 
             <!-- FOOTER -->
             <footer>
@@ -299,6 +304,7 @@
         </div>
     </div>
 
+    <!-- TABLE OF CONTENT OVERLAY -->
     
         <div class="overlay-container">
             <div class="backdrop"></div>
@@ -307,9 +313,6 @@
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api"><span class="toc-number">2.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sessions(options)"><span class="toc-number">2.1.</span> <span class="toc-text">sessions(options)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#options"><span class="toc-number">2.1.1.</span> <span class="toc-text">Options</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session"><span class="toc-number">2.2.</span> <span class="toc-text">req.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session.regenerate(callback)"><span class="toc-number">2.2.1.</span> <span class="toc-text">Session.regenerate(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.destroy(callback)"><span class="toc-number">2.2.2.</span> <span class="toc-text">Session.destroy(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.reload(callback)"><span class="toc-number">2.2.3.</span> <span class="toc-text">Session.reload(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.save(callback)"><span class="toc-number">2.2.4.</span> <span class="toc-text">Session.save(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.touch(callback)"><span class="toc-number">2.2.5.</span> <span class="toc-text">Session.touch(callback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.id"><span class="toc-number">2.3.</span> <span class="toc-text">req.session.id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.cookie"><span class="toc-number">2.4.</span> <span class="toc-text">req.session.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie.maxage-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">Cookie.maxAge</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.sessionid"><span class="toc-number">2.5.</span> <span class="toc-text">req.sessionID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-store-implementation"><span class="toc-number">3.</span> <span class="toc-text">Session Store Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#store.all(callback)"><span class="toc-number">3.1.</span> <span class="toc-text">store.all(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.destroy(sid%2C-callback)"><span class="toc-number">3.2.</span> <span class="toc-text">store.destroy(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.clear(callback)"><span class="toc-number">3.3.</span> <span class="toc-text">store.clear(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.length(callback)"><span class="toc-number">3.4.</span> <span class="toc-text">store.length(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.get(sid%2C-callback)"><span class="toc-number">3.5.</span> <span class="toc-text">store.get(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.set(sid%2C-session%2C-callback)"><span class="toc-number">3.6.</span> <span class="toc-text">store.set(sid, session, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.touch(sid%2C-session%2C-callback)"><span class="toc-number">3.7.</span> <span class="toc-text">store.touch(sid, session, callback)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compatible-session-stores"><span class="toc-number">4.</span> <span class="toc-text">Compatible Session Stores</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">5.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-number">6.</span> <span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords"><span class="toc-number">7.</span> <span class="toc-text">Keywords</span></a></li></ol>
                 </div>
             </div>
-            <!-- <div class="page-bounding">
-                
-            </div> -->
         </div>
     
     
@@ -322,6 +325,8 @@
     
         
 <script src="/js/post.js"></script>
+
+    
 
     
 </body>
