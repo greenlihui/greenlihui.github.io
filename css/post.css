@@ -188,12 +188,6 @@ table tr:nth-child(even){
     background-color: #EEE;
 }
 
-
-* {
-    
-}
-
-
 p code {
     word-break: break-all;
     border-radius: 4px;
