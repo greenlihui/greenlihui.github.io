@@ -20,6 +20,9 @@
     
         <title>JavaScript Assignment - Hui Li&#39;s Blog</title>
         
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
 <link rel="stylesheet" href="/css/highlight.css">
 
         
@@ -38,38 +41,25 @@
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- BAIDU ANALYSIS -->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <!-- TENCENT ANALYSIS -->
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66570869" charset="UTF-8"></script>
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
     <!-- the reason of using two layers of wrapper is to 
         avoid the scrollbar squeeze/overlap the content -->
-    <div class="wrapper--header">
+    <div class="wrapper--header z-800">
         <div class="page-bounding">
-            <header class="header">
+            <header>
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
         <a class="nav__toggle" href="javascript:void(0);">
-            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
-            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
         </a>
         <menu class="nav__items">
             
                 <span class="nav__item">
                     <a href="/">
-                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <i class="material-icons item__icon">home</i>
                         <span class="item__text hover--underline">
                             Home
                         </span>
@@ -78,7 +68,7 @@
             
                 <span class="nav__item">
                     <a href="/tags">
-                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <i class="material-icons item__icon">local_offer</i>
                         <span class="item__text hover--underline">
                             Tags
                         </span>
@@ -87,7 +77,7 @@
             
                 <span class="nav__item">
                     <a href="/search">
-                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <i class="material-icons item__icon">search</i>
                         <span class="item__text hover--underline">
                             Search
                         </span>
@@ -96,7 +86,7 @@
             
                 <span class="nav__item">
                     <a href="/about">
-                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <i class="material-icons item__icon">person</i>
                         <span class="item__text hover--underline">
                             About
                         </span>
@@ -114,19 +104,19 @@
             <article>
     <div class="post__title">
         <h1 id="JavaScript Assignment">JavaScript Assignment</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="20px"></object>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
             <span>2017-06-08</span>
-        </div>
+        </span>
         
-            <div class="post__date">
-                <object data="/assets/icons/tag.svg" width="20px"></object>
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
                 
                     <a href="/tags/JavaScript/" class="tag tag--small hover--underline">#JavaScript</a>
                 
                     <a href="/tags/UWLAX/" class="tag tag--small hover--underline">#UWLAX</a>
                 
-            </div>
+            </span>
         
     </div>
     <div class="post__content">
@@ -279,12 +269,12 @@ Statue of Caesar</p>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
-<div class="floating-section">
+<div class="floating-section z-400">
     <div class="floating-button hidden" id="toTop" onclick="window.location.href='#JavaScript Assignment'">
-        <img src="/assets/icons/up.svg" width="24px">
+        <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
-        <img src="/assets/icons/toc.svg" width="24px">
+        <i class="material-icons">format_list_numbered</i>
     </div>
 </div>
 
@@ -292,23 +282,23 @@ Statue of Caesar</p>
 
             <!-- FOOTER -->
             <footer>
-    Copyright © 2020 Hui Li.
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
 </footer>
         </div>
     </div>
 
-    <!-- TABLE OF CONTENT OVERLAY -->
-    
-        <div class="overlay-container">
-            <div class="backdrop"></div>
-            <div class="overlay-wrapper">
-                <div class="toc-content page-bounding">
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#risk"><span class="toc-number">1.1.</span> <span class="toc-text">Risk</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hail-caesar"><span class="toc-number">1.2.</span> <span class="toc-text">Hail Caesar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#follow-the-leader"><span class="toc-number">1.3.</span> <span class="toc-text">Follow the Leader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#props-to-javascript"><span class="toc-number">1.4.</span> <span class="toc-text">Props to JavaScript</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript-to-html"><span class="toc-number">1.5.</span> <span class="toc-text">JavaScript to HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#one-step-after-the-other"><span class="toc-number">1.6.</span> <span class="toc-text">One Step After The Other</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#over-and-over-again"><span class="toc-number">1.7.</span> <span class="toc-text">Over and Over Again</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#over-and-over-again-and-again"><span class="toc-number">1.8.</span> <span class="toc-text">Over and Over Again and Again</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-matchmaker"><span class="toc-number">1.9.</span> <span class="toc-text">The Matchmaker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#breaking-up-is-hard-to-do"><span class="toc-number">1.10.</span> <span class="toc-text">Breaking Up is Hard To Do</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#all-for-one-and-one-for-all"><span class="toc-number">1.11.</span> <span class="toc-text">All For One and One For All</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nosql-query"><span class="toc-number">1.12.</span> <span class="toc-text">NoSql Query</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#once-and-only-once"><span class="toc-number">1.13.</span> <span class="toc-text">Once and Only Once</span></a></li></ol></li></ol>
                 </div>
             </div>
-        </div>
-    
-    
+        
+    </div>
 
     <!-- javascript -->
     
@@ -321,5 +311,37 @@ Statue of Caesar</p>
     
 
     
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 </body>
 </html>

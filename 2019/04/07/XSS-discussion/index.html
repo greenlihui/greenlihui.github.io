@@ -20,6 +20,9 @@
     
         <title>反射型 XSS 疑问及延伸 (CSRF) - Hui Li&#39;s Blog</title>
         
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
 <link rel="stylesheet" href="/css/highlight.css">
 
         
@@ -38,38 +41,25 @@
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- BAIDU ANALYSIS -->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <!-- TENCENT ANALYSIS -->
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66570869" charset="UTF-8"></script>
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
     <!-- the reason of using two layers of wrapper is to 
         avoid the scrollbar squeeze/overlap the content -->
-    <div class="wrapper--header">
+    <div class="wrapper--header z-800">
         <div class="page-bounding">
-            <header class="header">
+            <header>
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
         <a class="nav__toggle" href="javascript:void(0);">
-            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
-            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
         </a>
         <menu class="nav__items">
             
                 <span class="nav__item">
                     <a href="/">
-                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <i class="material-icons item__icon">home</i>
                         <span class="item__text hover--underline">
                             Home
                         </span>
@@ -78,7 +68,7 @@
             
                 <span class="nav__item">
                     <a href="/tags">
-                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <i class="material-icons item__icon">local_offer</i>
                         <span class="item__text hover--underline">
                             Tags
                         </span>
@@ -87,7 +77,7 @@
             
                 <span class="nav__item">
                     <a href="/search">
-                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <i class="material-icons item__icon">search</i>
                         <span class="item__text hover--underline">
                             Search
                         </span>
@@ -96,7 +86,7 @@
             
                 <span class="nav__item">
                     <a href="/about">
-                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <i class="material-icons item__icon">person</i>
                         <span class="item__text hover--underline">
                             About
                         </span>
@@ -114,17 +104,17 @@
             <article>
     <div class="post__title">
         <h1 id="反射型 XSS 疑问及延伸 (CSRF)">反射型 XSS 疑问及延伸 (CSRF)</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="20px"></object>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
             <span>2019-04-07</span>
-        </div>
+        </span>
         
-            <div class="post__date">
-                <object data="/assets/icons/tag.svg" width="20px"></object>
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
                 
                     <a href="/tags/Web-Security/" class="tag tag--small hover--underline">#Web Security</a>
                 
-            </div>
+            </span>
         
     </div>
     <div class="post__content">
@@ -201,12 +191,12 @@
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
-<div class="floating-section">
+<div class="floating-section z-400">
     <div class="floating-button hidden" id="toTop" onclick="window.location.href='#反射型 XSS 疑问及延伸 (CSRF)'">
-        <img src="/assets/icons/up.svg" width="24px">
+        <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
-        <img src="/assets/icons/toc.svg" width="24px">
+        <i class="material-icons">format_list_numbered</i>
     </div>
 </div>
 
@@ -214,23 +204,23 @@
 
             <!-- FOOTER -->
             <footer>
-    Copyright © 2020 Hui Li.
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
 </footer>
         </div>
     </div>
 
-    <!-- TABLE OF CONTENT OVERLAY -->
-    
-        <div class="overlay-container">
-            <div class="backdrop"></div>
-            <div class="overlay-wrapper">
-                <div class="toc-content page-bounding">
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E5%8F%8D%E5%B0%84%E5%9E%8B-xss-%E7%9A%84%E7%96%91%E9%97%AE"><span class="toc-number">1.</span> <span class="toc-text">有关反射型 XSS 的疑问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-%E5%B0%8F%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">XSS 小结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%81%E4%B9%85%E5%9E%8B"><span class="toc-number">2.1.</span> <span class="toc-text">持久型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90"><span class="toc-number">2.1.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">反射型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="toc-number">2.2.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-2"><span class="toc-number">2.2.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-dom-%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">基于 DOM 型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="toc-number">2.3.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-3"><span class="toc-number">2.3.2.</span> <span class="toc-text">例子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%9E%8B%E5%92%8C%E6%8C%81%E4%B9%85%E5%9E%8B%E5%8C%BA%E5%88%AB"><span class="toc-number">2.4.</span> <span class="toc-text">反射型和持久型区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.5.</span> <span class="toc-text">缓解办法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xss-%E5%BB%B6%E4%BC%B8%E4%B9%8B-csrf"><span class="toc-number">3.</span> <span class="toc-text">XSS 延伸之 CSRF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%8B%E5%AD%90-4"><span class="toc-number">3.1.</span> <span class="toc-text">例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3%E5%8A%9E%E6%B3%95-2"><span class="toc-number">3.2.</span> <span class="toc-text">缓解办法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#csrf-%E4%B8%8E-xss-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text">CSRF 与 XSS 的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
                 </div>
             </div>
-        </div>
-    
-    
+        
+    </div>
 
     <!-- javascript -->
     
@@ -243,5 +233,37 @@
     
 
     
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 </body>
 </html>

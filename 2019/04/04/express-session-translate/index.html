@@ -20,6 +20,9 @@
     
         <title>翻译 express-session 使用文档 - Hui Li&#39;s Blog</title>
         
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
 <link rel="stylesheet" href="/css/highlight.css">
 
         
@@ -38,38 +41,25 @@
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- BAIDU ANALYSIS -->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <!-- TENCENT ANALYSIS -->
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66570869" charset="UTF-8"></script>
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
     <!-- the reason of using two layers of wrapper is to 
         avoid the scrollbar squeeze/overlap the content -->
-    <div class="wrapper--header">
+    <div class="wrapper--header z-800">
         <div class="page-bounding">
-            <header class="header">
+            <header>
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
         <a class="nav__toggle" href="javascript:void(0);">
-            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
-            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
         </a>
         <menu class="nav__items">
             
                 <span class="nav__item">
                     <a href="/">
-                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <i class="material-icons item__icon">home</i>
                         <span class="item__text hover--underline">
                             Home
                         </span>
@@ -78,7 +68,7 @@
             
                 <span class="nav__item">
                     <a href="/tags">
-                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <i class="material-icons item__icon">local_offer</i>
                         <span class="item__text hover--underline">
                             Tags
                         </span>
@@ -87,7 +77,7 @@
             
                 <span class="nav__item">
                     <a href="/search">
-                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <i class="material-icons item__icon">search</i>
                         <span class="item__text hover--underline">
                             Search
                         </span>
@@ -96,7 +86,7 @@
             
                 <span class="nav__item">
                     <a href="/about">
-                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <i class="material-icons item__icon">person</i>
                         <span class="item__text hover--underline">
                             About
                         </span>
@@ -114,17 +104,17 @@
             <article>
     <div class="post__title">
         <h1 id="翻译 express-session 使用文档">翻译 express-session 使用文档</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="20px"></object>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
             <span>2019-04-04</span>
-        </div>
+        </span>
         
-            <div class="post__date">
-                <object data="/assets/icons/tag.svg" width="20px"></object>
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
                 
                     <a href="/tags/express-session/" class="tag tag--small hover--underline">#express-session</a>
                 
-            </div>
+            </span>
         
     </div>
     <div class="post__content">
@@ -300,12 +290,12 @@
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
-<div class="floating-section">
+<div class="floating-section z-400">
     <div class="floating-button hidden" id="toTop" onclick="window.location.href='#翻译 express-session 使用文档'">
-        <img src="/assets/icons/up.svg" width="24px">
+        <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
-        <img src="/assets/icons/toc.svg" width="24px">
+        <i class="material-icons">format_list_numbered</i>
     </div>
 </div>
 
@@ -313,23 +303,23 @@
 
             <!-- FOOTER -->
             <footer>
-    Copyright © 2020 Hui Li.
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
 </footer>
         </div>
     </div>
 
-    <!-- TABLE OF CONTENT OVERLAY -->
-    
-        <div class="overlay-container">
-            <div class="backdrop"></div>
-            <div class="overlay-wrapper">
-                <div class="toc-content page-bounding">
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#api"><span class="toc-number">2.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sessions(options)"><span class="toc-number">2.1.</span> <span class="toc-text">sessions(options)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#options"><span class="toc-number">2.1.1.</span> <span class="toc-text">Options</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session"><span class="toc-number">2.2.</span> <span class="toc-text">req.session</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#session.regenerate(callback)"><span class="toc-number">2.2.1.</span> <span class="toc-text">Session.regenerate(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.destroy(callback)"><span class="toc-number">2.2.2.</span> <span class="toc-text">Session.destroy(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.reload(callback)"><span class="toc-number">2.2.3.</span> <span class="toc-text">Session.reload(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.save(callback)"><span class="toc-number">2.2.4.</span> <span class="toc-text">Session.save(callback)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session.touch(callback)"><span class="toc-number">2.2.5.</span> <span class="toc-text">Session.touch(callback)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.id"><span class="toc-number">2.3.</span> <span class="toc-text">req.session.id</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.session.cookie"><span class="toc-number">2.4.</span> <span class="toc-text">req.session.cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie.maxage-2"><span class="toc-number">2.4.1.</span> <span class="toc-text">Cookie.maxAge</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#req.sessionid"><span class="toc-number">2.5.</span> <span class="toc-text">req.sessionID</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#session-store-implementation"><span class="toc-number">3.</span> <span class="toc-text">Session Store Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#store.all(callback)"><span class="toc-number">3.1.</span> <span class="toc-text">store.all(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.destroy(sid%2C-callback)"><span class="toc-number">3.2.</span> <span class="toc-text">store.destroy(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.clear(callback)"><span class="toc-number">3.3.</span> <span class="toc-text">store.clear(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.length(callback)"><span class="toc-number">3.4.</span> <span class="toc-text">store.length(callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.get(sid%2C-callback)"><span class="toc-number">3.5.</span> <span class="toc-text">store.get(sid, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.set(sid%2C-session%2C-callback)"><span class="toc-number">3.6.</span> <span class="toc-text">store.set(sid, session, callback)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#store.touch(sid%2C-session%2C-callback)"><span class="toc-number">3.7.</span> <span class="toc-text">store.touch(sid, session, callback)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#compatible-session-stores"><span class="toc-number">4.</span> <span class="toc-text">Compatible Session Stores</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#example"><span class="toc-number">5.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-number">6.</span> <span class="toc-text">License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keywords"><span class="toc-number">7.</span> <span class="toc-text">Keywords</span></a></li></ol>
                 </div>
             </div>
-        </div>
-    
-    
+        
+    </div>
 
     <!-- javascript -->
     
@@ -342,5 +332,37 @@
     
 
     
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 </body>
 </html>

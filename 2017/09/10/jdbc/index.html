@@ -20,6 +20,9 @@
     
         <title>学习 JDBC - Hui Li&#39;s Blog</title>
         
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
 <link rel="stylesheet" href="/css/highlight.css">
 
         
@@ -38,38 +41,25 @@
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- BAIDU ANALYSIS -->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <!-- TENCENT ANALYSIS -->
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66570869" charset="UTF-8"></script>
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
     <!-- the reason of using two layers of wrapper is to 
         avoid the scrollbar squeeze/overlap the content -->
-    <div class="wrapper--header">
+    <div class="wrapper--header z-800">
         <div class="page-bounding">
-            <header class="header">
+            <header>
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
         <a class="nav__toggle" href="javascript:void(0);">
-            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
-            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
         </a>
         <menu class="nav__items">
             
                 <span class="nav__item">
                     <a href="/">
-                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <i class="material-icons item__icon">home</i>
                         <span class="item__text hover--underline">
                             Home
                         </span>
@@ -78,7 +68,7 @@
             
                 <span class="nav__item">
                     <a href="/tags">
-                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <i class="material-icons item__icon">local_offer</i>
                         <span class="item__text hover--underline">
                             Tags
                         </span>
@@ -87,7 +77,7 @@
             
                 <span class="nav__item">
                     <a href="/search">
-                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <i class="material-icons item__icon">search</i>
                         <span class="item__text hover--underline">
                             Search
                         </span>
@@ -96,7 +86,7 @@
             
                 <span class="nav__item">
                     <a href="/about">
-                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <i class="material-icons item__icon">person</i>
                         <span class="item__text hover--underline">
                             About
                         </span>
@@ -114,19 +104,19 @@
             <article>
     <div class="post__title">
         <h1 id="学习 JDBC">学习 JDBC</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="20px"></object>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
             <span>2017-09-10</span>
-        </div>
+        </span>
         
-            <div class="post__date">
-                <object data="/assets/icons/tag.svg" width="20px"></object>
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
                 
                     <a href="/tags/Java/" class="tag tag--small hover--underline">#Java</a>
                 
                     <a href="/tags/JDBC/" class="tag tag--small hover--underline">#JDBC</a>
                 
-            </div>
+            </span>
         
     </div>
     <div class="post__content">
@@ -284,12 +274,12 @@ connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);<br>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
-<div class="floating-section">
+<div class="floating-section z-400">
     <div class="floating-button hidden" id="toTop" onclick="window.location.href='#学习 JDBC'">
-        <img src="/assets/icons/up.svg" width="24px">
+        <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
-        <img src="/assets/icons/toc.svg" width="24px">
+        <i class="material-icons">format_list_numbered</i>
     </div>
 </div>
 
@@ -297,23 +287,23 @@ connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);<br>
 
             <!-- FOOTER -->
             <footer>
-    Copyright © 2020 Hui Li.
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
 </footer>
         </div>
     </div>
 
-    <!-- TABLE OF CONTENT OVERLAY -->
-    
-        <div class="overlay-container">
-            <div class="backdrop"></div>
-            <div class="overlay-wrapper">
-                <div class="toc-content page-bounding">
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc-%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">JDBC 编程步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E6%9F%A5%E8%AF%A2%E5%88%B0%E7%9A%84%E4%B8%80%E6%9D%A1%E6%95%B0%E6%8D%AE%E6%89%80%E5%AF%B9%E5%BA%94%E7%9A%84%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.</span> <span class="toc-text">利用反射获取查询到的一条数据所对应的对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jdbc-%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-number">3.</span> <span class="toc-text">JDBC 元数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%9A%84%E4%B8%BB%E9%94%AE%E5%80%BC"><span class="toc-number">4.</span> <span class="toc-text">获取数据库自动生成的主键值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-jdbc-%E5%A4%84%E7%90%86-blob"><span class="toc-number">5.</span> <span class="toc-text">使用 jdbc 处理 Blob</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-jdbc-%E5%A4%84%E7%90%86%E4%BA%8B%E5%8A%A1"><span class="toc-number">6.</span> <span class="toc-text">使用 JDBC 处理事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">7.</span> <span class="toc-text">数据库的隔离级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E5%A4%84%E7%90%86%E6%95%B0%E6%8D%AE"><span class="toc-number">8.</span> <span class="toc-text">批量处理数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dbcp%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">9.</span> <span class="toc-text">DBCP数据库连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c3p0-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0"><span class="toc-number">10.</span> <span class="toc-text">c3p0 数据库连接池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-dbutils"><span class="toc-number">11.</span> <span class="toc-text">使用 DBUtils</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%BA%90%E7%A0%81"><span class="toc-number">12.</span> <span class="toc-text">相关源码</span></a></li></ol>
                 </div>
             </div>
-        </div>
-    
-    
+        
+    </div>
 
     <!-- javascript -->
     
@@ -326,5 +316,37 @@ connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);<br>
     
 
     
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 </body>
 </html>

@@ -20,7 +20,8 @@ body.menu--expanded {
 }
 .nav__items {
     position: static;
-    height: auto;
+    max-height: fit-content;
+    padding: 0;
     line-height: 32px;
 }
 .nav__item {

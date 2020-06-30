@@ -20,6 +20,9 @@
     
         <title>ubuntu 配置代理上网 - Hui Li&#39;s Blog</title>
         
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
 <link rel="stylesheet" href="/css/highlight.css">
 
         
@@ -38,38 +41,25 @@
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- BAIDU ANALYSIS -->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <!-- TENCENT ANALYSIS -->
-    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=66570869" charset="UTF-8"></script>
-
 <meta name="generator" content="Hexo 4.2.1"></head>
 <body>
     <!-- the reason of using two layers of wrapper is to 
         avoid the scrollbar squeeze/overlap the content -->
-    <div class="wrapper--header">
+    <div class="wrapper--header z-800">
         <div class="page-bounding">
-            <header class="header">
+            <header>
     <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
         <a class="nav__toggle" href="javascript:void(0);">
-            <img class="icon__menu" src="/assets/icons/menu.svg" alt="nav-menu" width="32px">
-            <img class="icon__close" src="/assets/icons/close.svg" alt="nav-menu" width="32px">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
         </a>
         <menu class="nav__items">
             
                 <span class="nav__item">
                     <a href="/">
-                        <img class="item__icon" src="/assets/icons/home.svg" alt="Home ">
+                        <i class="material-icons item__icon">home</i>
                         <span class="item__text hover--underline">
                             Home
                         </span>
@@ -78,7 +68,7 @@
             
                 <span class="nav__item">
                     <a href="/tags">
-                        <img class="item__icon" src="/assets/icons/tag.svg" alt="Tags ">
+                        <i class="material-icons item__icon">local_offer</i>
                         <span class="item__text hover--underline">
                             Tags
                         </span>
@@ -87,7 +77,7 @@
             
                 <span class="nav__item">
                     <a href="/search">
-                        <img class="item__icon" src="/assets/icons/search.svg" alt="Search ">
+                        <i class="material-icons item__icon">search</i>
                         <span class="item__text hover--underline">
                             Search
                         </span>
@@ -96,7 +86,7 @@
             
                 <span class="nav__item">
                     <a href="/about">
-                        <img class="item__icon" src="/assets/icons/person.svg" alt="About ">
+                        <i class="material-icons item__icon">person</i>
                         <span class="item__text hover--underline">
                             About
                         </span>
@@ -114,19 +104,19 @@
             <article>
     <div class="post__title">
         <h1 id="ubuntu 配置代理上网">ubuntu 配置代理上网</h1>
-        <div class="post__date">
-            <object data="/assets/icons/calendar.svg" width="20px"></object>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
             <span>2017-07-29</span>
-        </div>
+        </span>
         
-            <div class="post__date">
-                <object data="/assets/icons/tag.svg" width="20px"></object>
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
                 
                     <a href="/tags/ubuntu/" class="tag tag--small hover--underline">#ubuntu</a>
                 
                     <a href="/tags/proxy/" class="tag tag--small hover--underline">#proxy</a>
                 
-            </div>
+            </span>
         
     </div>
     <div class="post__content">
@@ -163,12 +153,12 @@
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
-<div class="floating-section">
+<div class="floating-section z-400">
     <div class="floating-button hidden" id="toTop" onclick="window.location.href='#ubuntu 配置代理上网'">
-        <img src="/assets/icons/up.svg" width="24px">
+        <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
-        <img src="/assets/icons/toc.svg" width="24px">
+        <i class="material-icons">format_list_numbered</i>
     </div>
 </div>
 
@@ -176,23 +166,23 @@
 
             <!-- FOOTER -->
             <footer>
-    Copyright © 2020 Hui Li.
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
 </footer>
         </div>
     </div>
 
-    <!-- TABLE OF CONTENT OVERLAY -->
-    
-        <div class="overlay-container">
-            <div class="backdrop"></div>
-            <div class="overlay-wrapper">
-                <div class="toc-content page-bounding">
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-shadowsocks"><span class="toc-number">1.</span> <span class="toc-text">安装 Shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">浏览器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#firefox-%E9%85%8D%E7%BD%AE-foxyproxy"><span class="toc-number">2.1.</span> <span class="toc-text">Firefox 配置 Foxyproxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chrome-%E9%85%8D%E7%BD%AE-switchyomega"><span class="toc-number">2.2.</span> <span class="toc-text">Chrome 配置 SwitchyOmega</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
                 </div>
             </div>
-        </div>
-    
-    
+        
+    </div>
 
     <!-- javascript -->
     
@@ -205,5 +195,37 @@
     
 
     
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 </body>
 </html>

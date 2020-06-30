@@ -74,11 +74,21 @@ blog.ajax = function (params) {
 
 
 
-blog.addLoadEvent(function () {
-  document
-    .querySelector("a.nav__toggle")
-    .addEventListener("click", function (e) {
-      document.querySelector("body").classList.toggle("menu--expanded");
-    });
-});
 
+blog.addLoadEvent(function () {
+  document.querySelector("a.nav__toggle").addEventListener("click", function (e) {
+    document.querySelector("header").classList.toggle("menu--expanded");
+    document.querySelector("div.overlay-container").classList.toggle("show");
+    document.querySelector("div.overlay-container").classList.toggle("z-600");
+    document.querySelector("div.overlay-container").classList.toggle("show-backdrop");
+    document.querySelector('div.backdrop').addEventListener('click', closeMenu);
+  });
+
+  // close menu and remove backdrop click listener
+  var closeMenu = function (ev) {
+    document.querySelector("header").classList.remove("menu--expanded");
+    document.querySelector("div.overlay-container").classList.remove("show", "z-600", "show-backdrop");
+  
+    ev.target.removeEventListener('click', closeMenu);
+  }
+});
