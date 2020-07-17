@@ -49,6 +49,9 @@ h1, h1::before { font-size: 24px; }
     border-left: 4px solid black;
     background-color: #EEE;
 }
+blockquote > p + p {
+    margin-top: 16px;
+}
 
 p + blockquote {
     margin-top: 8px;
@@ -84,6 +87,10 @@ p + blockquote {
     border-bottom: 2px solid black;
 }
 
+section.footnotes::before {
+    content: 'Reference';
+    font-weight: bold;
+}
 .post__content .footnotes * { font-size: 14px; }
 .post__content sub, sup { font-size: 14px; }
 
@@ -113,11 +120,16 @@ p code {
 }
 
 .highlight {
-    background: #23241f;
+    background: #1E1E1E;
     border-radius: 4px;
     position: relative;
     overflow-x: scroll;
     z-index: 200;
+}
+
+/* default when no coloring */
+.highlight * {
+    color: white;
 }
 
 .highlight .gutter {
