@@ -36,7 +36,7 @@ h1, h1::before { font-size: 24px; }
 
 .post__content > p { line-height: 26px; }
 .post__content ul { list-style-type: disc; }
-.post__content ol { list-style: decimal; }
+.post__content ol { list-style: lower-alpha; }
 
 .post__content iframe {
     max-width: 100%;
