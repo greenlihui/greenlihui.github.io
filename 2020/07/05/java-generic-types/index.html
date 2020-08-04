@@ -285,22 +285,62 @@
 
 <!-- MathJax Support -->
 
+    <!--
+        This is MathJax@2.7, note that the config should be set to 
+        TeX-AMS-MML_HTMLorMML which is not supported in version 3 or above.
+
+        There are three script tags below, the first one is config for MathJax, and the second one
+        is the jsdelivr cdn for MathJax. The commented tag at the bottom is a script of MathJax@2.7.7 
+        loal backup which will be used when the cdn retires.
+
+        To enable the local MathJax, download release @2.7.7 at https://github.com/mathjax/MathJax/releases
+        and extract to source/js/MathJax(after renaming), and the uncomment the tag.
+
+        Note that the config variable in the src shoule be set to TeX-AMS-MML_HTMLorMML which is not
+        supported in MathJax version 3 or above.
+
+        Read MathJax@2.7 docs at https://docs.mathjax.org/en/v2.7-latest/index.html
+        Thanks https://github.com/hexojs/hexo-renderer-markdown-it/issues/36 for solving the problem
+    -->
     <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-            tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-            TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-            messageStyle: "none"
-        }); 
-    </script>
-    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            "HTML-CSS": {
+              "preferredFont": "TeX",
+              "availableFonts": ["STIX", "TeX"],
+              "linebreaks": { "automatic": true },
+              "EqnChunk": MathJax.Hub.Browser.isMobile ? 10 : 50
+            },
+            "tex2jax": {
+              "inlineMath": [
+                ["$", "$"],
+                ["\\(", "\\)"]
+              ],
+              "processEscapes": true,
+              "ignoreClass": "tex2jax_ignore|dno",
+              "skipTags": ["script", "noscript", "style", "textarea", "pre", "code"]
+            },
+            "TeX": {
+              "noUndefined": {
+                "attributes": {
+                  "mathcolor": "red",
+                  "mathbackground": "#FFEEEE",
+                  "mathsize": "90%"
+                }
+              },
+              "Macros": { "href": "{}" }
+            },
+            "messageStyle": "none"
+          }
+          );
         MathJax.Hub.Queue(function() {
             var all = MathJax.Hub.getAllJax(), i;
-            for(i=0; i < all.length; i += 1) {
+            for(i = 0; i < all.length; i += 1) {
                 all[i].SourceElement().parentNode.className += ' has-jax';
             }
         });
     </script>
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- <script src="/js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 
             <!-- FOOTER -->
             <footer>

@@ -125,6 +125,7 @@ p code {
     position: relative;
     overflow-x: scroll;
     z-index: 200;
+    max-height: 304px;
 }
 
 /* default when no coloring */

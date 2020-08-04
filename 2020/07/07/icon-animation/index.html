@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>图标动画 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="图标动画">图标动画</h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2020-07-07</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/CSS/" class="tag tag--small hover--underline">#CSS</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <p>在给我的博客主题做移动端适配的时候，菜单会随着屏幕的缩小而隐藏，右上角的按钮会随着菜单的打开和关闭展示不同的图标。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200802175041.gif" alt="博客图标"></p>
+<p>但是突兀的切换让我心生不爽，于是开启了图标切换动画的探寻之路。经历一番搜寻，总结出下面几种图标变换的实现方式。</p>
+<h2 id="%E5%88%87%E6%8D%A2%E5%8A%A8%E7%94%BB" id="切换动画">切换动画</h2>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200802180139.gif" alt="切换动画"></p>
+<p>简单的切换动画并不涉及什么复杂的图标变化，原理就是事先准备好两个图标，把他们重叠在同一个位置，每次只显示其中一个，切换的时候通过调整 <code>opacity</code> 和 <code>“size”</code> 来达到一种动态切换的效果。下面看慢放是怎么回事。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200802175611.gif" alt="慢放切换动画"></p>
+<p>弄清楚原理之后直接开始码，下面是简单的 HTML，两个 icon 和一个 container 足矣。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./assets/menu.svg"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-menu"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./assets/close.svg"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close"</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>给 <code>container</code> 添加点击事件，点击切换添加 <code>close</code> 类。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.container'</span>).addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;<br>        <span class="hljs-keyword">this</span>.classList.toggle(<span class="hljs-string">'close'</span>);<br>    &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>接下来就是 CSS，container 下默认显示菜单图标，添加 close 类后隐藏菜单图标并显示关闭图标。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">cursor</span>: pointer;<br>&#125;<br><br><span class="hljs-selector-class">.container</span> &gt; <span class="hljs-selector-class">.icon</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">72px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">72px</span>;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>);<br>    <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">3s</span> ease-in-out;<br>&#125;<br><br><span class="hljs-selector-class">.container</span> &gt; <span class="hljs-selector-class">.icon-menu</span>,<br><span class="hljs-selector-class">.container</span><span class="hljs-selector-class">.close</span> &gt; <span class="hljs-selector-class">.icon-close</span> &#123; <br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">1</span>);<br>&#125;<br><span class="hljs-selector-class">.container</span> &gt; <span class="hljs-selector-class">.icon-close</span>,<br><span class="hljs-selector-class">.container</span><span class="hljs-selector-class">.close</span> &gt; <span class="hljs-selector-class">.icon-menu</span> &#123; <br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>这里有几点值得一提</p>
+<ul>
+<li>因为两个图标要重叠，所以使用绝对定位和和 transform 的方式居中</li>
+<li>图标的 transform 属性中 translate 和 scale 的顺序不能改变，如果 scale 在前就会出现下面的问题</li>
+</ul>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200802203716.gif" alt="切换异常"></p>
+<ul>
+<li>具体切换效果可以自己定义，例如把 scale 换成 rotate(-180deg) 和 rotate(180deg) 就是下面的效果</li>
+</ul>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804102512.gif" alt="旋转切换"></p>
+<h3 id="%E4%B8%80%E7%82%B9%E5%B0%8F%E6%94%B9%E8%BF%9B" id="一点小改进">一点小改进</h3>
+<p>例子中图标切换只有两个状态：显示菜单和显示关闭，单独用 JavaScript 添加点击事件动态添加 CSS 类感觉有点没必要。可以考虑通过 <code>checkbox</code> 只用 HTML 和 CSS 实现相同的效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"label"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggle"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./assets/menu.svg"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-menu"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./assets/close.svg"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-close"</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>实现的原理是将两个图标放置在 label 中，再把 <code>label</code> 和 <code>checkbox</code> 绑定，然后通过 CSS 隐藏 <code>checkbox</code>，这样就可以通过 <code>checkbox:checked</code> 来判断切换状态而不用单独注册点击事件，相关的开关开合逻辑可以注册放在 <code>checkbox</code> 的 <code>change</code> 事件中，代码是不是有点 “前后端分离” 的感觉了​😄。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;<br>&#125;<br><span class="hljs-selector-class">.checkbox</span> &#123;<br>    <span class="hljs-attribute">display</span>: none;<br>&#125;<br><span class="hljs-selector-class">.label</span> &#123;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">position</span>: relative;<br>    <span class="hljs-attribute">cursor</span>: pointer;<br>&#125;<br><span class="hljs-selector-class">.icon</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">72px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">72px</span>;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;<br>&#125;<br><span class="hljs-selector-class">.label</span> &gt; <span class="hljs-selector-class">.icon-close</span>,<br><span class="hljs-selector-id">#toggle</span><span class="hljs-selector-pseudo">:checked</span> ~ <span class="hljs-selector-tag">label</span> &gt; <span class="hljs-selector-class">.icon-menu</span> &#123;<br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">3s</span>;<br>&#125;<br><span class="hljs-selector-class">.label</span> &gt; <span class="hljs-selector-class">.icon-menu</span>,<br><span class="hljs-selector-id">#toggle</span><span class="hljs-selector-pseudo">:checked</span> ~ <span class="hljs-selector-tag">label</span> &gt; <span class="hljs-selector-class">.icon-close</span> &#123;<br>    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">1</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(-<span class="hljs-number">50%</span>, -<span class="hljs-number">50%</span>) <span class="hljs-built_in">scale</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-attribute">transition</span>: all .<span class="hljs-number">3s</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="%E6%A8%A1%E6%8B%9F%E5%8A%A8%E7%94%BB" id="模拟动画">模拟动画</h2>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804105014.gif" alt="模拟动画"></p>
+<p>这个模拟动画的例子是不是感觉和上面的切换动画有点像，其实并不太一样。切换动画是通过 opacity 的交替加上一些效果（如旋转，缩放等）来实现图标切换。而模拟动画，直接来看慢放。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804105438.gif" alt="慢放模拟动画"></p>
+<p>可以看到，模拟动画（morphing transition）是从图标的细节实现的的。要做一个模拟动画，一般来讲将变换前的图标和变换后的图标分成对应的部分，设计好图标的各个部分是如何经过一系列的变化最后构成新图标后就可以开始写了。不像切换动画直接拿图标来用，这里是要手动写图标的。所以对于一些过于复杂的图标，这种方法不是适用。接下来看代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-label"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggle"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-menu"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>接着用 checkbox 写，在 label 中添加 i 标签，我们打算用 ::before 和 ::after 伪元素来构成默认菜单的三条杠。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs plain">.container &#123;<br>    width: 96px;<br>    height: 96px;<br>    <br>    border-radius: 4px;<br>    overflow: hidden;<br>&#125;<br>.checkbox &#123;<br>    display: none;<br>&#125;<br>.label &#123;<br>    width: 96px;<br>    height: 96px;<br>    display: flex;<br>    justify-content: center;<br>    align-items: center;<br>    cursor: pointer;<br>&#125;<br>.icon-menu,<br>.icon-menu::before,<br>.icon-menu::after &#123;<br>    width: 72px;<br>    height: 12px;<br>    background-color: black;<br>    display: block;<br>    transition: all 3s;<br>&#125;<br>.icon-menu &#123;<br>    position: relative;<br>&#125;<br>.icon-menu::before,<br>.icon-menu::after &#123;<br>    position: absolute;<br>    content: &#39;&#39;;<br>&#125;<br>.icon-menu::before &#123;<br>    top: -24px;<br>&#125;<br>.icon-menu::after &#123;<br>    top: 24px;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>到这里为止，一个 menu 图标就用 HTML 和 CSS 的方式写出来了，接下来加动画。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-id">#toggle</span><span class="hljs-selector-pseudo">:checked</span> ~ <span class="hljs-selector-tag">label</span> <span class="hljs-selector-class">.icon-menu</span> &#123;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">225deg</span>);<br>&#125;<br><span class="hljs-selector-id">#toggle</span><span class="hljs-selector-pseudo">:checked</span> ~ <span class="hljs-selector-tag">label</span> <span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::before</span> &#123;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(<span class="hljs-number">90deg</span>);<br>&#125;<br><span class="hljs-selector-id">#toggle</span><span class="hljs-selector-pseudo">:checked</span> ~ <span class="hljs-selector-tag">label</span> <span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>出乎意料的只有几行，因为我们要写的变换比较简单，第一条杠顺时针 45 度，第二三条杠逆时针 45 度旋转构成一个 X 图标，然后调整旋转的圈数让动画看起来复杂一些，最后选择的是 225 和 90，看起来还比较舒服。</p>
+<p>模拟动画的实现方式也有很多，这里我选择用伪元素求简单反而导致能实现的效果收到了限制（想实现中间那条杠慢慢变短，但是因为伪元素的绝对定位没办法缩放）。用三个 span 标签的可能会更好，下面是一个别人写的 <a href="https://codepen.io/albebonv/full/gIlrw" target="_blank" rel="noopener">Material Morphing Icons</a>，然后在推荐一个比较有名的库 <a href="https://github.com/jonsuh/hamburgers" target="_blank" rel="noopener">hamburgers</a>。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804111851.gif" alt=""></p>
+<h2 id="svg-%E5%8A%A8%E7%94%BB" id="SVG-动画">SVG 动画</h2>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804112649.gif" alt="SVG动画"></p>
+<p>说到图标动画应该是绕不开 SVG 的，原理是和模拟动画类似，但是 SVG 更加灵活容易操作，而且也可以应付复杂的图标和动画。一样慢动作回放看效果。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804113048.gif" alt="慢放SVG"></p>
+<p>中间缩短消失，然后上下旋转组成 X。这里我用的 snapsvg 写的。首先在 HTML 文件中插入 snap.js。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./snap.svg-min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>开始写图标</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> container = Snap(<span class="hljs-number">96</span>, <span class="hljs-number">96</span>);<br><span class="hljs-keyword">var</span> rectTop = container.rect(<span class="hljs-number">12</span>, <span class="hljs-number">20</span>, <span class="hljs-number">72</span>, <span class="hljs-number">10</span>);<br><span class="hljs-keyword">var</span> rectMed = container.rect(<span class="hljs-number">12</span>, <span class="hljs-number">42</span>, <span class="hljs-number">72</span>, <span class="hljs-number">10</span>);<br><span class="hljs-keyword">var</span> rectBot = container.rect(<span class="hljs-number">12</span>, <span class="hljs-number">64</span>, <span class="hljs-number">72</span>, <span class="hljs-number">10</span>);<br></code></pre></td></tr></table></figure>
+<p>然后是动画。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> closeState = <span class="hljs-literal">false</span>;<br>container.click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (closeState) &#123; <span class="hljs-comment">// 默认 menu</span><br>        rectTop.animate(&#123;<br>            transform: <span class="hljs-literal">null</span><br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>        rectMed.animate(&#123;<br>            transform: <span class="hljs-literal">null</span><br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>        rectBot.animate(&#123;<br>            transform: <span class="hljs-literal">null</span><br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        rectTop.animate(&#123; <span class="hljs-comment">// 第一条杠位移到中间同时旋转45度（相对自身中心点旋转）</span><br>            transform: <span class="hljs-string">'t0, 22 r45 '</span> + rectTop.getBBox().cx +<br>            <span class="hljs-string">' '</span> + rectTop.getBBox(<span class="hljs-number">0</span>).cy<br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>        rectMed.animate(&#123; <span class="hljs-comment">// 中间的杠长度缩小消失</span><br>            transform: <span class="hljs-string">'s0, 1'</span><br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>        rectBot.animate(&#123; <span class="hljs-comment">// 第三条杠位移到中间同时旋转-45度（相对自身中心点旋转）</span><br>            transform: <span class="hljs-string">'t0, -22 r-45 '</span> + rectBot.getBBox().cx +<br>            <span class="hljs-string">' '</span> + rectBot.getBBox(<span class="hljs-number">0</span>).cy<br>        &#125;, <span class="hljs-number">300</span>, mina.easeinout);<br>    &#125;<br>    closeState = !closeState; <span class="hljs-comment">// 更新 closeState</span><br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>snapsvg 只是粗略研究了一会文档就开始写了，这里的动画实现应该有更简便的方法，有时间再另外探究。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#图标动画'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    Copyright © 2020 Hui Li. Powered By <a class="hover--underline" style="color: #0D83CD;" href="hexo.io">Hexo</a>.
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%8A%A8%E7%94%BB"><span class="toc-number">1.</span> <span class="toc-text">切换动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%82%B9%E5%B0%8F%E6%94%B9%E8%BF%9B"><span class="toc-number">1.1.</span> <span class="toc-text">一点小改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%8B%9F%E5%8A%A8%E7%94%BB"><span class="toc-number">2.</span> <span class="toc-text">模拟动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#svg-%E5%8A%A8%E7%94%BB"><span class="toc-number">3.</span> <span class="toc-text">SVG 动画</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>
