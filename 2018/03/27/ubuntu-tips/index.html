@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>Ubuntu16.04 个性化 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="Ubuntu16.04 个性化">Ubuntu16.04 个性化</h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2018-03-27</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/tips/" class="tag tag--small hover--underline">#tips</a>
+                
+                    <a href="/tags/Ubuntu/" class="tag tag--small hover--underline">#Ubuntu</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <div class="info">
+<p>Last Updated on 2018/04/09</p>
+</div>
+<p>这是安装完 ubuntu16.04 后，自己的一些个性化，还有一些我个人需要安装的软件。因为是写给自己用的，所以有些地方没有写那么仔细。</p>
+<h4 id="%E5%88%A0%E9%99%A4%E8%87%AA%E5%B8%A6%E8%BD%AF%E4%BB%B6" id="删除自带软件">删除自带软件</h4>
+<ol>
+<li>删除 libreoffice<br>
+<code>sudo apt remove libreoffice?</code></li>
+<li>删除 amazon 链接<br>
+<code>sudo apt remove unity-webapps-common</code></li>
+<li>删除其他自带软件<br>
+<code>sudo apt-get remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install onboard deja-dup</code><a id="more"></a>
+</li>
+</ol>
+<h4 id="%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85%E4%B8%80%E4%BA%9B%E7%A8%8B%E5%BA%8F" id="命令行安装一些程序">命令行安装一些程序</h4>
+<ul>
+<li>安装 vim<br>
+<code>sudo apt install vim</code></li>
+<li>安装 git<br>
+<code>sudo apt install git</code>，安装完记得配置</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sh">git config --global user.name <span class="hljs-string">"yourname"</span><br>git config --global user.email <span class="hljs-string">"youremail@example.com"</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li>安装压缩和解压
+<ol>
+<li>压缩功能<br>
+安装 <code>sudo apt-get install rar</code><br>
+卸载 <code>sudo apt-get remove rar</code></li>
+<li>解压功能<br>
+安装 <code>sudo apt-get install unrar</code><br>
+卸载 <code>sudo apt-get remove unrar</code></li>
+<li>使用压缩和解压缩.rar<br>
+解压：<code>rar x FileName.rar</code><br>
+压缩：<code>rar a FileName.rar DirName</code></li>
+</ol>
+</li>
+</ul>
+<h4 id="%E5%AE%89%E8%A3%85-zsh-%E5%92%8C-oh-my-zsh" id="安装-zsh-和-oh-my-zsh">安装 zsh 和 oh-my-zsh</h4>
+<ul>
+<li>安装 zsh<br>
+<code>sudo apt install zsh</code></li>
+<li>下载 oh-my-zsh 来配置 zsh<br>
+<code>wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh</code><br>
+或者<br>
+<code>sh -c &quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;</code></li>
+<li>设置 zsh 为默认 shell<br>
+<code>chsh -s /bin/zsh</code></li>
+</ul>
+<h4 id="%E5%AE%89%E8%A3%85%E6%89%81%E5%B9%B3%E5%8C%96%E4%B8%BB%E9%A2%98" id="安装扁平化主题">安装扁平化主题</h4>
+<ul>
+<li>安装扁平化主题</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:noobslab&#x2F;themes<br>sudo apt-get update<br>sudo apt-get install flatabulous-theme<br></code></pre></td></tr></table></figure>
+<ul>
+<li>安装配套图标</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:noobslab&#x2F;icons<br>sudo apt-get update<br>sudo apt-get install ultra-flat-icons<br></code></pre></td></tr></table></figure>
+<ul>
+<li>使用 unity-tweak-tool 修改主题和图标</li>
+</ul>
+<h4 id="%E5%AE%89%E8%A3%85%E9%A1%B6%E6%A0%8F%E7%BD%91%E9%80%9F%E6%98%BE%E7%A4%BA%E6%8F%92%E4%BB%B6" id="安装顶栏网速显示插件">安装顶栏网速显示插件</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:fossfreedom&#x2F;indicator-sysmonitor  <br>sudo apt-get update<br>sudo apt-get install indicator-sysmonitor<br>indicator-sysmonitor &amp;<br>然后Ctrl+C就可以实现后台运行indicator-sysmonitor<br></code></pre></td></tr></table></figure>
+<h4 id="%E5%AE%89%E8%A3%85-syspeek" id="安装-syspeek">安装 syspeek</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:nilarimogard&#x2F;webupd8    <br>sudo apt-get update    <br>sudo apt-get install syspeek<br></code></pre></td></tr></table></figure>
+<h4 id="%E5%AE%89%E8%A3%85-flash-%E6%8F%92%E4%BB%B6" id="安装-Flash-插件">安装 Flash 插件</h4>
+<p>进入系统设置 --&gt; 软件与更新 --&gt; 其他软件 --&gt; 勾上Canonical合作伙伴 --&gt; 确定<br>
+进入终端：<code>apt-get install adobe-flashplugin</code></p>
+<h4 id="%E5%AE%89%E8%A3%85%E4%B8%BA%E7%9F%A5%E7%AC%94%E8%AE%B0" id="安装为知笔记">安装为知笔记</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:wiznote-team<br>sudo apt-get update<br>sudo apt-get install wiznote<br></code></pre></td></tr></table></figure>
+<h4 id="%E5%AE%89%E8%A3%85remarkable-markdown%E7%BC%96%E8%BE%91%E5%99%A8" id="安装remarkable-markdown编辑器">安装remarkable markdown编辑器</h4>
+<p>下载安装包<br>
+http://remarkableapp.github.io/linux/download.html</p>
+<ul>
+<li><code>dpkg -i remarkable_1.62_all.deb</code></li>
+<li><code>sudo apt-get install -f</code><br>
+如果报警说少了 gtkspellcheck：<br>
+<code>sudo apt-get install python3-gtkspellcheck</code></li>
+</ul>
+<h4 id="%E5%AE%89%E8%A3%85-sublime-text-3" id="安装-Sublime-Text-3">安装 Sublime Text 3</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:webupd8team&#x2F;sublime-text-3  <br>sudo apt-get update  <br>sudo apt-get install sublime-text-installer<br></code></pre></td></tr></table></figure>
+<p>装完了以后可以激活它，在Help里输入license key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs plain">—– BEGIN LICENSE —–<br>Michael Barnes<br>Single User License<br>EA7E-821385<br>8A353C41 872A0D5C DF9B2950 AFF6F667<br>C458EA6D 8EA3C286 98D1D650 131A97AB<br>AA919AEC EF20E143 B361B1E7 4C8B7F04<br>B085E65E 2F5F5360 8489D422 FB8FC1AA<br>93F6323C FD7F7544 3F39C318 D95E6480<br>FCCC7561 8A4A1741 68FA4223 ADCEDE07<br>200C25BE DBBC4855 C4CFB774 C5EC138C<br>0FEC1CEF D9DCECEC D3A5DAD1 01316C36<br>—— END LICENSE ——<br></code></pre></td></tr></table></figure>
+<p>control+shift+p安装package control</p>
+<h4 id="%E5%AE%89%E8%A3%85-atom-%E7%BC%96%E8%BE%91%E5%99%A8" id="安装-Atom-编辑器">安装 Atom 编辑器</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:webupd8team&#x2F;atom  <br>sudo apt-get update  <br>sudo apt-get install atom<br></code></pre></td></tr></table></figure>
+<h4 id="%E5%85%B3%E4%BA%8E%E6%8F%90%E7%A4%BA-%E2%80%9C%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E6%9C%89local%E5%9F%9F%E2%80%9D" id="关于提示-“当前网络有local域”">关于提示 “当前网络有local域”</h4>
+<p>修改/etc/default/avahi-daemon 中参数<br>
+AVAHI_DAEMON_DETECT_LOCAL=0</p>
+<h4 id="%E2%80%9C%E6%AD%A4%E8%BD%AF%E4%BB%B6%E6%9D%A5%E8%87%AA%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%94%E5%8F%AF%E8%83%BD%E5%8C%85%E5%90%AB%E9%9D%9E%E8%87%AA%E7%94%B1%E7%BB%84%E4%BB%B6%E2%80%9D-%E7%9A%84%E9%97%AE%E9%A2%98" id="“此软件来自第三方且可能包含非自由组件”-的问题">“此软件来自第三方且可能包含非自由组件” 的问题</h4>
+<p>Ubuntu16.04 LTS安装第三方软件 <code>*.deb</code> 时， 提示此软件来自第三方且可能包含非自由组件的在Ubuntu软件中心安装GDebi，然后右键单击 <code>*.deb</code> 安装包，打开方式选择”GDebi包安装程序”，最后在机器上 sudo apt install <code>*.deb</code> 就ok</p>
+<h4 id="%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E5%AF%B9%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2%E7%BC%A9%E6%94%BE" id="火狐浏览器设置对所有页面缩放">火狐浏览器设置对所有页面缩放</h4>
+<ol>
+<li>地址栏输入 about:config</li>
+<li>找 layout.css.devPixelsPerPs</li>
+<li>修改数值 1.25，意思就是 125%</li>
+</ol>
+<h4 id="%E8%AE%BE%E7%BD%AE%E5%A4%96%E7%BD%AE%E7%A3%81%E7%9B%98%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD" id="设置外置磁盘开机自动挂载">设置外置磁盘开机自动挂载</h4>
+<ol>
+<li><code>sudo blkid</code> 查看磁盘分区 UUID</li>
+<li><code>vim /etc/fstab</code> i 进入编辑模式</li>
+<li>最后一行添加 <code>UUID=xxxxx  挂载点 ext4 auto 0 0</code></li>
+</ol>
+<h4 id="%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E5%99%A8%E4%BD%8D%E7%BD%AE" id="设置启动器位置">设置启动器位置</h4>
+<p>启动器位于下方<br>
+<code>gsettings set com.canonical.Unity.Launcher launcher-position Bottom</code><br>
+启动器位于左侧<br>
+<code>gsettings set com.canonical.Unity.Launcher launcher-position Left</code></p>
+<h4 id="%E7%A6%81%E7%94%A8%E5%AE%A2%E4%BA%BA%E4%BC%9A%E8%AF%9D" id="禁用客人会话">禁用客人会话</h4>
+<p><code>sudo gedit /etc/lightdm/lightdm.conf</code><br>
+添加如下代码，然后保持重启电脑即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">[SeatDefaults]<br>greeter-session&#x3D;unity-greeter<br>allow-guest&#x3D;false<br></code></pre></td></tr></table></figure>
+<h4 id="ibus-%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95" id="ibus-拼音输入法">ibus 拼音输入法</h4>
+<p>安装：<code>sudo apt-get install ibus-pinyin</code><br>
+无法正常输入：<code>ibus-daemon -drx</code></p>
+<h4 id="%E5%AE%89%E8%A3%85-wps-%E5%90%8E%E5%AD%97%E4%BD%93%E7%BC%BA%E5%A4%B1" id="安装-WPS-后字体缺失">安装 WPS 后字体缺失</h4>
+<ol>
+<li>下载：<code>wps_symbol_fonts.zip</code></li>
+<li>创建目录：<code>sudo mkdir /usr/share/fonts/wps-office</code></li>
+<li>将下载的字体复制到创建的目录：<code>sudo cp -r wps_symbol_fonts.zip /usr/share/fonts/wps-office</code></li>
+<li>解压字体包：<code>sudo unzip wps_symbol_fonts.zip</code></li>
+<li>解压后删除字体包：<code>sudo rm -r wps_symbol_fonts.zip</code><br>
+ps:安装 wps 去<a href="www.wps.com">英文官网</a>下载（更新更快）</li>
+</ol>
+<h4 id="as-%E6%8A%A5%E9%94%99-unable-to-sun-mksdcard" id="AS-报错-unable-to-sun-mksdcard">AS 报错 unable to sun mksdcard</h4>
+<p>Android Studio 报错 unable to run mksdcard sdk tool<br>
+打开终端输入<code>sudo apt-get install lib32stdc++6</code></p>
+<h4 id="%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%8C%85%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEjdk" id="离线安装包安装和配置JDK">离线安装包安装和配置JDK</h4>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo su<br>mkdir &#x2F;usr&#x2F;java<br>cp &#x2F;home&#x2F;gray&#x2F;Downloads&#x2F;xxx.tar.gz &#x2F;usr&#x2F;java<br>tar -zxvf xxx.tar.gz<br>vim &#x2F;etc&#x2F;profile<br>i (editing mode)<br>&#x2F;&#x2F;末尾添加<br>export JAVA_HOME&#x3D;&#x2F;usr&#x2F;java&#x2F;jdk1.x.xx<br>export PATH&#x3D;$JAVA_HOME&#x2F;bin:$PATH<br>esc &#x2F;&#x2F;退出编辑模式<br>:wq! &#x2F;&#x2F;保存并退出<br></code></pre></td></tr></table></figure>
+<h4 id="%E5%AE%89%E8%A3%85-tomcat" id="安装-tomcat">安装 tomcat</h4>
+<ol>
+<li>下载tar.gz安装包，解压到想安装的位置开始配置</li>
+<li><code>vim /etc/profile 添加</code></li>
+<li><code>export CATALINA_HOME=解压的位置</code></li>
+<li>进入tomcat bin目录</li>
+<li><code>vim catalina.sh</code></li>
+<li>找到这行# OS specific support. $var <em>must</em> be set to either true or false.</li>
+<li>在这行下面新增如下配置语句<br>
+<code>CATALINA_HOME=...</code><br>
+<code>JAVA_HOME=...</code></li>
+<li>安装tomcat服务</li>
+<li><code>cp catalina.sh /etc/init.d/tomcat</code></li>
+<li>启动和关闭tomcat</li>
+<li><code>service tomcat start（stop）</code></li>
+</ol>
+<h4 id="%E5%AE%89%E8%A3%85-mysql" id="安装-MySql">安装 MySql</h4>
+<ol>
+<li><code>sudo apt-get install mysql-server mysql-client</code></li>
+<li>Eclipse添加tomcat时显示 tomcat unknown version of tomcat was specified</li>
+<li>因为配置tomcat需要访问tomcat目录下的lib库。<br>
+通过如下命令：<br>
+<code>chmod -R 777 apache-tomcat-xxx/lib</code><br>
+Eclipse无法新建服务器时需要获得tomcat目录执行权限<br>
+<code>sudo chmod 777 tomcatdir -R</code></li>
+</ol>
+<h4 id="%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%88intellij-idea%E4%B8%BA%E4%BE%8B%EF%BC%89" id="添加快捷方式（Intellij-IDEA为例）">添加快捷方式（Intellij-IDEA为例）</h4>
+<ul>
+<li><code>sudo vim /usr/share/applications/intellij-idea.desktop</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs plain">[Desktop Entry]<br>Name&#x3D;IntelliJ IDEA<br>Exec&#x3D;&#x2F;home&#x2F;xring&#x2F;Tools&#x2F;idea-IU-141.1532.4&#x2F;bin&#x2F;idea.sh<br>Comment&#x3D;IntelliJ IDEA<br>Icon&#x3D;&#x2F;home&#x2F;xring&#x2F;Tools&#x2F;idea-IU-141.1532.4&#x2F;bin&#x2F;idea.png<br>Type&#x3D;Application<br>Terminal&#x3D;false<br>Encoding&#x3D;UTF-8<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>sudo chmod +x /usr/share/applications/intellij-idea.desktop</code></li>
+</ul>
+<h4 id="eclipse-%E5%88%9B%E5%BB%BA-avd-%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99-failed-to-create-the-sd-card" id="eclipse-创建-AVD-模拟器报错-failed-to-create-the-sd-card">eclipse 创建 AVD 模拟器报错 failed to create the sd card</h4>
+<p>两种情况：</p>
+<ol>
+<li>设置android sdk下的tools权限为可执行权限。<code>Chmod +x tools目录</code></li>
+<li>没有安装ia32-libs<br>
+1)，在用的架构:<br>
+<code>dpkg --print-architecture</code><br>
+输出当前的使用的架构，比如amd64<br>
+2)，添加架构<br>
+<code>dpkg --add-architecture i386</code><br>
+添加i386架构，然后刷新下源列表，当然，删除就是remove<br>
+<code>apt-get update</code><br>
+这时就已经包含i386的软件列表<br>
+3)，安装i386软件<br>
+<code>apt-get install iceweasel:i386</code></li>
+</ol>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#Ubuntu16.04 个性化'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    <span>Copyright © 2020 Hui Li.</span>
+    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E8%87%AA%E5%B8%A6%E8%BD%AF%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">删除自带软件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%AE%89%E8%A3%85%E4%B8%80%E4%BA%9B%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.</span> <span class="toc-text">命令行安装一些程序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-zsh-%E5%92%8C-oh-my-zsh"><span class="toc-number">3.</span> <span class="toc-text">安装 zsh 和 oh-my-zsh</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%89%81%E5%B9%B3%E5%8C%96%E4%B8%BB%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">安装扁平化主题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%A1%B6%E6%A0%8F%E7%BD%91%E9%80%9F%E6%98%BE%E7%A4%BA%E6%8F%92%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">安装顶栏网速显示插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-syspeek"><span class="toc-number">6.</span> <span class="toc-text">安装 syspeek</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-flash-%E6%8F%92%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">安装 Flash 插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%BA%E7%9F%A5%E7%AC%94%E8%AE%B0"><span class="toc-number">8.</span> <span class="toc-text">安装为知笔记</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85remarkable-markdown%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">9.</span> <span class="toc-text">安装remarkable markdown编辑器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-sublime-text-3"><span class="toc-number">10.</span> <span class="toc-text">安装 Sublime Text 3</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-atom-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-number">11.</span> <span class="toc-text">安装 Atom 编辑器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8F%90%E7%A4%BA-%E2%80%9C%E5%BD%93%E5%89%8D%E7%BD%91%E7%BB%9C%E6%9C%89local%E5%9F%9F%E2%80%9D"><span class="toc-number">12.</span> <span class="toc-text">关于提示 “当前网络有local域”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%80%9C%E6%AD%A4%E8%BD%AF%E4%BB%B6%E6%9D%A5%E8%87%AA%E7%AC%AC%E4%B8%89%E6%96%B9%E4%B8%94%E5%8F%AF%E8%83%BD%E5%8C%85%E5%90%AB%E9%9D%9E%E8%87%AA%E7%94%B1%E7%BB%84%E4%BB%B6%E2%80%9D-%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">13.</span> <span class="toc-text">“此软件来自第三方且可能包含非自由组件” 的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AE%BE%E7%BD%AE%E5%AF%B9%E6%89%80%E6%9C%89%E9%A1%B5%E9%9D%A2%E7%BC%A9%E6%94%BE"><span class="toc-number">14.</span> <span class="toc-text">火狐浏览器设置对所有页面缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%A4%96%E7%BD%AE%E7%A3%81%E7%9B%98%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">15.</span> <span class="toc-text">设置外置磁盘开机自动挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E5%99%A8%E4%BD%8D%E7%BD%AE"><span class="toc-number">16.</span> <span class="toc-text">设置启动器位置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E7%94%A8%E5%AE%A2%E4%BA%BA%E4%BC%9A%E8%AF%9D"><span class="toc-number">17.</span> <span class="toc-text">禁用客人会话</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ibus-%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95"><span class="toc-number">18.</span> <span class="toc-text">ibus 拼音输入法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-wps-%E5%90%8E%E5%AD%97%E4%BD%93%E7%BC%BA%E5%A4%B1"><span class="toc-number">19.</span> <span class="toc-text">安装 WPS 后字体缺失</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#as-%E6%8A%A5%E9%94%99-unable-to-sun-mksdcard"><span class="toc-number">20.</span> <span class="toc-text">AS 报错 unable to sun mksdcard</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%8C%85%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AEjdk"><span class="toc-number">21.</span> <span class="toc-text">离线安装包安装和配置JDK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-tomcat"><span class="toc-number">22.</span> <span class="toc-text">安装 tomcat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-mysql"><span class="toc-number">23.</span> <span class="toc-text">安装 MySql</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F%EF%BC%88intellij-idea%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-number">24.</span> <span class="toc-text">添加快捷方式（Intellij-IDEA为例）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eclipse-%E5%88%9B%E5%BB%BA-avd-%E6%A8%A1%E6%8B%9F%E5%99%A8%E6%8A%A5%E9%94%99-failed-to-create-the-sd-card"><span class="toc-number">25.</span> <span class="toc-text">eclipse 创建 AVD 模拟器报错 failed to create the sd card</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>

@@ -408,7 +408,7 @@ h1:target {
     padding-top: 8px;
 }
 
-footer {
+footer, footer * {
     font-size: 14px;
 }
 

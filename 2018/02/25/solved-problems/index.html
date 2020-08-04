@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>解决的问题 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="解决的问题">解决的问题</h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2018-02-25</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/tips/" class="tag tag--small hover--underline">#tips</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <div class="danger">
+<p>已经不再更新</p>
+</div>
+<p>我会把平时遇到并且成功解决的一些小问题写在这里。</p>
+<h2 id="ubuntu-%E8%AE%BE%E7%BD%AE-python3-%E4%B8%BA%E9%BB%98%E8%AE%A4" id="Ubuntu-设置-python3-为默认">Ubuntu 设置 python3 为默认</h2>
+<p><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100</code></p>
+<p><code>sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150</code></p>
+<p>如果要切换回 python2</p>
+<p><code>sudo update-alternatives --config python</code></p>
+<p>根据提示输入选择数字回车即可。</p>
+<h2 id="ubuntu-%E5%BC%80%E6%9C%BA%E6%98%BE%E7%A4%BA%E6%82%A8%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%89-.local-%E5%9F%9F" id="Ubuntu-开机显示您的网络有-local-域">Ubuntu 开机显示您的网络有 .local 域</h2>
+<p>用你喜欢的编辑器（vim 或 gedit等）将 /etc/default/avahi-daemon 文件中的参数改为 AVAHI_DAEMON_DETECT_LOCAL=0 即可。（原来等于 1）</p>
+<h2 id="ubuntu-%E4%BC%98%E5%8C%96%E5%8A%A0%E9%80%9F" id="Ubuntu-优化加速">Ubuntu 优化加速</h2>
+<p>使用 man systemd-analyze 查看开机启动项<br>
+发现禁用占用时间最长的 NetworkManager-wait-online.service<br>
+使用命令 <code>sudo systemctl disable NetworkManager-wait-online.service</code> 禁止启动<br>
+设置 vm.swappiness=10<br>
+1.打开终端，查看交换参数的值大小，输入命令:<br>
+<code>cat /proc/sys/vm/swappiness</code><br>
+使用下列命令可临时将交换参数改为10，重启之后仍会恢复原状，变为60:<br>
+<code>sudo sysctl vm.swappiness=10</code><br>
+永久的改变该参数，用下列命令:<br>
+<code>gksudo gedit /etc/sysctl.conf</code><br>
+搜索关键字 “vm.swappiness”（无引号），改成你愿意的值。如果 vm.swappiness 不存在，可在文件末尾添加:<br>
+<code>vm.swappiness=10</code>，完毕，保存文件，重启即可。</p>
+<p>Preload 是一个运行于后台的监护程序，探测那些常用的软件，并将其放入缓存，以起到加速的作用。<br>
+在LinuxMint/Ubuntu下安装Preload很简单：<br>
+<code>sudo apt-get install preload</code><br>
+Preload 默认的配置对于普通用户而言已经不错了，一般不需要修改。如果有进一步掌控其的欲望，可以打开其配置文件进行修改：<br>
+<code>sudo gedit /etc/preload.conf</code></p>
+<h2 id="chrome-%E9%95%BF%E6%88%AA%E5%9B%BE" id="chrome-长截图">chrome 长截图</h2>
+<p>进入开发者模式(f12)，ctrl + shift + p 输入 capture full size screenshot 即可。<br>
+模拟移动断则使用 ctrl + shift + m。</p>
+<h2 id="%E8%A7%A3%E5%86%B3-windows-%E7%94%9F%E6%88%90%E7%9A%84-zip-%E6%96%87%E4%BB%B6%E5%9C%A8-ubuntu-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98" id="解决-Windows-生成的-zip-文件在-Ubuntu-乱码问题">解决 Windows 生成的 zip 文件在 Ubuntu 乱码问题</h2>
+<p>使用 -O 命令指定字符集（GBK、GB18030、CP936）解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">unzip -O GBK zip_name.zip<br></code></pre></td></tr></table></figure>
+<h2 id="%E4%BF%AE%E6%94%B9-ubuntu-%E5%AE%B6%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%BB%93%E6%9E%84" id="修改-Ubuntu-家目录下的结构">修改 Ubuntu 家目录下的结构</h2>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">cd ~&#x2F;.config&#x2F;<br>vim user-dirs.dirs<br></code></pre></td></tr></table></figure>
+<h2 id="ubuntu-tty-%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%95%B4%E5%AD%97%E4%BD%93" id="Ubuntu-tty-模式调整字体">Ubuntu tty 模式调整字体</h2>
+<p>一条命令即可，根据提示修改字体大小</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo dpkg-reconfigure console-setup<br></code></pre></td></tr></table></figure>
+<h2 id="anaconda-%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%90%8D%E7%A7%B0" id="Anaconda-修改环境名称">Anaconda 修改环境名称</h2>
+<p>Anaconda 没有相关命令可以直接修改环境名称，这里只能先克隆环境再将原环境删除。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">conda create --name new_name --clone old_name<br>conda remove --name old_name --all<br></code></pre></td></tr></table></figure>
+<h2 id="ubuntu-%E6%B8%85%E7%90%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6" id="Ubuntu-清理日志文件">Ubuntu 清理日志文件</h2>
+<p>使用 ncdu 工具来查看大日志文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo apt install ncdu<br>sudo ncdu /var/<span class="hljs-built_in">log</span><br><span class="hljs-comment"># 例如要删除 mail.log 日志</span><br>sudo dd <span class="hljs-keyword">if</span>=/dev/null of=/var/<span class="hljs-built_in">log</span>/mail.log<br></code></pre></td></tr></table></figure>
+<h2 id="%E5%8D%B8%E8%BD%BD%E4%BD%BF%E7%94%A8-%E2%80%9Cpython-setup.py-install%E2%80%9D-%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85" id="卸载使用-“python-setup-py-install”-命令安装的包">卸载使用 “python setup.py install” 命令安装的包</h2>
+<p>进入包含 <code>setup.py</code> 的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 安装的时候</span><br>python setup.py install --record <span class="hljs-built_in">log</span><br><span class="hljs-comment"># 这时候安装细节都写在 log 文件里了</span><br><span class="hljs-comment"># 想要卸载的时候</span><br>cat <span class="hljs-built_in">log</span> | xargs rm -rf<br></code></pre></td></tr></table></figure>
+<h2 id="%E5%88%A0%E9%99%A4-ubuntu-%E5%A4%9A%E4%BD%99%E5%86%85%E6%A0%B8" id="删除-Ubuntu-多余内核">删除 Ubuntu 多余内核</h2>
+<p>使用命令查看当前内核<br>
+<code>uname -a</code><br>
+查看所有内核<br>
+<code>dpkg --get-selections | grep linux</code><br>
+删除 <code>linux-image(headers)-xxxxxx-generic</code><br>
+<code>sudo apt-get remove linux-image-2.6.32-22-generic</code></p>
+<h2 id="ubuntu-%E4%BD%BF%E7%94%A8-deborphan-%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E5%AD%A4%E5%84%BF%E8%BD%AF%E4%BB%B6%E5%8C%85" id="Ubuntu-使用-deborphan-命令删除孤儿软件包">Ubuntu 使用 deborphan 命令删除孤儿软件包</h2>
+<p>在 ubuntu 中使用 apt 安装一个软件包时会自动安装其他依赖，删除掉这个软件包时，这些依赖也就没有用处了，可以使用下面的命令删除：<br>
+<code>sudo apt autoremove</code><br>
+不过 <code>autoremove</code> 只会删除经过 <code>apt</code> 自动安装的依赖，而自己手动安装的依赖则不会被删除，我们可以使用 <code>deborphan</code> 来彻底删除：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 列出孤儿软件包</span><br>deborphan<br><span class="hljs-comment"># 将他们删除</span><br>deborphan | xargs sudo apt purge -y<br></code></pre></td></tr></table></figure>
+<h2 id="microsoft-word-2016-%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%92%A4%E9%94%80" id="Microsoft-Word-2016-无法正常撤销">Microsoft Word 2016 无法正常撤销</h2>
+<p>电脑安装 Word 2016 后，有时候会遇到撤销功能无法正常使用，无论是使用上方的按钮还是使用 ctrl+z 快捷键都不行，按钮始终是灰色的，或者点一下就变灰了。<br>
+去网上查了查，主要有以上几种解决办法</p>
+<ul>
+<li>重装office</li>
+<li>更换输入法（Microsoft 官方推荐，然而好像并不管用）</li>
+<li>修改注册表（网友说有事时好时坏）</li>
+</ul>
+<p>我是用第三种方法解决的。</p>
+<ol>
+<li>win+R 输入 regedit 进入注册表编辑器</li>
+<li>找到 HKEY_CURRENT_USER/Software/Microsoft/Office/15.0/Word/Options</li>
+<li>新建 DWORD 值，名为 UndoHistory，双击修改它的值为 <strong>十进制 0~100</strong> 的数（我填的100）</li>
+<li>如下图所示<br>
+<img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804194050.png" alt="图示"><br>
+另外这里是我的运行环境</li>
+</ol>
+<ul>
+<li>Windows 10 专业版 1703</li>
+<li>OS 版本：15063.413</li>
+<li>Office版本：2016专业版</li>
+</ul>
+<h2 id="%E7%BB%99-appcompatactivity-%E7%9A%84%E6%A0%87%E9%A2%98%E6%A0%8F%E5%8A%A0%E4%B8%8A%E8%BF%94%E5%9B%9E%E6%8C%89%E9%92%AE" id="给-AppCompatActivity-的标题栏加上返回按钮">给 AppCompatActivity 的标题栏加上返回按钮</h2>
+<p>在 Activity 的 onCreate 方法中加入如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Java">android.support.v7.app.ActionBar actionBar = getSupportBar();<br><span class="hljs-keyword">if</span> (actionBar != <span class="hljs-keyword">null</span>) &#123;<br>  actionBar.setHomeButtonEnabled(<span class="hljs-keyword">true</span>);<br>  actionBar.setDisplayHomeAsUpEnabled(<span class="hljs-keyword">true</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在 onOptionsItemSelected 中加入如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Java"><span class="hljs-meta">@Override</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">onOptionsItemSelected</span><span class="hljs-params">(MenuItem item)</span> </span>&#123;<br>  <span class="hljs-keyword">switch</span> (item.getItemId()) &#123;<br>    <span class="hljs-keyword">case</span> android.R.id.home :<br>    <span class="hljs-keyword">this</span>.finish();<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.onOptionsItemSelected(item);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行效果如下<br>
+<img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804194108.png" alt="运行效果"></p>
+<h2 id="%E9%9A%90%E8%97%8F-appcompatactivity-%E7%9A%84%E6%A0%87%E9%A2%98%E6%A0%8F" id="隐藏-AppCompatActivity-的标题栏">隐藏 AppCompatActivity 的标题栏</h2>
+<p>在 Android Studio 新建 Activity，如果继承自 AppCompatActivity<br>
+使用 <code>requestWindowFeature(Window.FEATURE_NO_TITLE);</code><br>
+是没有办法隐藏标题栏的。<br>
+解决方案：</p>
+<ul>
+<li>不继承 AppCompatActivity<br>
+或者</li>
+<li>在 setContentView 方法后添加一句:<br>
+<code>getSupportActionBar().hide();</code></li>
+</ul>
+<h2 id="android-studio-%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%AD%A5%E9%AA%A4" id="Android-Studio-导入项目的正确步骤">Android Studio 导入项目的正确步骤</h2>
+<ol>
+<li>打开 Project 中的 build.gradle, 修改 dependicies 为自己本地的版本</li>
+<li>打开 Project 中 gradle-wrapper.properties, 将 distributionUrl修改为自己本地的版本</li>
+<li>打开 app 中的 build.gradle, 修改 compileSdkVersion 和 buildToolsVersion 为自己本地的版本</li>
+</ol>
+<h2 id="ubuntu-%E4%B8%8B-sublime-text-3-%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87" id="Ubuntu-下-Sublime-Text-3-无法输入中文">Ubuntu 下 Sublime Text 3 无法输入中文</h2>
+<p>保存下面的代码到文件sublime_imfix.c(位于~目录)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;gtk/gtkimcontext.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">gtk_im_context_set_client_window</span> <span class="hljs-params">(GtkIMContext *context,</span></span><br><span class="hljs-function"><span class="hljs-params">         GdkWindow    *window)</span></span><br><span class="hljs-function"></span>&#123;<br> GtkIMContextClass *klass;<br> g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br> klass = GTK_IM_CONTEXT_GET_CLASS (context);<br> <span class="hljs-keyword">if</span> (klass-&gt;set_client_window)<br>   klass-&gt;set_client_window (context, window);<br> g_object_set_data(G_OBJECT(context),<span class="hljs-string">"window"</span>,window);<br> <span class="hljs-keyword">if</span>(!GDK_IS_WINDOW (window))<br>   <span class="hljs-keyword">return</span>;<br> <span class="hljs-keyword">int</span> <span class="hljs-built_in">width</span> = gdk_window_get_width(window);<br> <span class="hljs-keyword">int</span> <span class="hljs-built_in">height</span> = gdk_window_get_height(window);<br> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">width</span> != <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">height</span> !=<span class="hljs-number">0</span>)<br>   gtk_im_context_focus_in(context);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>将上一步的代码编译成共享库libsublime-imfix.so，命令<br>
+<code>gcc -shared -o libsublime-imfix.so sublime_imfix.c  pkg-config --libs --cflags gtk+-2.0 -fPIC</code><br>
+如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：<br>
+<code>sudo apt-get install build-essential libgtk2.0-dev</code><br>
+然后将libsublime-imfix.so拷贝到sublime_text所在文件夹<br>
+<code>sudo mv libsublime-imfix.so /opt/sublime_text/</code><br>
+修改文件/usr/bin/subl的内容<br>
+<code>sudo gedit /usr/bin/subl</code><br>
+将<br>
+<code>#!/bin/sh</code><br>
+<code>exec /opt/sublime_text/sublime_text &quot;$@&quot;</code><br>
+修改为<br>
+<code>#!/bin/sh</code><br>
+<code>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text &quot;$@&quot;</code><br>
+此时，在命令中执行 subl 将可以使用搜狗for linux的中文输入<br>
+为了使用鼠标右键打开文件时能够使用中文输入，还需要修改文件 sublime_text.desktop 的内容。<br>
+<code>sudo gedit /usr/share/applications/sublime_text.desktop</code><br>
+将[Desktop Entry]中的字符串<br>
+<code>Exec=/opt/sublime_text/sublime_text %F</code><br>
+修改为<br>
+<code>Exec=bash -c &quot;LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text %F&quot;</code><br>
+将[Desktop Action Window]中的字符串<br>
+<code>Exec=/opt/sublime_text/sublime_text -n</code><br>
+修改为<br>
+<code>Exec=bash -c &quot;LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text -n&quot;</code><br>
+将[Desktop Action Document]中的字符串<br>
+<code>Exec=/opt/sublime_text/sublime_text --command new_file</code><br>
+修改为<br>
+<code>Exec=bash -c &quot;LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text --command new_file&quot;</code><br>
+注意：修改时请注意双引号&quot;&quot;,否则会导致不能打开带有空格文件名的文件。<br>
+此处仅修改了 /usr/share/applications/sublime-text.desktop，但可以正常使用了。/opt/sublime_text/目录下的 sublime-text.desktop 可以修改，也可不修改。</p>
+<h2 id="%E6%B8%85%E9%99%A4-ubuntu-%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6%E5%90%8E%E6%AE%8B%E7%95%99%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F" id="清除-ubuntu-卸载软件后残留的快捷方式">清除 ubuntu 卸载软件后残留的快捷方式</h2>
+<ol>
+<li>将 <code>/usr/share/applications/</code> 目录下的 xxx.desktop 删除</li>
+<li>将 <code>~/.local/share/applications/</code> 目录下的相关文件删除</li>
+<li>将 <code>~/.config/menus/applications-merged/</code> 目录下相关的文件删除</li>
+</ol>
+<h2 id="%E4%BD%BF%E7%94%A8-vscode-%E8%BF%90%E8%A1%8C-javascript" id="使用-VSCode-运行-JavaScript">使用 VSCode 运行 JavaScript</h2>
+<ol>
+<li>新建目录，当作 JavaScript 的 WorkSpace，进入该目录</li>
+<li>新建 .vscode 文件夹，在文件夹下新建 tasks.json 文件</li>
+<li>向该 json 文件中写入如下内容</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>    <span class="hljs-attr">"version"</span>: <span class="hljs-string">"0.1.0"</span>,<br>    <span class="hljs-attr">"command"</span>: <span class="hljs-string">"node"</span>,<br>    <span class="hljs-attr">"isShellCommand"</span>: <span class="hljs-literal">true</span>,<br>    <span class="hljs-attr">"args"</span>: [<br>        <span class="hljs-string">"$&#123;file&#125;"</span><br>    ],<br>    <span class="hljs-attr">"showOutput"</span>: <span class="hljs-string">"always"</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行 JavaScript 文件： ctrl+shift+b</p>
+<h2 id="%E5%9C%A8-win-10-%E4%B8%AD%E4%BD%BF%E7%94%A8-mysql-installer-%E5%AE%89%E8%A3%85-mysql" id="在-Win-10-中使用-mysql-installer-安装-MySQL">在 Win 10 中使用 mysql-installer 安装 MySQL</h2>
+<p>在 Win10 中使用 installer 安装 MySQL 的时候会因为缺少 VC++ 2013 库提示安装 VC<ins>2013（X64），安装完成后安装 MySQL 却报错 install failed，提示缺少 VC</ins> 2013，刚安装的怎么会没有呢，这个问题困扰了我好久，终于在今天找到了<a href="https://stackoverflow.com/questions/45163588/mysql-5-7-installer-fails-to-detect-vs-2013-redistributable/45165995" target="_blank" rel="noopener">解决方案</a><br>
+大概是因为安装程序所需要的 VC<ins>2013 是 32 位的吧，把 32 位的 VC</ins>2013 也安装上就好了。</p>
+<h2 id="%E8%AE%BE%E7%BD%AE-eclipse-%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F" id="设置-Eclipse-的编码格式">设置 Eclipse 的编码格式</h2>
+<p>eclipse 在 windows 下默认的编码为 GBK，而常用的格式为 UTF-8，所以稍微不注意就会出现乱码情况，下面来修改 eclipse 默认的编码格式。</p>
+<ol>
+<li>打开 eclipse 设置，在 general 中找到 workspace，将下面的 text file coding 修改为 UTF-8。</li>
+<li>在设置中搜索 content types，点击右侧的 text，在下面的 default coding 框中填上 UTF-8。</li>
+</ol>
+<p>经过以上两步就基本完成设置了，新建项目，右键 properties 检查编码格式是否正确。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#解决的问题'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    <span>Copyright © 2020 Hui Li.</span>
+    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E8%AE%BE%E7%BD%AE-python3-%E4%B8%BA%E9%BB%98%E8%AE%A4"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 设置 python3 为默认</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E5%BC%80%E6%9C%BA%E6%98%BE%E7%A4%BA%E6%82%A8%E7%9A%84%E7%BD%91%E7%BB%9C%E6%9C%89-.local-%E5%9F%9F"><span class="toc-number">2.</span> <span class="toc-text">Ubuntu 开机显示您的网络有 .local 域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E4%BC%98%E5%8C%96%E5%8A%A0%E9%80%9F"><span class="toc-number">3.</span> <span class="toc-text">Ubuntu 优化加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chrome-%E9%95%BF%E6%88%AA%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">chrome 长截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3-windows-%E7%94%9F%E6%88%90%E7%9A%84-zip-%E6%96%87%E4%BB%B6%E5%9C%A8-ubuntu-%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">解决 Windows 生成的 zip 文件在 Ubuntu 乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-ubuntu-%E5%AE%B6%E7%9B%AE%E5%BD%95%E4%B8%8B%E7%9A%84%E7%BB%93%E6%9E%84"><span class="toc-number">6.</span> <span class="toc-text">修改 Ubuntu 家目录下的结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-tty-%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%95%B4%E5%AD%97%E4%BD%93"><span class="toc-number">7.</span> <span class="toc-text">Ubuntu tty 模式调整字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#anaconda-%E4%BF%AE%E6%94%B9%E7%8E%AF%E5%A2%83%E5%90%8D%E7%A7%B0"><span class="toc-number">8.</span> <span class="toc-text">Anaconda 修改环境名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E6%B8%85%E7%90%86%E6%97%A5%E5%BF%97%E6%96%87%E4%BB%B6"><span class="toc-number">9.</span> <span class="toc-text">Ubuntu 清理日志文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E4%BD%BF%E7%94%A8-%E2%80%9Cpython-setup.py-install%E2%80%9D-%E5%91%BD%E4%BB%A4%E5%AE%89%E8%A3%85%E7%9A%84%E5%8C%85"><span class="toc-number">10.</span> <span class="toc-text">卸载使用 “python setup.py install” 命令安装的包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4-ubuntu-%E5%A4%9A%E4%BD%99%E5%86%85%E6%A0%B8"><span class="toc-number">11.</span> <span class="toc-text">删除 Ubuntu 多余内核</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E4%BD%BF%E7%94%A8-deborphan-%E5%91%BD%E4%BB%A4%E5%88%A0%E9%99%A4%E5%AD%A4%E5%84%BF%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="toc-number">12.</span> <span class="toc-text">Ubuntu 使用 deborphan 命令删除孤儿软件包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#microsoft-word-2016-%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E6%92%A4%E9%94%80"><span class="toc-number">13.</span> <span class="toc-text">Microsoft Word 2016 无法正常撤销</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99-appcompatactivity-%E7%9A%84%E6%A0%87%E9%A2%98%E6%A0%8F%E5%8A%A0%E4%B8%8A%E8%BF%94%E5%9B%9E%E6%8C%89%E9%92%AE"><span class="toc-number">14.</span> <span class="toc-text">给 AppCompatActivity 的标题栏加上返回按钮</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E8%97%8F-appcompatactivity-%E7%9A%84%E6%A0%87%E9%A2%98%E6%A0%8F"><span class="toc-number">15.</span> <span class="toc-text">隐藏 AppCompatActivity 的标题栏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android-studio-%E5%AF%BC%E5%85%A5%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%AD%A5%E9%AA%A4"><span class="toc-number">16.</span> <span class="toc-text">Android Studio 导入项目的正确步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-%E4%B8%8B-sublime-text-3-%E6%97%A0%E6%B3%95%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%87"><span class="toc-number">17.</span> <span class="toc-text">Ubuntu 下 Sublime Text 3 无法输入中文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E9%99%A4-ubuntu-%E5%8D%B8%E8%BD%BD%E8%BD%AF%E4%BB%B6%E5%90%8E%E6%AE%8B%E7%95%99%E7%9A%84%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="toc-number">18.</span> <span class="toc-text">清除 ubuntu 卸载软件后残留的快捷方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-vscode-%E8%BF%90%E8%A1%8C-javascript"><span class="toc-number">19.</span> <span class="toc-text">使用 VSCode 运行 JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-win-10-%E4%B8%AD%E4%BD%BF%E7%94%A8-mysql-installer-%E5%AE%89%E8%A3%85-mysql"><span class="toc-number">20.</span> <span class="toc-text">在 Win 10 中使用 mysql-installer 安装 MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-eclipse-%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F"><span class="toc-number">21.</span> <span class="toc-text">设置 Eclipse 的编码格式</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- BAIDU ANALYSIS -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?8c1d241f49c67b5e79ae300548e75894";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158658232-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-158658232-1');
+    </script>
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>
