@@ -30,6 +30,9 @@
 
     
 
+    <!-- valine comment -->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -103,10 +106,16 @@
             <!-- CONTENT -->
             <article>
     <div class="post__title">
-        <h1 id="学习 JDBC">学习 JDBC</h1>
+        <h1 id="学习 JDBC-1505006068000"
+            data-flag-title="学习 JDBC"
+            class="leancloud_visitors">学习 JDBC</h1>
         <span class="post__meta">
             <i class="material-icons md-20">today</i>
             <span>2017-09-10</span>
+        </span>
+        <span class="post__meta">
+            <i class="material-icons md-20">visibility</i>
+            <span class="leancloud-visitors-count">666</span>
         </span>
         
             <span class="post__meta">
@@ -270,12 +279,23 @@ connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);<br>
 <p>本片文章的相关代码我已经上传到 github 上了，在 <a href="/assets/jdbc">这个文件夹</a> 里，<code>.java</code>后缀的文件都是，代码和注释都写得挺详细，有问题可以发我邮箱一起讨论。</p>
 
     </div>
+
+    <!-- valine comments -->
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'NRWEWlMmlVAPPdVFXm5POWDg-gzGzoHsz',
+            appKey: 'Xd0mldAOM82W7uRLnsSJpjOP',
+            visitor: true
+        })
+    </script>
 </article>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
 <div class="floating-section z-400">
-    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#学习 JDBC'">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#学习 JDBC1505006068000'">
         <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">

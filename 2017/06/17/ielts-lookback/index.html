@@ -30,6 +30,9 @@
 
     
 
+    <!-- valine comment -->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -103,10 +106,16 @@
             <!-- CONTENT -->
             <article>
     <div class="post__title">
-        <h1 id="雅思回顾">雅思回顾</h1>
+        <h1 id="雅思回顾-1497687701000"
+            data-flag-title="雅思回顾"
+            class="leancloud_visitors">雅思回顾</h1>
         <span class="post__meta">
             <i class="material-icons md-20">today</i>
             <span>2017-06-17</span>
+        </span>
+        <span class="post__meta">
+            <i class="material-icons md-20">visibility</i>
+            <span class="leancloud-visitors-count">666</span>
         </span>
         
             <span class="post__meta">
@@ -166,12 +175,23 @@ The blood in my veins</p>
 <p><strong>接下来学年的目标 – Coding!</strong></p>
 
     </div>
+
+    <!-- valine comments -->
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'NRWEWlMmlVAPPdVFXm5POWDg-gzGzoHsz',
+            appKey: 'Xd0mldAOM82W7uRLnsSJpjOP',
+            visitor: true
+        })
+    </script>
 </article>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
 <div class="floating-section z-400">
-    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#雅思回顾'">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#雅思回顾1497687701000'">
         <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">

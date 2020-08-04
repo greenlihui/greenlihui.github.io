@@ -30,6 +30,9 @@
 
     
 
+    <!-- valine comment -->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -103,10 +106,16 @@
             <!-- CONTENT -->
             <article>
     <div class="post__title">
-        <h1 id="主题预览">主题预览</h1>
+        <h1 id="主题预览-1483200000000"
+            data-flag-title="主题预览"
+            class="leancloud_visitors">主题预览</h1>
         <span class="post__meta">
             <i class="material-icons md-20">today</i>
             <span>2017-01-01</span>
+        </span>
+        <span class="post__meta">
+            <i class="material-icons md-20">visibility</i>
+            <span class="leancloud-visitors-count">666</span>
         </span>
         
             <span class="post__meta">
@@ -238,9 +247,9 @@
 <h2 id="markdown-it-plugins" id="Markdown-it-Plugins">Markdown-it Plugins</h2>
 <h3 id="task-list" id="Task-List">Task List</h3>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2179750"><label class="task-list-item-label" for="task-item-2179750"> Mercury</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2999675"><label class="task-list-item-label" for="task-item-2999675"> Venus</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-964529"><label class="task-list-item-label" for="task-item-964529"> Comet Haley</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8451792"><label class="task-list-item-label" for="task-item-8451792"> Mercury</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2378631"><label class="task-list-item-label" for="task-item-2378631"> Venus</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6488224"><label class="task-list-item-label" for="task-item-6488224"> Comet Haley</label></li>
 </ul>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs md"><span class="hljs-bullet">- </span>[ ] Mercury<br><span class="hljs-bullet">- </span>[x] Venus<br><span class="hljs-bullet">- </span>[ ] Comet Haley<br></code></pre></td></tr></table></figure>
 <h3 id="emoji" id="Emoji">Emoji</h3>
@@ -337,12 +346,23 @@ $$</p>
 </section>
 
     </div>
+
+    <!-- valine comments -->
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'NRWEWlMmlVAPPdVFXm5POWDg-gzGzoHsz',
+            appKey: 'Xd0mldAOM82W7uRLnsSJpjOP',
+            visitor: true
+        })
+    </script>
 </article>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
 <div class="floating-section z-400">
-    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#主题预览'">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#主题预览1483200000000'">
         <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">

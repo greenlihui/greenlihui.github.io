@@ -30,6 +30,9 @@
 
     
 
+    <!-- valine comment -->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -103,10 +106,16 @@
             <!-- CONTENT -->
             <article>
     <div class="post__title">
-        <h1 id="解决的问题">解决的问题</h1>
+        <h1 id="解决的问题-1519558698000"
+            data-flag-title="解决的问题"
+            class="leancloud_visitors">解决的问题</h1>
         <span class="post__meta">
             <i class="material-icons md-20">today</i>
             <span>2018-02-25</span>
+        </span>
+        <span class="post__meta">
+            <i class="material-icons md-20">visibility</i>
+            <span class="leancloud-visitors-count">666</span>
         </span>
         
             <span class="post__meta">
@@ -286,12 +295,23 @@ Preload 默认的配置对于普通用户而言已经不错了，一般不需要
 <p>经过以上两步就基本完成设置了，新建项目，右键 properties 检查编码格式是否正确。</p>
 
     </div>
+
+    <!-- valine comments -->
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'NRWEWlMmlVAPPdVFXm5POWDg-gzGzoHsz',
+            appKey: 'Xd0mldAOM82W7uRLnsSJpjOP',
+            visitor: true
+        })
+    </script>
 </article>
 
 
 <!-- floating buttons: 1) scroll to top 2) show toc -->
 <div class="floating-section z-400">
-    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#解决的问题'">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#解决的问题1519558698000'">
         <i class="material-icons">keyboard_arrow_up</i>
     </div>
     <div class="floating-button" id="showToc">
