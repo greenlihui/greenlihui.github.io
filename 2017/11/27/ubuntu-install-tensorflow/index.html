@@ -30,9 +30,6 @@
 
     
 
-    <!-- valine comment -->
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
@@ -212,6 +209,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Creates a graph.</span><br>a = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], name=<span class="hljs-string">'a'</span>)<br>b = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>], name=<span class="hljs-string">'b'</span>)<br>c = tf.matmul(a, b)<br><span class="hljs-comment"># Creates a session with log_device_placement set to True.</span><br>sess = tf.Session(config=tf.ConfigProto(log_device_placement=<span class="hljs-literal">True</span>))<br><span class="hljs-comment"># Runs the op.</span><br>print(sess.run(c))<br></code></pre></td></tr></table></figure>
     </div>
 
+    <!-- valine comment -->
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <!-- valine comments -->
     <div id="vcomments"></div>
     <script>
