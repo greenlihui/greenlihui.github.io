@@ -110,12 +110,6 @@
             <i class="material-icons md-20">today</i>
             <span>2017-11-27</span>
         </span>
-        <span class="post__meta leancloud_visitors"
-            id="2017/11/27/ubuntu-install-tensorflow/"
-            data-flag-title="Ubuntu16.04 使用 Anaconda 安装 Tensorflow">
-            <i class="material-icons md-20">visibility</i>
-            <span class="leancloud-visitors-count">0</span>
-        </span>
         
             <span class="post__meta">
                 <i class="material-icons md-20">local_offer</i>
@@ -208,19 +202,6 @@
 <p>直接 <code>session.run</code> 运行个 <code>a+b</code> 的运算，会有设备初始化的提示</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Creates a graph.</span><br>a = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>], name=<span class="hljs-string">'a'</span>)<br>b = tf.constant([<span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">5.0</span>, <span class="hljs-number">6.0</span>], shape=[<span class="hljs-number">3</span>, <span class="hljs-number">2</span>], name=<span class="hljs-string">'b'</span>)<br>c = tf.matmul(a, b)<br><span class="hljs-comment"># Creates a session with log_device_placement set to True.</span><br>sess = tf.Session(config=tf.ConfigProto(log_device_placement=<span class="hljs-literal">True</span>))<br><span class="hljs-comment"># Runs the op.</span><br>print(sess.run(c))<br></code></pre></td></tr></table></figure>
     </div>
-
-    <!-- valine comment -->
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-    <!-- valine comments -->
-    <div id="vcomments"></div>
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: 'NRWEWlMmlVAPPdVFXm5POWDg-gzGzoHsz',
-            appKey: 'Xd0mldAOM82W7uRLnsSJpjOP',
-            visitor: true
-        })
-    </script>
 </article>
 
 
