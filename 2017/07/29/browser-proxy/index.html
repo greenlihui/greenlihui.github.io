@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>ubuntu 配置代理 - Hui Li&#39;s Blog</title>
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <a class="nav__toggle" href="javascript:void(0);">
+            <i class="icon__menu material-icons md-32">menu</i>
+            <i class="icon__close material-icons md-32">close</i>
+        </a>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="ubuntu 配置代理">
+            ubuntu 配置代理
+        </h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2017-07-29</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/ubuntu/" class="tag tag--small hover--underline">#ubuntu</a>
+                
+                    <a href="/tags/proxy/" class="tag tag--small hover--underline">#proxy</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <h2 id="%E5%AE%89%E8%A3%85-shadowsocks" id="安装-Shadowsocks">安装 Shadowsocks</h2>
+<p>ubuntu 16.04 上安装 Shadowsocks 很简单，打开终端，直接输入下面三条命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo add-apt-repository ppa:hzwhuang&#x2F;ss-qt5<br>sudo apt update<br>sudo apt install Shadowsocks-qt5<br></code></pre></td></tr></table></figure>
+<p>接下来按 super 键搜索 Shadowsocks 就可以发现安装成功了，打开用你的 ss 帐号新建连接并连接，这时虽然连接上了但是打开 Firefox 或者 Chrome 还是无法科学上网，因为还需要配置你的浏览器（再提醒一遍，windows 用户是不用做接下来的步骤，所以可以直接关闭网页了，本身本文就是在 ubuntu 系统环境下 ss 的使用）。</p>
+<h2 id="%E6%B5%8F%E8%A7%88%E5%99%A8%E9%85%8D%E7%BD%AE" id="浏览器配置">浏览器配置</h2>
+<p>Firefox 和 Chrome 设置项是包含代理设置的，可以直接设置代理，以 Firefox 为例，进入偏好设置 --&gt; 高级设置 --&gt; 网络 --&gt; 连接设置 --&gt; 手动设置代理，填上 socks 主机和端口（我用的主机是 127.0.0.1,端口1080），点击确定即可。这时可以 kexue 上网了，但是这里的科学上网是全局的，也就是说，用百度，新浪等国内网站也从国外绕一圈回来，这就很浪费时间了，所以有了如下配置来实现自动切换代理。</p>
+<h3 id="firefox-%E9%85%8D%E7%BD%AE-foxyproxy" id="Firefox-配置-Foxyproxy">Firefox 配置 Foxyproxy</h3>
+<p>打开 Firefox 浏览器，ctrl+shift+a 调出附加组件管理器，搜索 Foxyproxy Standard，安装并根据提示重启浏览器。<br>
+重启浏览器后打开 Foxyproxy，在上面的工作模式中选择第一项“使用基于其预定义模板的代理服务器”，然后点击“新建代理服务器”。<br>
+在“常规”里填入代理名称，其他不要管，然后在“代理服务器细节”里手动配置代理服务器，填入你的 ss 配置，然后确定。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627174536.png" alt="Foxyproxy Configuration"></p>
+<p>然后我们把工作模式换为“为全部 URLs 启用代理服务器+你的刚刚创建的代理名称”。在模式订阅一栏中，添加新的模式订阅。名称自己写，订阅网址这里填「<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code>」,点击“添加代理服务器”，将你刚刚创建的连接添加进去，Format 选择 AutoProxy，Obfuscation 选择 Base64,更新频率选择 0,然后确定。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627174611.png" alt="Foxyproxy Configuration"></p>
+<p>这时再把工作模式改为“使用基于其预定义模板的代理服务器”，接下来就是尽情地翻墙使用了。<br>
+<strong>注意事项</strong>：如果你的浏览器已经装有其他代理插件，请禁用，避免冲突。</p>
+<h3 id="chrome-%E9%85%8D%E7%BD%AE-switchyomega" id="Chrome-配置-SwitchyOmega">Chrome 配置 SwitchyOmega</h3>
+<p>SwitchyOmega 插件是无法像 Firefox 那样直接从扩展商店获取的，因为这时候你还没有科学上网，也就没办法访问扩展商店，这里给出 SwitchyOmega的<a href="https://SwitchyOmega.com/download.html" target="_blank" rel="noopener">下载地址</a>，你也可以用我已经下好的  <a href="/assets/SwitchyOmega.crx">SwitchOmega.crx</a>。<br>
+下载好 SwitchOmega.crx 后，打开 Chrome，在地址栏输入 <code>chrome://extensions</code> 进入扩展程序页面，拖动 SwitchOmega.crx 到该页面即可安装扩展程序。<br>
+安装好之后地址栏右边一个绿色的小圆就是该插件，点击该插件进入选项，接下来设置你可以使用我的设置（主机：127.0.0.1, 端口：1080），下载我的备份文件 <a href="/assets/OmegaOptions.bak">OmegaOption.bak</a>(下载方法，打开页面后ctrl+s，保存即可得到 OmegaOption.bak)，然后导入设置，应用选项，点击那个小圆，选择 auto switch即可完成设置。如果想自己设置就看下一步。<br>
+进入 SwitchOmega 的设置界面，新建情景模式中选择代理服务器，代理协议当然是「SOCKS5」，代理服务器：127.0.0.1, 端口：1080。</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627174416.png" alt="Chrome Configuration"></p>
+<p>然后新建情景模式中选择自动切换模式，然后点击导入规则列表，列表格式选择 「AutoProxy」，列表网址填「<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code>」，然后立即更新情景模式，再在上面的切换规则设置项中，设置“按照规则列表匹配请求”为你刚刚新建的代理服务器连接，默认情景模式依然为直接连接</p>
+<p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200627174456.png" alt="Chrome Configuration"></p>
+<p>然后应用选项，点击小圆，选择 auto switch 完成设置，接下来就可以科学上网了。</p>
+<h2 id="%E5%B0%8F%E7%BB%93" id="小结">小结</h2>
+<p>其实这两个浏览器的配置是一样的道理，只是用的插件不一样而已。<br>
+都是先创建代理连接，然后再创建规则，设置符合该规则的网页使用该代理连接，不符合的不使用，上面的订阅网址就是被墙的网站的列表。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#ubuntu 配置代理'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    <span>Copyright © 2020 Hui Li.</span>
+    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-shadowsocks"><span class="toc-number">1.</span> <span class="toc-text">安装 Shadowsocks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">浏览器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#firefox-%E9%85%8D%E7%BD%AE-foxyproxy"><span class="toc-number">2.1.</span> <span class="toc-text">Firefox 配置 Foxyproxy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#chrome-%E9%85%8D%E7%BD%AE-switchyomega"><span class="toc-number">2.2.</span> <span class="toc-text">Chrome 配置 SwitchyOmega</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>
