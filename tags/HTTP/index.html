@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     
 <link rel="stylesheet" href="/css/base.css">
@@ -18,6 +18,7 @@
     
     
         <title>#HTTP - Hui Li&#39;s Blog</title>
+        <meta name="Description" content="#HTTP - Hui Li&#39;s Blog">
     
     
 
@@ -28,7 +29,7 @@
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
@@ -39,13 +40,15 @@
     <div class="wrapper--header z-800">
         <div class="page-bounding">
             <header>
-    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <a href="/">
+        <img class="site__logo" src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200807103939.PNG" alt="blog icon">
+    </a>
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
-        <a class="nav__toggle" href="javascript:void(0);">
-            <i class="icon__menu material-icons md-32">menu</i>
-            <i class="icon__close material-icons md-32">close</i>
-        </a>
+        <div class="nav-toggle">
+            <i class="icon icon-menu material-icons md-32">menu</i>
+            <i class="icon icon-close material-icons md-32">close</i>
+        </div>
         <menu class="nav__items">
             
                 <span class="nav__item">
@@ -97,19 +100,19 @@
     <h2>All</h2>
     <div class="post-list">
         
-            <a href="/tags/ubuntu/" class="tag tag--normal">#ubuntu</a>
-        
-            <a href="/tags/proxy/" class="tag tag--normal">#proxy</a>
+            <a href="/tags/JavaScript/" class="tag tag--normal">#JavaScript</a>
         
             <a href="/tags/untagged/" class="tag tag--normal">#untagged</a>
         
-            <a href="/tags/JavaScript/" class="tag tag--normal">#JavaScript</a>
+            <a href="/tags/hexo/" class="tag tag--normal">#hexo</a>
         
             <a href="/tags/UWLAX/" class="tag tag--normal">#UWLAX</a>
         
             <a href="/tags/IELTS/" class="tag tag--normal">#IELTS</a>
         
-            <a href="/tags/hexo/" class="tag tag--normal">#hexo</a>
+            <a href="/tags/ubuntu/" class="tag tag--normal">#ubuntu</a>
+        
+            <a href="/tags/proxy/" class="tag tag--normal">#proxy</a>
         
             <a href="/tags/tensorflow/" class="tag tag--normal">#tensorflow</a>
         
@@ -117,21 +120,21 @@
         
             <a href="/tags/JDBC/" class="tag tag--normal">#JDBC</a>
         
-            <a href="/tags/Python/" class="tag tag--normal">#Python</a>
+            <a href="/tags/tips/" class="tag tag--normal">#tips</a>
+        
+            <a href="/tags/Web-Security/" class="tag tag--normal">#Web Security</a>
         
             <a href="/tags/Ubuntu/" class="tag tag--normal">#Ubuntu</a>
         
-            <a href="/tags/tips/" class="tag tag--normal">#tips</a>
-        
-            <a href="/tags/express-session/" class="tag tag--normal">#express-session</a>
-        
-            <a href="/tags/Web-Security/" class="tag tag--normal">#Web Security</a>
+            <a href="/tags/Python/" class="tag tag--normal">#Python</a>
         
             <a href="/tags/HTTP/" class="tag tag--normal">#HTTP</a>
         
             <a href="/tags/CSS/" class="tag tag--normal">#CSS</a>
         
             <a href="/tags/%E6%B3%9B%E5%9E%8B/" class="tag tag--normal">#泛型</a>
+        
+            <a href="/tags/express-session/" class="tag tag--normal">#express-session</a>
         
     </div>
 </section>
@@ -152,8 +155,16 @@
 </section>
             <!-- FOOTER -->
             <footer>
-    <span>Copyright © 2020 Hui Li.</span>
-    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+    <span>© 2020 Hui Li</span>
+    <span class="beian beian-icp">
+        <a target="_blank" href="http://beian.miit.gov.cn/">鄂ICP备20014198号</a>
+    </span>
+    <span class="beian beian-gov">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42022202000083">
+            <img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200805113229.png" alt="备案编号图标">
+            <span>鄂公网安备 42022202000083号</span>
+        </a>
+    </span>
 </footer>
         </div>
     </div>

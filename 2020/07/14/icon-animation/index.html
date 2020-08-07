@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     
 <link rel="stylesheet" href="/css/base.css">
@@ -19,6 +19,7 @@
     
     
         <title>图标动画的实现方法 - Hui Li&#39;s Blog</title>
+        <meta name="Description" content="图标动画的实现方法 - Hui Li&#39;s Blog">
         
 <link rel="stylesheet" href="/css/markdown.css">
 
@@ -37,7 +38,7 @@
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
@@ -48,13 +49,15 @@
     <div class="wrapper--header z-800">
         <div class="page-bounding">
             <header>
-    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <a href="/">
+        <img class="site__logo" src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200807103939.PNG" alt="blog icon">
+    </a>
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
-        <a class="nav__toggle" href="javascript:void(0);">
-            <i class="icon__menu material-icons md-32">menu</i>
-            <i class="icon__close material-icons md-32">close</i>
-        </a>
+        <div class="nav-toggle">
+            <i class="icon icon-menu material-icons md-32">menu</i>
+            <i class="icon icon-close material-icons md-32">close</i>
+        </div>
         <menu class="nav__items">
             
                 <span class="nav__item">
@@ -153,7 +156,7 @@
 <p>这个模拟动画的例子可能会感觉和上面的切换动画有点像，其实并不太一样。切换动画是通过 <code>opacity</code> 的交替加上一些效果（如旋转，缩放等）来实现图标切换。而模拟动画，直接来看慢放。</p>
 <p><img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200804105438.gif" alt="慢放模拟动画"></p>
 <p>可以看到，模拟动画（morphing transition）是从图标的细节实现的的。要做一个模拟动画，一般来讲将变换前的图标和变换后的图标分成对应的部分，设计好图标的各个部分是如何经过一系列的变化最后构成新图标后就可以开始写了。不像切换动画直接拿图标来用，这里是要手动写图标的。所以对于一些过于复杂的图标，这种方法不是很适用。接下来看代码</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav-label"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggle"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-menu"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toggle"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"label"</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toggle"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-menu"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>接着用 <code>checkbox</code> 写，在 <code>label</code> 中添加 <code>i</code> 标签，我们打算用 <code>::before</code> 和 <code>::after</code> 伪元素来构成默认菜单的三条杠。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.container</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;<br>    <br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">4px</span>;<br>    <span class="hljs-attribute">overflow</span>: hidden;<br>&#125;<br><span class="hljs-selector-class">.checkbox</span> &#123;<br>    <span class="hljs-attribute">display</span>: none;<br>&#125;<br><span class="hljs-selector-class">.label</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">96px</span>;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">justify-content</span>: center;<br>    <span class="hljs-attribute">align-items</span>: center;<br>    <span class="hljs-attribute">cursor</span>: pointer;<br>&#125;<br><span class="hljs-selector-class">.icon-menu</span>,<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::before</span>,<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">width</span>: <span class="hljs-number">72px</span>;<br>    <span class="hljs-attribute">height</span>: <span class="hljs-number">12px</span>;<br>    <span class="hljs-attribute">background-color</span>: black;<br>    <span class="hljs-attribute">display</span>: block;<br>    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">3s</span>;<br>&#125;<br><span class="hljs-selector-class">.icon-menu</span> &#123;<br>    <span class="hljs-attribute">position</span>: relative;<br>&#125;<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::before</span>,<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">position</span>: absolute;<br>    <span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;<br>&#125;<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::before</span> &#123;<br>    <span class="hljs-attribute">top</span>: -<span class="hljs-number">24px</span>;<br>&#125;<br><span class="hljs-selector-class">.icon-menu</span><span class="hljs-selector-pseudo">::after</span> &#123;<br>    <span class="hljs-attribute">top</span>: <span class="hljs-number">24px</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>到这里为止，一个 <code>menu</code> 图标就用 HTML 和 CSS 的方式写出来了，接下来加动画。</p>
@@ -192,8 +195,16 @@
 
             <!-- FOOTER -->
             <footer>
-    <span>Copyright © 2020 Hui Li.</span>
-    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+    <span>© 2020 Hui Li</span>
+    <span class="beian beian-icp">
+        <a target="_blank" href="http://beian.miit.gov.cn/">鄂ICP备20014198号</a>
+    </span>
+    <span class="beian beian-gov">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42022202000083">
+            <img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200805113229.png" alt="备案编号图标">
+            <span>鄂公网安备 42022202000083号</span>
+        </a>
+    </span>
 </footer>
         </div>
     </div>

@@ -1,3 +1,15 @@
+// print blog info
+;(function () {
+  var labelStyle = `
+    background-color: #434343;
+    color: #fff;
+    border-radius: 2px;
+  `;
+  var clearStyle = '';
+  console.info('%c Author %c %s', labelStyle, clearStyle, 'Hui Li');
+})();
+
+
 blog = {};
 
 blog.addLoadEvent = function (f) {
@@ -76,8 +88,8 @@ blog.ajax = function (params) {
 
 
 blog.addLoadEvent(function () {
-  document.querySelector("a.nav__toggle").addEventListener("click", function (e) {
-    document.querySelector("header").classList.toggle("menu--expanded");
+  document.querySelector("div.nav-toggle").addEventListener("click", function (e) {
+    document.querySelector("header").classList.toggle("menu-expanded");
     document.querySelector("div.overlay-container").classList.toggle("show");
     document.querySelector("div.overlay-container").classList.toggle("z-600");
     document.querySelector("div.overlay-container").classList.toggle("show-backdrop");
@@ -86,7 +98,7 @@ blog.addLoadEvent(function () {
 
   // close menu and remove backdrop click listener
   var closeMenu = function (ev) {
-    document.querySelector("header").classList.remove("menu--expanded");
+    document.querySelector("header").classList.remove("menu-expanded");
     document.querySelector("div.overlay-container").classList.remove("show", "z-600", "show-backdrop");
   
     ev.target.removeEventListener('click', closeMenu);

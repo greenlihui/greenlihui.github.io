@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     
 <link rel="stylesheet" href="/css/base.css">
@@ -17,6 +17,7 @@
     
     
         <title>About - Hui Li&#39;s Blog</title>
+        <meta name="Description" content="About - Hui Li&#39;s Blog">
         
 <link rel="stylesheet" href="/css/markdown.css">
 
@@ -31,7 +32,7 @@
     <link rel="manifest" href="/assets/favicons/site.webmanifest">
     <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
@@ -42,13 +43,15 @@
     <div class="wrapper--header z-800">
         <div class="page-bounding">
             <header>
-    <img class="site__logo" src="/assets/images/site-logo-mono.png" alt="blog icon">
+    <a href="/">
+        <img class="site__logo" src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200807103939.PNG" alt="blog icon">
+    </a>
     <nav class="header__nav">
         <h1 class="header__title">Hui Li</h1>
-        <a class="nav__toggle" href="javascript:void(0);">
-            <i class="icon__menu material-icons md-32">menu</i>
-            <i class="icon__close material-icons md-32">close</i>
-        </a>
+        <div class="nav-toggle">
+            <i class="icon icon-menu material-icons md-32">menu</i>
+            <i class="icon icon-close material-icons md-32">close</i>
+        </div>
         <menu class="nav__items">
             
                 <span class="nav__item">
@@ -111,9 +114,9 @@
 </ul>
 <h4 id="recent-update" id="Recent-Update">Recent Update</h4>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-4241035"><label class="task-list-item-label" for="task-item-4241035"> JavaScript 事件代理</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-8811503"><label class="task-list-item-label" for="task-item-8811503"> CSS 图标动画</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5459904"><label class="task-list-item-label" for="task-item-5459904"> Flutter 实时人脸检测 (firebase)</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3418327"><label class="task-list-item-label" for="task-item-3418327"> JavaScript 事件代理</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9207263"><label class="task-list-item-label" for="task-item-9207263"> CSS 图标动画</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9159859"><label class="task-list-item-label" for="task-item-9159859"> Flutter 实时人脸检测 (firebase)</label></li>
 </ul>
 <h4 id="skills(learning)" id="Skills-Learning">Skills(Learning)</h4>
 <ul>
@@ -133,8 +136,16 @@
 </div>
             <!-- FOOTER -->
             <footer>
-    <span>Copyright © 2020 Hui Li.</span>
-    <span><a class="hover--underline" href="http://beian.miit.gov.cn/" target="_blank" rel="noopener">鄂ICP备20014198号</a>.</span>
+    <span>© 2020 Hui Li</span>
+    <span class="beian beian-icp">
+        <a target="_blank" href="http://beian.miit.gov.cn/">鄂ICP备20014198号</a>
+    </span>
+    <span class="beian beian-gov">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42022202000083">
+            <img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200805113229.png" alt="备案编号图标">
+            <span>鄂公网安备 42022202000083号</span>
+        </a>
+    </span>
 </footer>
         </div>
     </div>

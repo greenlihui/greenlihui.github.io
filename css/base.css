@@ -147,7 +147,6 @@ table {
     -webkit-text-size-adjust: none;
 }
 
-
 ::-moz-selection {
     color: white;
     background-color: #666666;
@@ -208,6 +207,7 @@ a {
 a:hover .hover--underline, a:focus .hover--underline,
 .hover--underline:hover {
     background-size: 100% 2px;
+    transition: background-size .2s;
 }
 
 
@@ -232,6 +232,7 @@ footer {
 
 .site__logo {
     width: 32px;
+    vertical-align: middle;
     border-radius: 2px;
 }
 
@@ -242,11 +243,6 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-}
-
-/* default no display of close icon */
-.icon__close {
-    display: none;
 }
 
 .nav__items {
@@ -260,28 +256,13 @@ footer {
     z-index: 800;
     padding: 0 16px;
     background-color: white;
-    transition: max-height, .2s;
-    -webkit-transition: max-height, .2s;
-    -moz-transition: max-height, .2s;
-    -ms-transition: max-height, .2s;
-    -o-transition: max-height, .2s;
+    transition: max-height, .3s ease-out;
 }
 
 /* stops body scrolling when menu is expanded*/
-.menu--expanded .nav__items {
+.menu-expanded .nav__items {
     max-height: calc(100vh - 64px);
-    transition: max-height .3s;
-    -webkit-transition: max-height .3s;
-    -moz-transition: max-height .3s;
-    -ms-transition: max-height .3s;
-    -o-transition: max-height .3s;
-}
-
-.menu--expanded .icon__menu {
-    display: none;
-}
-.menu--expanded .icon__close {
-    display: inline;
+    transition: max-height .3s ease-in;
 }
 
 .nav__item {
@@ -298,8 +279,27 @@ footer {
     font-weight: bold;
 }
 
-.nav__toggle {
-    line-height: 0;
+.nav-toggle {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+}
+.nav-toggle .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all .3s ease-in-out;
+}
+
+.nav-toggle > .icon-menu,
+.menu-expanded .nav-toggle > .icon-close { 
+    opacity: 1; transform: translate(-50%, -50%) scale(1);
+}
+.nav-toggle > .icon-close,
+.menu-expanded .nav-toggle > .icon-menu { 
+    opacity: 0; transform: translate(-50%, -50%) scale(0);
 }
 
 .item__icon {
@@ -360,6 +360,7 @@ h1:target {
     margin-left: 8px;
 }
 .post__title {
+    padding-bottom: 2px;
     font-size: 16px;
     -webkit-hyphens: auto;
         -ms-hyphens: auto;
@@ -410,6 +411,16 @@ h1:target {
 
 footer, footer * {
     font-size: 14px;
+}
+footer > * ~ *::before {
+    content: ' | ';
+}
+
+.beian * {
+    color: #434343;
+}
+.beian-gov img {
+    vertical-align: middle;
 }
 
 .search-result-list > li {
