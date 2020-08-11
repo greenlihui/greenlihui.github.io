@@ -140,7 +140,8 @@ table {
     font-size: 16px;
     line-height: 24px;
     box-sizing: border-box;
-    font-family: "Monaco", "Consolas", "Fira Code",monospace,             "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-family: "Monaco", "Consolas", "Fira Code", monospace,             
+            "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     -moz-text-size-adjust: none;
      -ms-text-size-adjust: none;
          text-size-adjust: none;
