@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>JavaScript 事件代理深入 - Hui Li&#39;s Blog</title>
+        <meta name="Description" content="JavaScript 事件代理深入 - Hui Li&#39;s Blog">
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <a href="/">
+        <img class="site__logo" src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200807103939.PNG" alt="blog icon">
+    </a>
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <div class="nav-toggle">
+            <i class="icon icon-menu material-icons md-32">menu</i>
+            <i class="icon icon-close material-icons md-32">close</i>
+        </div>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="JavaScript 事件代理深入">
+            JavaScript 事件代理深入
+        </h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2020-09-20</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/JavaScript/" class="tag tag--small hover--underline">#JavaScript</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <div class="info">
+<p><strong>一点前言</strong></p>
+<p>说来惭愧，一转眼两个月过去了，博客的更新又被搁置了，8 月份回到国内，隔离期间在宾馆放空自我，什么事情也没干，回到家没多久，又因为在美国的时候耳朵内发炎长了一个小痘痘没太在意（因为疫情也不敢去医院），以为回国涂点药就好了，然后发展成外耳道疖肿，还住院做了手术🤕️。</p>
+<p>我并不想为了更新博客而更新，去写那种很多人写过的东西。在国外两年学到的一些我认为有用的东西（包括用 Java 实现图像处理库，函数式编程实现一个编译器等等）我都想分享，笔记本上杂七杂八写了很多零碎的东西，整理出来写成文章的确挺耗时。总之，为拖延更博感到内疚，下面进入正文</p>
+</div>
+<p>事件代理的基本思想是利用事件冒泡，只使用一个事件处理程序来管理一种类型的事件，从而减少网页对内存的占用和先期指定事件造成页面交互的延迟。本文从我个人学习事件代理的角度来循序渐进地讨论事件代理的正确实现。<strong>本文假设你已经知晓浏览器事件冒泡和捕获，因此不再赘述。</strong></p>
+<h2 id="%E2%80%9C%E9%94%99%E8%AF%AF%E2%80%9D%E7%9A%84%E5%86%99%E6%B3%95" id="“错误”的写法">“错误”的写法</h2>
+<p>对于下面的 HTML 代码，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"items"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item1"</span>&gt;</span>item 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item2"</span>&gt;</span>item 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item3"</span>&gt;</span>item 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>我最开始在网上学习到的事件代理的版本，也是大部分文章使用的一般人使用的方法，如下，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> items = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.items'</span>);<br>items.addEventListener(<span class="hljs-string">'click'</span>, (event) =&gt; &#123;<br>  <span class="hljs-keyword">let</span> target = event.target;<br>  <span class="hljs-keyword">switch</span>(target.id) &#123;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">"item1"</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click item1'</span>);<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">"item2"</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click item2'</span>);<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">case</span> <span class="hljs-string">"item3"</span>:<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click item3'</span>);<br>      <span class="hljs-keyword">break</span>;<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>这个写法是可行的，那为什么是 “错误” 的呢？来看下面的例子</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"items"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item1"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>item 1<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item2"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>item 2<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"item3"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>item 3<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>仅仅是将 <code>&lt;li&gt;</code> 标签的内容添加了一层嵌套，上面的 JS 代码就无效了，只有在点击 <code>&lt;li&gt;</code> 前面的圆点的时候才可以响应点击事件。</p>
+<h3 id="this%3F-target%3F-currenttarget%3F" id="this-target-currentTarget">this? target? currentTarget?</h3>
+<p>在搞清楚为什么会出现上面的现象之前，我们先要清楚在事件处理函数中 <code>target</code>, <code>currentTarget</code> 和 <code>this</code> 的值分别指代什么东西（可直接看结论）。对于下面代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- 相关样式已省略 --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"a"</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"b"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"c"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<p>添加如下的点击事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.a'</span>);<br>a.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'this'</span>, <span class="hljs-keyword">this</span>);<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'target'</span>, event.target);<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'currentTarget'</span>, event.currentTarget);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>在点击 class 为 a 的 div 时，控制台输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">this &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br>target &lt;div class&#x3D;&quot;a&quot;&gt;&lt;&#x2F;div&gt;<br>currentTarget &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br></code></pre></td></tr></table></figure>
+<p>在点击 class 为 b 的 div 时，控制台输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">this &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br>target &lt;div class&#x3D;&quot;b&quot;&gt;&lt;&#x2F;div&gt;<br>currentTarget &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br></code></pre></td></tr></table></figure>
+<p>在点击 class 为 c 的 div 时，控制台输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">this &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br>target &lt;div class&#x3D;&quot;c&quot;&gt;&lt;&#x2F;div&gt;<br>currentTarget &lt;div class&#x3D;&quot;a&quot;&gt;…&lt;&#x2F;div&gt;<br></code></pre></td></tr></table></figure>
+<p>我们可以得出以下结论：</p>
+<p>在事件处理函数内部，<code>this</code> 对象始终等于 <code>currentTarget</code> 的值，表示被事件处理函数挂载的对象（在这个例子中是 <code>a</code>），<code>target</code> 只包含事件的实际目标，也即是相应事件的触发者。如果事件处理程序直接添加在了意图指定的目标，则 <code>this</code>, <code>currentTarget</code> 和 <code>target</code> 的值是一样的。另外需要注意的是，<strong>如果事件处理逻辑包含在箭头「=&gt;」函数内，<code>this</code> 作用域被影响，则不等于 <code>currentTarget</code>。</strong></p>
+<h3 id="%E2%80%9C%E4%BF%AE%E6%AD%A3%E2%80%9D" id="“修正”">“修正”</h3>
+<p>搞清楚 <code>target</code> 是什么之后，我们回过头看原来的事件代理函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript">items.addEventListener(<span class="hljs-string">'click'</span>, (event) =&gt; &#123;<br>  <span class="hljs-keyword">let</span> target = event.target;<br>  <span class="hljs-keyword">switch</span>(target.id) &#123;<br>    <span class="hljs-comment">// ......</span><br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+<p>现在就比较清楚了，在原来 <code>&lt;li&gt;</code> 标签的内容添加了一层 <code>&lt;span&gt;</code> 嵌套后，（点击文字）触发点击事件的对象为 <code>&lt;span&gt;</code>，也即代码中 <code>target</code> 指向 <code>&lt;li&gt;</code> 中的 <code>&lt;span&gt;</code>，所以后面根据 <code>id</code> 执行相应输出的代码无效了。</p>
+<p>那么该如何解决这个问题呢，经历短时间的搜寻后，发现一个偏方。将要响应的元素下面一层子元素的响应的 CSS 属性 <code>pointer-events</code> 设置为 <code>none</code>。在这个例子中，也即</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-class">.items</span> <span class="hljs-selector-tag">span</span> &#123;<br>  <span class="hljs-attribute">pointer-events</span>: none;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><code>pointer-events</code> 设置为 <code>none</code> 时，元素永远不会成为鼠标事件的 <code>target</code>，并且在子元素 <code>pointer-events</code> 属性未设置时，鼠标事件将在捕获或冒泡阶段触发父元素的事件侦听器。使用这种方法相当使点击事件穿透了 <code>&lt;span&gt;</code>，代码中的 <code>target</code> 依旧为 <code>&lt;li&gt;</code>。</p>
+<h2 id="%E9%80%9A%E7%94%A8%E5%86%99%E6%B3%95" id="通用写法">通用写法</h2>
+<p>上一小节讨论的只是某些情况下能用的事件代理写法，正是因为我一开始用的上面的写法，导致我在实际开发中发现不能适用的场景，也才有了上面算是 「歪门邪道」的修正。从这里开始讨论如何正确地实现事件代理。</p>
+<p>首先来捋清思路，其实也很简单：因为事件冒泡，触发事件的元素不一定是需要被代理的元素，所以从该元素开始，一层层向上寻找，直到与需要被代理的元素相匹配。代码如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delegate</span>(<span class="hljs-params">parentSelector, targetSelector, eventType, fn</span>) </span>&#123;<br>  <span class="hljs-keyword">let</span> parent = <span class="hljs-built_in">document</span>.querySelector(parentSelector);<br>  parent.addEventListener(eventType, (ev) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> ele = ev.target;<br>    <span class="hljs-keyword">while</span> (!ele.matches(targetSelector)) &#123;<br>      <span class="hljs-keyword">if</span> (ele === parent) &#123;<br>        ele = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>      ele = ele.parentNode;<br>    &#125;<br>    ele &amp;&amp; fn.call(ele, ev)<br>  &#125;)<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>方法传入四个参数，分别是 代理元素选择器，被代理元素选择器，事件类型以及事件函数。主要代码从第 4 行开始，首先拿到触发点击事件的元素，第 5 行从该元素开始进行匹配，第 6 行表示向上匹配的过程中，如果到达了代理元素还没有找到匹配，停止循环。第 12 行表示如果 <code>ele</code> 不为空，即匹配到目标元素，就调用开始传入的事件函数。该函数使用方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">delegate(<span class="hljs-string">'ul.items'</span>, <span class="hljs-string">'span'</span>, <span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'click item'</span> + <span class="hljs-keyword">this</span>.innerText);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<p>有一点值得注意的是，在事件函数中使用 <code>this</code> 来指代目标元素，<strong>不要用 <code>e.target</code> 表示目标元素也不要用箭头函数</strong>。</p>
+<h3 id="%E6%B7%BB%E5%8A%A0%E5%85%BC%E5%AE%B9%E6%80%A7" id="添加兼容性">添加兼容性</h3>
+<p>为上面的代码添加兼容性后，最终代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">delegate</span>(<span class="hljs-params">parentSelector, targetSelector, eventType, fn</span>) </span>&#123;<br><br>  <span class="hljs-comment">// 兼容 IE 添加处理函数</span><br>  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addHandler</span>(<span class="hljs-params">element, type, handler</span>) </span>&#123;<br>    <span class="hljs-keyword">if</span> (element.addEventListener) &#123;<br>      element.addEventListener(type, handler, <span class="hljs-literal">false</span>);<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (element.attachEvent) &#123;<br>      element.attachEvent(<span class="hljs-string">"on"</span> + type, handler);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      element[<span class="hljs-string">"on"</span> + type] = handlder;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-comment">// 兼容 matches</span><br>  <span class="hljs-keyword">if</span> (!Element.prototype.matches) &#123;<br>    Element.prototype.matches =<br>      Element.prototype.matchesSelector ||<br>      Element.prototype.mozMatchesSelector ||<br>      Element.prototype.msMatchesSelector ||<br>      Element.prototype.oMatchesSelector ||<br>      Element.prototype.webkitMatchesSelector ||<br>      <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">s</span>) </span>&#123;<br>      <span class="hljs-keyword">var</span> matches = (<span class="hljs-keyword">this</span>.document || <span class="hljs-keyword">this</span>.ownerDocument).querySelectorAll(s),<br>          i = matches.length;<br>      <span class="hljs-keyword">while</span> (--i &gt;= <span class="hljs-number">0</span> &amp;&amp; matches.item(i) !== <span class="hljs-keyword">this</span>) &#123; &#125;<br>      <span class="hljs-keyword">return</span> i &gt; <span class="hljs-number">-1</span>;<br>    &#125;;<br>  &#125;<br><br>  <span class="hljs-keyword">var</span> parent = <span class="hljs-built_in">document</span>.querySelector(parentSelector);<br><br>  addHandler(parent, eventType, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">ev</span>) </span>&#123;<br>    <span class="hljs-comment">// 兼容 IE</span><br>    <span class="hljs-keyword">var</span> e = e || <span class="hljs-built_in">window</span>.event;<br>    <span class="hljs-keyword">var</span> t = e.target || e.srcElement;<br><br>    <span class="hljs-keyword">while</span> (!t.matches(targetSelector)) &#123;<br>      <span class="hljs-keyword">if</span> (t === parent) &#123;<br>        t = <span class="hljs-literal">null</span>;<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>      t = t.parentNode;<br>    &#125;<br>    t &amp;&amp; fn.call(t, ev)<br>  &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="%E5%B0%8F%E7%BB%93" id="小结">小结</h2>
+<p>回过头来看，这篇文章描述了我从一开始接触事件代理到发现问题，再到探讨出通用写法。我没有一开始直接介绍后面通用的写法，因为互联网上充斥着大量我最开始遇到的写法，也正因为碰巧碰到了这个写法的问题，才花了一小段时间去研究它，也给我留下了深刻的印象，虽然是个小问题，也让我想把他记录下来，感谢阅读。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#JavaScript 事件代理深入'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    <span>© 2020 Hui Li</span>
+    <span class="beian beian-icp">
+        <a target="_blank" href="http://beian.miit.gov.cn/">鄂ICP备20014198号</a>
+    </span>
+    <span class="beian beian-gov">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42022202000083">
+            <img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200805113229.png" alt="备案编号图标">
+            <span>鄂公网安备 42022202000083号</span>
+        </a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E9%94%99%E8%AF%AF%E2%80%9D%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">“错误”的写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#this%3F-target%3F-currenttarget%3F"><span class="toc-number">1.1.</span> <span class="toc-text">this? target? currentTarget?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E4%BF%AE%E6%AD%A3%E2%80%9D"><span class="toc-number">1.2.</span> <span class="toc-text">“修正”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%86%99%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">通用写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%BC%E5%AE%B9%E6%80%A7"><span class="toc-number">2.1.</span> <span class="toc-text">添加兼容性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">小结</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>
