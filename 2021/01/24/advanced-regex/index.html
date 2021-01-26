@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+<link rel="stylesheet" href="/css/base.css">
+
+    
+<link rel="stylesheet" href="/css/screen-m.css" media="screen and (min-width: 480px)">
+
+    
+<link rel="stylesheet" href="/css/screen-l.css" media="screen and (min-width: 640px)">
+
+
+    
+    
+    
+    
+        <title>正则表达式高级用法 - Hui Li&#39;s Blog</title>
+        <meta name="Description" content="正则表达式高级用法 - Hui Li&#39;s Blog">
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/highlight.css">
+
+        
+<link rel="stylesheet" href="/css/post.css">
+
+    
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/favicons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <!-- the reason of using two layers of wrapper is to 
+        avoid the scrollbar squeeze/overlap the content -->
+    <div class="wrapper--header z-800">
+        <div class="page-bounding">
+            <header>
+    <a href="/">
+        <img class="site__logo" src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200807103939.PNG" alt="blog icon">
+    </a>
+    <nav class="header__nav">
+        <h1 class="header__title">Hui Li</h1>
+        <div class="nav-toggle">
+            <i class="icon icon-menu material-icons md-32">menu</i>
+            <i class="icon icon-close material-icons md-32">close</i>
+        </div>
+        <menu class="nav__items">
+            
+                <span class="nav__item">
+                    <a href="/">
+                        <i class="material-icons item__icon">home</i>
+                        <span class="item__text hover--underline">
+                            Home
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/tags">
+                        <i class="material-icons item__icon">local_offer</i>
+                        <span class="item__text hover--underline">
+                            Tags
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/search">
+                        <i class="material-icons item__icon">search</i>
+                        <span class="item__text hover--underline">
+                            Search
+                        </span>
+                    </a>
+                </span>
+            
+                <span class="nav__item">
+                    <a href="/about">
+                        <i class="material-icons item__icon">person</i>
+                        <span class="item__text hover--underline">
+                            About
+                        </span>
+                    </a>
+                </span>
+            
+        </menu>
+    </nav>
+</header>
+        </div>
+    </div>
+    <div class="wrapper--content">
+        <div class="page-bounding">
+            <!-- CONTENT -->
+            <article>
+    <div class="post__title">
+        <h1 id="正则表达式高级用法">
+            正则表达式高级用法
+        </h1>
+        <span class="post__meta">
+            <i class="material-icons md-20">today</i>
+            <span>2021-01-24</span>
+        </span>
+        
+            <span class="post__meta">
+                <i class="material-icons md-20">local_offer</i>
+                
+                    <a href="/tags/regex/" class="tag tag--small hover--underline">#regex</a>
+                
+            </span>
+        
+    </div>
+    <div class="post__content">
+        <div class="info">
+<p>本文假设你已知晓正则表达式的基本概念并能进行常规识别和使用，包括但不限于：<code>单字符匹配 .</code>, <code>多字符匹配 [ ]</code>, <code>元字符使用 \s</code>, <code>重复匹配 +*?</code> 等等</p>
+</div>
+<h2 id="%E5%8C%B9%E9%85%8D%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6" id="匹配空白字符">匹配空白字符</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>[\b]</code></td>
+<td style="text-align:center">回退（并删除）一个字符（Backspace键）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\f</code></td>
+<td style="text-align:center">换页符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\n</code></td>
+<td style="text-align:center">换行符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\r</code></td>
+<td style="text-align:center">回车符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\t</code></td>
+<td style="text-align:center">制表符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\v</code></td>
+<td style="text-align:center">垂直制表符</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\s</code></td>
+<td style="text-align:center">等价于 <code>[\f\n\r\t\v]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="%E9%98%B2%E6%AD%A2%E8%BF%87%E5%BA%A6%E5%8C%B9%E9%85%8D" id="防止过度匹配">防止过度匹配</h2>
+<p>对于以下文本</p>
+<blockquote>
+<p>This offer is not available to customers living in &lt;B&gt;AK&lt;/B&gt; and &lt;B&gt;HI&lt;/B&gt;.</p>
+</blockquote>
+<p>如果想将两个 <code>&lt;B&gt;</code> 标签里的文本匹配出来，使用 <code>&lt;[Bb]&gt;.*&lt;/[Bb]&gt;</code>，会发现结果是</p>
+<blockquote>
+<p>This offer is not available to customers living in <mark>&lt;B&gt;AK&lt;/B&gt; and &lt;B&gt;HI&lt;/B&gt;</mark>.</p>
+</blockquote>
+<p>这个模式只找到了一个匹配而不是两个，这是因为 * 和 + 都是 “贪婪型” 元字符，它们会尽可能地从一段文本的开头一直匹配到这段文本的末尾。正确方法是使用这些元字符的 “懒惰型” 版本。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">贪婪型元字符</th>
+<th style="text-align:center">懒惰型元字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>*</code></td>
+<td style="text-align:center"><code>*?</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>+</code></td>
+<td style="text-align:center"><code>+?</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>{n, }</code></td>
+<td style="text-align:center"><code>{n, }?</code></td>
+</tr>
+</tbody>
+</table>
+<p>针对上面的例子，使用 <code>&lt;[Bb]&gt;.*?&lt;/[Bb]&gt;</code>，能得到我们想要的结果：</p>
+<blockquote>
+<p>This offer is not available to customers living in <mark>&lt;B&gt;AK&lt;/B&gt;</mark> and <mark>&lt;B&gt;HI&lt;/B&gt;</mark>.</p>
+</blockquote>
+<h2 id="%E5%9B%9E%E6%BA%AF%E5%BC%95%E7%94%A8(backreference)" id="回溯引用-backreference">回溯引用(backreference)</h2>
+<p>如果我们想匹配 <code>HTML</code> 中的标题，我们可能会想到使用 <code>&lt;[Hh][1-6]&gt;.*?&lt;/[Hh][1-6]&gt;</code>，但是有个问题，如果有以下非法标题：</p>
+<blockquote>
+<p>&lt;H1&gt;This is not valid HTML&lt;/H3&gt;</p>
+</blockquote>
+<p>上面的模式也是能够成功匹配到的，这种情况如果不使用回溯匹配则无法解决。回溯引用指在模式的后半部分引用在前半部分中定义的字表达式，在这个例子中，我们使用模式 <code>&lt;Hh&gt;([1-6])&gt;.*?&lt;/[Hh]\1&gt;</code> 则可以排出上面的非法标题。</p>
+<p>你可以把回溯引用想象成变量，<code>\1</code>代表模式里的第一个表达式。在上面的例子正确的模式中，<code>([1-6])</code>是一个只匹配 1~6 的子表达式，<code>\1</code> 只匹配与之相同的数字，这样问题就得到了解决。其实回溯引用大家可能已经见过，<code>$1</code> 就是在进行文本替换时的回溯引用。</p>
+<h3 id="%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2" id="大小写转换">大小写转换</h3>
+<p>回溯引用还有一个使用场景，那就是文本大小写转换。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">元字符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>\E</code></td>
+<td style="text-align:center">结束 <code>\L</code> 或 <code>\U</code> 转换</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\l</code></td>
+<td style="text-align:center">把下个字符（或子表达式）转换成小写</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\L</code></td>
+<td style="text-align:center">把 <code>\L</code> 到 <code>\E</code> 之间的字符全部转换成小写</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\u</code></td>
+<td style="text-align:center">把下个字符（或子表达式）转换成大写</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>\U</code></td>
+<td style="text-align:center">把 <code>\U</code> 到 <code>\E</code> 之间的字符全部转换成小写</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子说明下，如果想把一级标题的标题文字转换为大写：</p>
+<p>模式：<code>(&lt;[Hh]1)(.*?)(&lt;/[Hh]1)</code>；</p>
+<p>替换：<code>$1\U$2\E$3</code></p>
+<h2 id="%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE(lookaround)" id="前后查找-lookaround">前后查找(lookaround)</h2>
+<p>前后查找用于我们需要用正则表达式来标记要匹配的文本的位置的情况。</p>
+<h3 id="%E5%90%91%E5%89%8D%E6%9F%A5%E6%89%BE%EF%BC%88lookahead)" id="向前查找（lookahead">向前查找（lookahead)</h3>
+<p>如果我们想在一堆 URL 中拿到它们的协议名</p>
+<blockquote>
+<p><code>http://www.test.com</code></p>
+<p><code>https://www.example.com</code></p>
+<p><code>ftp://ftp.aaa.com</code></p>
+</blockquote>
+<p>我们可能会使用 <code>.+:</code> 来完成要求，但是该模式匹配的是 <code>http:</code>，<code>https:</code>，<code>ftp:</code>，要提取协议名我们还得对字符串做二次处理。所幸的是，使用向前查找 <code>.+(?=:)</code> 就能够省去后面的冒号，其中子表达式 <code>(?=:)</code> 表示找到 <code>:</code> 就可以了，不把它包括在最终的匹配结果里。</p>
+<h3 id="%E5%90%91%E5%90%8E%E6%9F%A5%E6%89%BE(lookbehind)" id="向后查找-lookbehind">向后查找(lookbehind)</h3>
+<p>除了 <code>?=</code> 表示向前查找，还有很多正则表达式（JS不在其中。。。）也支持向后查找，操作符为 <code>?&lt;=</code>。同样地，来看一个例子：对于如下文本</p>
+<blockquote>
+<p>ABC01: $23.45</p>
+<p>HGG43: $5.31</p>
+</blockquote>
+<p>如果我们想将其中的价格匹配出来（不含 <code>$</code>），使用 <code>[0-9.]+</code> 是不行的，因为它也会匹配出 <code>01</code> 和 <code>43</code>，这时候使用向后查找 <code>(?&lt;=\$)[0-9.]+</code> 问题就迎刃而解了。</p>
+<h3 id="%E5%AF%B9%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE%E5%8F%96%E9%9D%9E(negative-lookaround)" id="对前后查找取非-negative-lookaround">对前后查找取非(negative lookaround)</h3>
+<p>前后查找还有一种不常见的用法叫 <strong>负前后查找</strong>(negative lookaround)，负向前查找将向前查找不与给定模式匹配的文本，负向后查找同理。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>(?=)</code></td>
+<td style="text-align:center">正向前查找</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(?!)</code></td>
+<td style="text-align:center">负向前查找</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(?&lt;=)</code></td>
+<td style="text-align:center">正向后查找</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>(?&lt;!)</code></td>
+<td style="text-align:center">负向后查找</td>
+</tr>
+</tbody>
+</table>
+<p>比如下面的文本中我们只想匹配数量而不匹配金额：</p>
+<blockquote>
+<p>I paid $30 for 100 apples,</p>
+<p>50 orange, and 60 pears,</p>
+<p>I saved $5 on this order.</p>
+</blockquote>
+<p><code>\b(?&lt;!\$)\d+\b</code> 最终的匹配的结果是只包含那些不以 <code>$</code> 开头的数值。</p>
+<h2 id="%E5%B5%8C%E5%85%A5%E6%9D%A1%E4%BB%B6" id="嵌入条件">嵌入条件</h2>
+<p>北美的电话号码格式是 <code>(123)456-7890</code> 和 <code>123-456-7890</code>，要匹配该模式，可能很容易就想到使用 <code>\(?\d{3}\)?-?\d{3}-\d{4}</code>，但是该表达式也会匹配到非法的数据格式比如 <code>(123-456-7890</code>，这种情况我们就需要使用条件：如果电话号码里有一个 <code>(</code>，则第五个字符匹配 <code>)</code>，否则匹配 <code>-</code>。</p>
+<p>嵌入条件的语法为：</p>
+<blockquote>
+<p><code>(?(backreference)true-regex)</code></p>
+<p><code>(?(backreference)true-regex|false-regex)</code></p>
+</blockquote>
+<p>你可以理解为</p>
+<blockquote false-regex="">
+<p>if (backreference) { true-regex } else</p>
+</blockquote>
+<p>回到电话号码的问题，这时可以解决了</p>
+<p><code>(\()?\d{3}(?(1)\)|-)\d{3}-\d{4}</code></p>
+<p>分析这个模式，其中 <code>(\()?</code> 匹配一个可选的左括号，<code>(?(1)\)|-)</code> 是一个回溯引用条件，只有配对出现的括号才会被匹配。</p>
+
+    </div>
+</article>
+
+
+<!-- floating buttons: 1) scroll to top 2) show toc -->
+<div class="floating-section z-400">
+    <div class="floating-button hidden" id="toTop" onclick="window.location.href='#正则表达式高级用法'">
+        <i class="material-icons">keyboard_arrow_up</i>
+    </div>
+    <div class="floating-button" id="showToc">
+        <i class="material-icons">format_list_numbered</i>
+    </div>
+</div>
+
+<!-- MathJax Support -->
+
+            <!-- FOOTER -->
+            <footer>
+    <span>© 2021 Hui Li</span>
+    <span class="beian beian-icp">
+        <a target="_blank" href="http://beian.miit.gov.cn/">鄂ICP备20014198号</a>
+    </span>
+    <span class="beian beian-gov">
+        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42022202000083">
+            <img src="https://blog-pics-1302502188.cos.ap-shanghai.myqcloud.com/20200805113229.png" alt="备案编号图标">
+            <span>鄂公网安备 42022202000083号</span>
+        </a>
+    </span>
+</footer>
+        </div>
+    </div>
+
+    <!-- OVERLAY -->
+    <div class="overlay-container">
+        <div class="backdrop"></div>
+        
+            <div class="wrapper--toc">
+                <div class="page-bounding">
+                    <h2>Table of Content</h2>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">匹配空白字符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E6%AD%A2%E8%BF%87%E5%BA%A6%E5%8C%B9%E9%85%8D"><span class="toc-number">2.</span> <span class="toc-text">防止过度匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9E%E6%BA%AF%E5%BC%95%E7%94%A8(backreference)"><span class="toc-number">3.</span> <span class="toc-text">回溯引用(backreference)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">大小写转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE(lookaround)"><span class="toc-number">4.</span> <span class="toc-text">前后查找(lookaround)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E5%89%8D%E6%9F%A5%E6%89%BE%EF%BC%88lookahead)"><span class="toc-number">4.1.</span> <span class="toc-text">向前查找（lookahead)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E5%90%8E%E6%9F%A5%E6%89%BE(lookbehind)"><span class="toc-number">4.2.</span> <span class="toc-text">向后查找(lookbehind)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%89%8D%E5%90%8E%E6%9F%A5%E6%89%BE%E5%8F%96%E9%9D%9E(negative-lookaround)"><span class="toc-number">4.3.</span> <span class="toc-text">对前后查找取非(negative lookaround)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E6%9D%A1%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">嵌入条件</span></a></li></ol>
+                </div>
+            </div>
+        
+    </div>
+
+    <!-- javascript -->
+    
+<script src="/js/blog.js"></script>
+
+    
+        
+<script src="/js/post.js"></script>
+
+    
+
+    
+
+    <!-- Tencent MTA -->
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "//pingjs.qq.com/h5/stats.js?v2.0.4";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500723158");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
+</body>
+</html>
